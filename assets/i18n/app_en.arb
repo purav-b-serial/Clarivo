@@ -1,0 +1,64 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Clarivo",
+  "@appTitle": { "description": "The name of the application" },
+
+  "loading": "Loading…",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "delete": "Delete",
+  "redownload": "Re-download",
+  "settings": "Settings",
+  "language": "Language",
+
+  "login": "Log In",
+  "register": "Register",
+  "logout": "Log Out",
+  "email": "Email",
+  "phone": "Phone",
+  "password": "Password",
+  "identifier": "Email or phone number",
+  "invalidCredentials": "Incorrect email/phone or password.",
+  "identifierAlreadyExists": "An account with this email/phone already exists.",
+  "storageUnavailable": "Unable to save your account. Please check device storage.",
+
+  "tutorTitle": "AI Tutor",
+  "askQuestion": "Ask a question…",
+  "aiThinking": "AI is thinking…",
+  "stopGenerating": "Stop generating",
+  "clearConversation": "Clear conversation",
+  "noAnswerMessage": "I'm sorry, this topic is not covered in your current study material. Please check if you have uploaded the relevant content, or browse the content library.",
+  "modelNotReady": "AI model is loading. Please wait…",
+
+  "contentTitle": "Content",
+  "uploadedDocuments": "Uploaded Documents",
+  "uploadDocument": "Upload Document",
+  "unsupportedFormat": "This file type is not supported. Please upload a PDF or text file.",
+  "corruptedFile": "This file could not be read. It may be corrupted.",
+  "ingestionTimeout": "Indexing took too long. Try a smaller file or restart the app.",
+
+  "progressTitle": "Progress",
+  "totalStudyTime": "Total Study Time",
+  "questionsAsked": "Questions Asked",
+  "topicsCovered": "Topics Covered",
+  "weekly": "This Week",
+  "overall": "Overall",
+
+  "storageTitle": "Storage",
+  "deletePackageWarning": "This content package will be removed from your device. You will be unable to browse this content or ask the Tutor about it until you re-download it.",
+  "noInternet": "An internet connection is required to download content.",
+  "downloadInterrupted": "Download did not complete. Please try again.",
+  "downloadCorrupted": "Download was corrupted. Please try again.",
+  "insufficientStorage": "Not enough storage space. Free up space and try again.",
+
+  "ocrFailed": "Could not read text from this image. Please take a clearer photo or type your question.",
+
+  "studyReminderTitle": "Time to Study!",
+  "studyReminderBody": "Your daily study reminder is here. Open the app and keep up your streak!",
+  "dailyTipTitle": "Today's Study Tip",
+
+  "supervisorTitle": "Supervisor Dashboard",
+  "supervisorPin": "Supervisor PIN",
+  "supervisorAuthFailed": "Incorrect PIN. Please try again."
+}

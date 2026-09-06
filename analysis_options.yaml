@@ -1,0 +1,20 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"        # generated Drift / Riverpod files
+    - "**/*.freezed.dart"  # generated freezed files (if added later)
+    - lib/l10n/**          # generated localisation files
+    - build/**
+    - android/**
+    - ios/**
+    - windows/**
+    - web/**
+
+linter:
+  rules:
+    - avoid_print
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_final_fields
+    - unawaited_futures

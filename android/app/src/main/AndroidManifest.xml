@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      INTERNET permission is used ONLY by StorageManager.redownloadPackage
+      for content package downloads. All AI inference, OCR, and database
+      operations are fully on-device with no network access.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!--
+      POST_NOTIFICATIONS is required on Android 13+ (API 33+) to deliver
+      local push notifications for study reminders and daily tips.
+    -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <!--
+      SCHEDULE_EXACT_ALARM is required for precise daily reminder delivery
+      via AlarmManager on Android 12+ (API 31+).
+    -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
+    <!--
+      USE_EXACT_ALARM is an alternative on Android 13+ that does not require
+      user approval for apps with a clear alarm use-case (study reminders).
+    -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+
+    <!--
+      RECEIVE_BOOT_COMPLETED allows re-scheduling notifications after device
+      reboot so study reminders survive reboots.
+    -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!--
+      VIBRATE is used to provide haptic feedback with notifications.
+    -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <!--
+      WAKE_LOCK is used by flutter_local_notifications to wake the screen
+      for notification delivery in background.
+    -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application
+        android:label="Clarivo"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+
+        <!--
+          Main Flutter activity. Runs the full app.
+          The android:windowSoftInputMode setting ensures the keyboard does not
+          push the content browser / tutor UI off screen.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!--
+          flutter_local_notifications: BroadcastReceiver that fires when
+          AlarmManager triggers a scheduled notification.
+        -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+            android:exported="false"/>
+
+        <!--
+          flutter_local_notifications: BroadcastReceiver that re-registers
+          all scheduled notifications after the device boots.
+        -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+
+        <!--
+          flutter_local_notifications: ActionBroadcastReceiver handles
+          notification action button taps.
+        -->
+        <receiver
+            android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver"
+            android:exported="false"/>
+
+        <!-- Required by flutter tooling -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+    </application>
+
+    <!--
+      Queries block: declares which external packages this app may interact
+      with. Required on Android 11+ (API 30+) for package visibility.
+      We only need camera and gallery access for image-based Q&A.
+    -->
+    <queries>
+        <!-- Camera intent for image capture (OCR / image Q&A) -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+        <!-- Gallery / photo picker intent -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT"/>
+            <data android:mimeType="image/*"/>
+        </intent>
+    </queries>
+
+</manifest>

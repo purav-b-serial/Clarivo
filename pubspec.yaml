@@ -1,0 +1,147 @@
+name: clarivo
+description: "Offline-first AI-powered tutoring app for Indian students (CBSE & competitive exams)."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.8.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── State Management ───────────────────────────────────────────────────────
+  flutter_riverpod: ^3.3.2       # Dart >=3.7; reactive, type-safe providers
+  riverpod_annotation: ^4.0.3    # Dart >=3.7; annotations for riverpod_generator
+
+  # ── Navigation ─────────────────────────────────────────────────────────────
+  go_router: ^14.8.1             # Dart >=3.4; declarative routing + deep-links
+
+  # ── Local Database (Drift / SQLite) ────────────────────────────────────────
+  drift: ^2.18.0                 # Reactive, typesafe SQLite ORM for Dart/Flutter
+  drift_flutter: ^0.3.1          # Flutter-specific driftDatabase() helper
+
+  # ── Async SQLite (used alongside Drift for raw async SQL access) ───────────
+  sqlite_async: ^0.14.4          # High-performance async SQLite; WAL mode by default
+
+  # ── Vector Store (sqlite-vec) ──────────────────────────────────────────────
+  # NOTE: Only alpha/prerelease builds are on pub.dev.
+  # sqlite_vec wraps the sqlite-vec C extension for KNN cosine/L2 vector search.
+  # Web is not supported (requires custom WASM build).
+  sqlite_vec: ^0.1.7-alpha.3
+
+  # ── Local LLM (llama.cpp via fllama) ──────────────────────────────────────
+  # fllama provides Flutter FFI bindings to llama.cpp for running GGUF models.
+  # Supported platforms: Android (arm64-v8a, x86_64, armeabi-v7a), iOS.
+  # Windows support: Not yet available in fllama. See design notes for
+  # Windows fallback options (e.g. llama_cpp_dart or custom Win32 FFI layer).
+  fllama: ^0.0.1
+
+  # ── ONNX Runtime (all-MiniLM-L6-v2 embedding inference) ───────────────────
+  # Wraps the official ONNX Runtime native libraries; libraries are fetched
+  # from official repos at build time — no pre-bundled .so/.dylib in the package.
+  # Requirements:
+  #   Android: add proguard-rules.pro: `-keep class ai.onnxruntime.** { *; }`
+  #   iOS: set `platform :ios, '16.0'` and `use_frameworks! :linkage => :static`
+  flutter_onnxruntime: ^1.8.1
+
+  # ── OCR ────────────────────────────────────────────────────────────────────
+  # Android/iOS: on-device ML Kit OCR.
+  # Supports Latin, Devanagari (Hindi), Tamil, Telugu, Kannada, Bengali scripts.
+  # Windows: Tesseract 5.x via dart:ffi is used instead (see assets/tesseract/).
+  google_mlkit_text_recognition: ^0.16.0    # Dart >=3.8; on-device ML Kit OCR
+
+  # ── PDF Text Extraction ────────────────────────────────────────────────────
+  # Dart FFI wrapper around the PDFium C library.
+  # A matching prebuilt native PDFium binary must be bundled alongside the app:
+  #   Android/iOS: include libpdfium.so / PDFium.framework
+  #   Windows: copy pdfium.dll next to the executable
+  # Get prebuilt binaries: https://github.com/bblanchon/pdfium-binaries
+  pdfium_bindings: ^3.0.0
+
+  # ── Local Notifications ────────────────────────────────────────────────────
+  # Supports Android 8+ (AlarmManager), iOS 10+ (UNUserNotificationCenter),
+  # and Windows 10+ (Win32 toast notifications).
+  flutter_local_notifications: ^19.4.2
+
+  # ── Secure Credential Storage ──────────────────────────────────────────────
+  # Keychain (iOS), Android Keystore, Windows DPAPI — never writes to SQLite.
+  flutter_secure_storage: ^10.3.1
+
+  # ── Networking ────────────────────────────────────────────────────────────
+  http: ^1.2.2
+  flutter_markdown: ^0.7.4
+  flutter_math_fork: ^0.7.2
+  url_launcher: ^6.3.1
+
+  # ── File Paths ─────────────────────────────────────────────────────────────
+  path_provider: ^2.1.4
+
+  # ── Environment Variables ──────────────────────────────────────────────────
+  flutter_dotenv: ^5.2.1
+
+  # ── Security / Identity ────────────────────────────────────────────────────
+  # PBKDF2-SHA256 password hashing — pure Dart, works on all platforms including web.
+  cryptography: ^2.7.0
+  # UUID v4 generation for account IDs, session IDs, chunk IDs, etc.
+  uuid: ^4.5.1
+
+  # ── Localisation ───────────────────────────────────────────────────────────
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # ── Integration Tests ──────────────────────────────────────────────────────
+  integration_test:
+    sdk: flutter
+
+  # ── Property-Based Testing ─────────────────────────────────────────────────
+  # glados generates random inputs and shrinks failing examples (like QuickCheck).
+  glados: ^1.1.7
+
+  # ── Riverpod Code Generation ───────────────────────────────────────────────
+  riverpod_generator: ^4.0.4     # Must match riverpod_annotation version family
+
+  # ── Drift Code Generation ──────────────────────────────────────────────────
+  drift_dev: ^2.22.1             # Turns @DriftDatabase classes into generated code
+  build_runner: ^2.4.13          # Orchestrates all code generators
+
+  # ── Lints ──────────────────────────────────────────────────────────────────
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # ── Asset Declarations ─────────────────────────────────────────────────────
+  # NOTE: Asset folders must exist on disk; placeholders are committed via .gitkeep.
+  assets:
+    # Embedding model (all-MiniLM-L6-v2 ONNX, ~23 MB — bundled in the app)
+    - assets/models/embedding/
+    # NOTE: The primary LLM (qwen2.5-3b-q4_k_m.gguf, ~1.9 GB) is NOT bundled here.
+    #       It is downloaded or side-loaded to getApplicationDocumentsDirectory()
+    #       at first run, then loaded via fllama at startup.
+
+    # Pre-installed CBSE (Class 6–12) and competitive exam content packages
+    - assets/packages/
+
+    # Subject content JSON files — loaded at runtime by ContentSeeder
+    - assets/content/
+
+    # Localisation ARB files for 6 locales: en, hi, ta, te, kn, bn
+    - assets/i18n/
+
+    # App logo and images
+    - assets/images/
+
+    # Tesseract 5 trained data files for Windows on-device OCR
+    # (eng.traineddata, hin.traineddata, tam.traineddata, tel.traineddata,
+    #  kan.traineddata, ben.traineddata)
+    - assets/tesseract/
+
+  # ── Localisation Code Generation ───────────────────────────────────────────
+  # Run `flutter gen-l10n` after editing ARB files to regenerate AppLocalizations.
+  generate: true

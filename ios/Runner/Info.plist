@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- App name displayed on the Home Screen. -->
+	<key>CFBundleDisplayName</key>
+	<string>Clarivo</string>
+
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+
+	<key>CFBundleName</key>
+	<string>clarivo</string>
+
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+
+	<key>CFBundleSignature</key>
+	<string>????</string>
+
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+
+	<!-- Supported orientations for iPhone. -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- Supported orientations for iPad. -->
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!--
+	  Background modes required by flutter_local_notifications on iOS.
+
+	  - remote-notification: Enables background notification processing
+	    (used for APNs-backed local notification delivery when app is suspended).
+	  - fetch: Allows the app to fetch content in the background, used by
+	    flutter_local_notifications to schedule and deliver local notifications
+	    reliably when the app is in the background.
+
+	  Together these satisfy Requirement 13.6 (deliver notifications when app
+	  is not in the foreground) on iOS 14+.
+	-->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+		<string>fetch</string>
+	</array>
+
+	<!--
+	  Privacy usage description strings (required by App Store review).
+	  Shown to the user when permission is first requested.
+	-->
+
+	<!-- Camera access for image-based Q&A (Requirement 9.1) -->
+	<key>NSCameraUsageDescription</key>
+	<string>Clarivo uses the camera so you can photograph questions from your textbooks and exam papers for Clara to answer.</string>
+
+	<!-- Photo library access for selecting question images -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Clarivo can read photos from your library so you can choose a question image for Clara to answer.</string>
+
+	<!-- Local notifications permission rationale -->
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Clarivo sends daily study reminders and tips to help you stay consistent with your study schedule.</string>
+
+	<!-- Required by flutter tooling. -->
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+
+	<!-- Enables platform views (used by google_mlkit_text_recognition). -->
+	<key>io.flutter.embedded_views_preview</key>
+	<string>YES</string>
+
+	<!-- Disable direct access to UIScene API (Flutter manages this). -->
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+</dict>
+</plist>

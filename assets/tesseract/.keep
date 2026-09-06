@@ -1,0 +1,4 @@
+# Placeholder — Tesseract trained data files go here for Windows OCR.
+# Files needed: eng.traineddata, hin.traineddata, tam.traineddata,
+#               tel.traineddata, kan.traineddata, ben.traineddata
+# Download from: https://github.com/tesseract-ocr/tessdata

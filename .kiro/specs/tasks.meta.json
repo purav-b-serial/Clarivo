@@ -1,0 +1,286 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create the Flutter 3.x project with Android, iOS, and Windows targets enabled": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727387
+      },
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390744382
+      }
+    ],
+    "1.2 Add all required dependencies to `pubspec.yaml` with pinned versions": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727518
+      },
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390745169
+      }
+    ],
+    "1.3 Define global app constants, environment configuration, and folder structure": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727582
+      },
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390745838
+      }
+    ],
+    "2.1 Define all Drift table classes for `app.db`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727654
+      }
+    ],
+    "2.2 Define all Drift table classes for `corpus.db`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727707
+      }
+    ],
+    "2.3 Generate Drift code and write initial migration": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727762
+      }
+    ],
+    "3.1 Implement `AuthenticationServiceImpl` backed by Drift + `flutter_secure_storage`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727824
+      }
+    ],
+    "3.2 Implement multi-account switching": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727882
+      }
+    ],
+    "4.1 Implement `ProfileManagerImpl` with per-account data isolation": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727935
+      }
+    ],
+    "5.1 Define `ContentPackage` domain model and implement `ContentManagerImpl`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390727985
+      }
+    ],
+    "5.2 Seed the content package registry for CBSE Class 6–12 and competitive tracks": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728040
+      }
+    ],
+    "6.1 Implement file parsing (PDF via pdfium, plain text via `dart:io`)": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728105
+      }
+    ],
+    "6.2 Implement the sliding-window text chunker": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728185
+      }
+    ],
+    "7.1 Implement `EmbeddingService` using `flutter_onnxruntime`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728242
+      }
+    ],
+    "8.1 Implement `VectorStoreService` wrapping sqlite-vec in `corpus.db`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728302
+      }
+    ],
+    "8.2 Wire ingestion pipeline end-to-end: parse → chunk → embed → store": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728364
+      }
+    ],
+    "9. Checkpoint — core data and AI infrastructure": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728493
+      }
+    ],
+    "10.1 Implement `LocalAiModelRunnerImpl` wrapping the fllama FFI plugin": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728629
+      }
+    ],
+    "10.2 Implement model loading at app startup with loading indicator state": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728806
+      }
+    ],
+    "11.1 Implement `RagEngineImpl` orchestrating vector search → prompt build → LLM inference": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390728990
+      }
+    ],
+    "11.2 Implement conversation context management": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729071
+      }
+    ],
+    "12.1 Implement the Tutor chat screen with text input and streaming response": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729172
+      }
+    ],
+    "13.1 Implement `ImageInputProcessorImpl` with platform-conditional OCR": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729226
+      }
+    ],
+    "14.1 Extend the Tutor screen with image input support": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729340
+      }
+    ],
+    "15.1 Implement the content browser screen with track navigation": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729512
+      }
+    ],
+    "16.1 Implement `ProgressTrackerImpl` with Drift-backed persistence": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729563
+      }
+    ],
+    "17.1 Implement the progress dashboard screen": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729623
+      }
+    ],
+    "18.1 Implement `StorageManagerImpl` with state machine transitions": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729683
+      }
+    ],
+    "19.1 Implement the storage management screen": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729739
+      }
+    ],
+    "20.1 Implement `NotificationSchedulerImpl` using `flutter_local_notifications`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729795
+      }
+    ],
+    "21.1 Set up ARB files and `flutter_localizations` for 6 locales": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729852
+      }
+    ],
+    "21.2 Implement `LanguageManagerImpl`": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729906
+      }
+    ],
+    "21.3 Propagate locale to LLM prompt and no-answer messages": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390729964
+      }
+    ],
+    "22. Checkpoint — features complete": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390730020
+      }
+    ],
+    "23.1 Implement `SupervisorDashboardImpl` and its screen": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390730082
+      }
+    ],
+    "25.1 Implement automated performance benchmark tests": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390730143
+      }
+    ],
+    "25.2 Apply context-window management and token budget optimisation": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390730203
+      }
+    ],
+    "25.3 Final checkpoint — all tests pass, performance targets met": [
+      {
+        "executionId": "03b45000-c0b1-4413-9435-15928409c56b",
+        "chatSessionId": "sess_ea987527-6873-438e-819a-4a1ea02b9415",
+        "timestamp": 1787390730264
+      }
+    ]
+  }
+}
