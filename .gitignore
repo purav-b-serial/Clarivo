@@ -43,3 +43,6 @@ windows/Runner.vcxproj.user
 # Models / large binary assets (tracked via Git LFS or downloaded at build time)
 assets/models/*.gguf
 assets/models/embedding/*.onnx
+
+clarivo-deploy.zip
+build/
