@@ -11,7 +11,7 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(children: [
         const SizedBox(height: 8),
         _Header('About'),
-        ListTile(leading: Icon(Icons.school_rounded, color: theme.colorScheme.primary), title: const Text('Clarivo'), subtitle: const Text('AI study companion for CBSE Class 10')),
+        ListTile(leading: Icon(Icons.school_rounded, color: theme.colorScheme.primary), title: const Text('Clarivo'), subtitle: const Text('AI study companion for all CBSE students')),
         ListTile(leading: Icon(Icons.info_outline, color: theme.colorScheme.primary), title: const Text('Version'), trailing: const Text('1.0.0 Demo', style: TextStyle(fontSize: 12))),
         const Divider(),
         _Header('AI & Content'),
@@ -24,13 +24,12 @@ class SettingsScreen extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.menu_book_outlined, color: theme.colorScheme.primary),
           title: const Text('Content'),
-          subtitle: const Text('CBSE Class 10 Science - 9 chapters'),
+          subtitle: const Text('CBSE notes across multiple classes and subjects'),
           trailing: _Badge('Active', Colors.green),
         ),
         const Divider(),
         _Header('Coming Soon'),
         _Soon(Icons.translate_outlined, 'Multi-language Support', 'Hindi, Tamil, Telugu, Kannada, Bengali'),
-        _Soon(Icons.offline_bolt_outlined, 'Offline AI', 'On-device model - no internet needed'),
         _Soon(Icons.account_circle_outlined, 'Student Accounts', 'Login, profiles, sync across devices'),
         _Soon(Icons.library_books_outlined, 'Full CBSE Content', 'Classes 6-12, JEE, NEET, UPSC'),
         _Soon(Icons.camera_alt_outlined, 'Image Input', 'Photograph questions for Clara'),

@@ -1,0 +1,86 @@
+[
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Sets",
+    "text": "A set is a well-defined collection of distinct objects. Representation: roster/tabular form (elements listed, e.g. {2,4,6}) and set-builder form (a defining property, e.g. {x : x is an even natural number}). Types: empty (null) set (no elements, denoted phi or {}), finite and infinite sets, equal sets (same elements), and singleton set. A is a subset of B (A ⊆ B) if every element of A is in B; the empty set is a subset of every set; a set with n elements has 2^n subsets. Universal set (U) contains all elements under consideration. Operations: union A ∪ B (elements in A or B), intersection A ∩ B (in both), difference A − B (in A not B), complement A' = U − A. Venn diagrams represent sets pictorially. Key identity: n(A ∪ B) = n(A) + n(B) − n(A ∩ B). De Morgan's laws: (A ∪ B)' = A' ∩ B', (A ∩ B)' = A' ∪ B'."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "text": "The Cartesian product A × B is the set of all ordered pairs (a, b) with a ∈ A, b ∈ B; n(A × B) = n(A) × n(B). A relation R from A to B is a subset of A × B; its domain is the set of first elements, range the set of second elements, and B is the codomain. A function f: A → B assigns each element of A exactly one element of B (no input maps to two outputs). Domain = A, codomain = B, range ⊆ codomain. Standard real functions and their graphs: identity f(x)=x, constant, polynomial, modulus f(x)=|x|, signum, greatest integer [x], rational functions. Algebra of functions: (f ± g)(x) = f(x) ± g(x), (fg)(x) = f(x)g(x), (f/g)(x) = f(x)/g(x) where g(x) ≠ 0."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Trigonometric Functions",
+    "text": "Angles are measured in degrees and radians: pi radians = 180 degrees, so 1 radian = 180/pi degrees. Arc length l = r θ (θ in radians). Trigonometric functions extend to all angles using a unit circle: sin, cos, tan, cosec, sec, cot, with signs varying by quadrant (ASTC rule). Fundamental identities: sin^2 x + cos^2 x = 1, 1 + tan^2 x = sec^2 x, 1 + cot^2 x = cosec^2 x. Functions are periodic: sin and cos have period 2pi, tan has period pi. Sum/difference formulas: sin(A±B) = sinA cosB ± cosA sinB; cos(A±B) = cosA cosB ∓ sinA sinB. Double angle: sin 2A = 2 sinA cosA, cos 2A = cos^2 A − sin^2 A = 2cos^2 A − 1. Also useful: sin(−x) = −sin x (odd), cos(−x) = cos x (even)."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Complex Numbers and Quadratic Equations",
+    "text": "A complex number is z = a + ib, where a is the real part, b the imaginary part, and i = sqrt(−1) with i^2 = −1. Algebra: addition/subtraction componentwise; multiplication using i^2 = −1. Conjugate of z = a + ib is z-bar = a − ib. Modulus |z| = sqrt(a^2 + b^2). Multiplicative inverse z^−1 = z-bar / |z|^2. The Argand plane represents z = a + ib as the point (a, b); the argument is the angle it makes with the positive real axis. Polar form: z = r(cos θ + i sin θ), where r = |z|. A quadratic equation ax^2 + bx + c = 0 with real coefficients and discriminant D = b^2 − 4ac < 0 has complex roots x = [−b ± i sqrt(4ac − b^2)] / 2a, which occur in conjugate pairs."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Linear Inequalities",
+    "text": "A linear inequality compares linear expressions using <, >, ≤, or ≥. Rules: adding/subtracting the same number to both sides keeps the inequality; multiplying/dividing both sides by a positive number keeps it, but by a NEGATIVE number REVERSES the sign. Solving in one variable gives a solution set often shown on a number line (open circle for strict <,>, closed for ≤,≥). Linear inequalities in two variables (e.g. ax + by ≤ c) are solved graphically: the boundary line ax + by = c divides the plane into two half-planes; the solution region is one half-plane (test a point like the origin to decide which). A system of such inequalities gives a common feasible region — the basis of linear programming."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Permutations and Combinations",
+    "text": "Fundamental Principle of Counting: if one event occurs in m ways and another in n ways, both occur in m × n ways (multiplication) or, for mutually exclusive choices, m + n ways (addition). Factorial: n! = n(n−1)(n−2)...1, with 0! = 1. Permutation (arrangement, order matters): the number of ways to arrange r objects from n is nPr = n! / (n−r)!. Combination (selection, order does NOT matter): the number of ways to choose r from n is nCr = n! / [r!(n−r)!]. Relation: nPr = nCr × r!. Key properties: nC0 = nCn = 1, nCr = nC(n−r), and nCr + nC(r−1) = (n+1)Cr (Pascal's rule)."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Binomial Theorem",
+    "text": "The Binomial Theorem for a positive integral index n: (a + b)^n = sum from r=0 to n of nCr a^(n−r) b^r = nC0 a^n + nC1 a^(n−1) b + ... + nCn b^n. The expansion has (n + 1) terms. The coefficients nCr are the binomial coefficients, arranged in Pascal's triangle (each entry is the sum of the two above it). The general term is T(r+1) = nCr a^(n−r) b^r, used to find any specific term (e.g. the term independent of x, or a particular power). The middle term is the ((n/2)+1)th term when n is even, and there are two middle terms when n is odd. Sum of coefficients is found by putting a = b = 1, giving 2^n."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Sequences and Series",
+    "text": "A sequence is an ordered list of numbers; a series is their sum. Arithmetic Progression (A.P.): constant common difference d; nth term a_n = a + (n−1)d; sum S_n = (n/2)[2a + (n−1)d] = (n/2)(a + l). Arithmetic Mean (A.M.) of a and b is (a + b)/2. Geometric Progression (G.P.): constant common ratio r; nth term a_n = a r^(n−1); sum of n terms S_n = a(r^n − 1)/(r − 1) for r ≠ 1; sum of an infinite G.P. (|r| < 1) is S∞ = a/(1 − r). Geometric Mean (G.M.) of a and b is sqrt(ab). Relationship: A.M. ≥ G.M. for positive numbers. Special sums: Σn = n(n+1)/2, Σn^2 = n(n+1)(2n+1)/6, Σn^3 = [n(n+1)/2]^2."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Straight Lines",
+    "text": "Slope of a line through (x1,y1) and (x2,y2): m = (y2 − y1)/(x2 − x1) = tan θ, where θ is the angle with the positive x-axis. Two lines are parallel if m1 = m2, and perpendicular if m1 m2 = −1. Forms of a line: point-slope y − y1 = m(x − x1); slope-intercept y = mx + c; two-point form; intercept form x/a + y/b = 1; normal form x cosω + y sinω = p; and general form Ax + By + C = 0 (slope = −A/B). Angle between two lines: tan θ = |(m1 − m2)/(1 + m1 m2)|. Distance of a point (x1,y1) from line Ax + By + C = 0 is |Ax1 + By1 + C| / sqrt(A^2 + B^2). Distance between parallel lines Ax+By+C1=0 and Ax+By+C2=0 is |C1 − C2|/sqrt(A^2+B^2)."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Conic Sections",
+    "text": "Conic sections are curves from a plane cutting a cone: circle, parabola, ellipse, hyperbola. Circle with centre (h,k) and radius r: (x − h)^2 + (y − k)^2 = r^2. Parabola (standard): y^2 = 4ax opens right, vertex at origin, focus (a, 0), directrix x = −a, latus rectum length 4a. Ellipse: x^2/a^2 + y^2/b^2 = 1 (a > b), foci (±c, 0) with c^2 = a^2 − b^2, eccentricity e = c/a < 1, latus rectum 2b^2/a. Hyperbola: x^2/a^2 − y^2/b^2 = 1, foci (±c, 0) with c^2 = a^2 + b^2, eccentricity e = c/a > 1, latus rectum 2b^2/a. Eccentricity: circle e = 0, ellipse 0 < e < 1, parabola e = 1, hyperbola e > 1."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Introduction to Three Dimensional Geometry",
+    "text": "In 3D space, a point is given by coordinates (x, y, z) relative to three mutually perpendicular axes (X, Y, Z) meeting at the origin. The three coordinate planes (XY, YZ, ZX) divide space into eight octants. Distance between two points (x1,y1,z1) and (x2,y2,z2): d = sqrt[(x2−x1)^2 + (y2−y1)^2 + (z2−z1)^2]. Distance of a point from the origin: sqrt(x^2 + y^2 + z^2). Section formula (point dividing the join of two points in ratio m:n internally): ((mx2+nx1)/(m+n), (my2+ny1)/(m+n), (mz2+nz1)/(m+n)). Midpoint is the average of the coordinates. These extend 2D coordinate geometry into three dimensions."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Limits and Derivatives",
+    "text": "A limit describes the value a function approaches as x approaches a point: lim(x→a) f(x). For the limit to exist, the left-hand limit must equal the right-hand limit. Algebra of limits: limits of sums, differences, products and quotients split accordingly (quotient valid when the denominator limit ≠ 0). Standard limits: lim(x→0) sin x / x = 1; lim(x→0) (e^x − 1)/x = 1; lim(x→0) (a^x − 1)/x = ln a; lim(x→a) (x^n − a^n)/(x − a) = n a^(n−1). The derivative measures the instantaneous rate of change: f'(x) = lim(h→0) [f(x+h) − f(x)]/h (first principles). Rules: d/dx(x^n) = n x^(n−1), d/dx(sin x) = cos x, d/dx(cos x) = −sin x; product rule (uv)' = u'v + uv'; quotient rule (u/v)' = (u'v − uv')/v^2. Derivative gives the slope of the tangent."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Statistics",
+    "text": "Statistics here focuses on measures of dispersion — how spread out data is around a central value. Range = maximum − minimum. Mean deviation: the average of absolute deviations from the mean (or median): M.D. = Σ|x_i − mean| / n. Variance (σ^2) is the average of squared deviations from the mean: for ungrouped data σ^2 = Σ(x_i − mean)^2 / n; for grouped data σ^2 = Σ f_i (x_i − mean)^2 / N. Standard Deviation (σ) is the positive square root of the variance, σ = sqrt(variance); it has the same units as the data and is the most used measure of dispersion. A shortcut formula: σ^2 = (Σ f_i x_i^2)/N − (mean)^2. The coefficient of variation (C.V. = (σ/mean) × 100) compares variability of two data sets; a smaller C.V. means more consistency."
+  },
+  {
+    "class": 11,
+    "subject": "Mathematics",
+    "chapter": "Probability",
+    "text": "A random experiment has more than one possible outcome that cannot be predicted with certainty. The sample space (S) is the set of all outcomes; an event is a subset of S. Types: sure event (S), impossible event (phi), simple and compound events, mutually exclusive events (cannot occur together, A ∩ B = phi), and exhaustive events (cover all of S). Axiomatic probability: for each event E, P(E) ≥ 0, P(S) = 1, and for mutually exclusive events P(A ∪ B) = P(A) + P(B). For equally likely outcomes, P(E) = (number of favourable outcomes)/(total outcomes). Key results: P(not A) = 1 − P(A); the general addition rule P(A ∪ B) = P(A) + P(B) − P(A ∩ B). Probability always lies between 0 and 1."
+  }
+]

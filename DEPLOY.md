@@ -1,52 +1,113 @@
-﻿# Clarivo - Deployment Guide
+﻿# Clarivo — Deployment Guide
 
-## Web (Landing Page + Online Demo)
-
-### Netlify (recommended - 2 minutes)
-1. flutter build web --release
-2. Drag the build/web/ folder to https://app.netlify.com/drop
-3. Copy the generated URL (e.g. https://abc123.netlify.app)
-4. Update _apkUrl and _windowsUrl in lib/features/landing/landing_screen.dart
-5. Rebuild and redeploy
-
-### GitHub Pages
-flutter build web --release --base-href /clarivo/
-Then push build/web contents to gh-pages branch.
-
-### Firebase Hosting
-firebase init hosting   # public: build/web, SPA: yes
-flutter build web --release
-firebase deploy
+Clarivo ships as a **Progressive Web App (PWA)**. A single Flutter Web build
+serves the landing page and the full app. Android and Windows users install it
+through the browser's PWA install flow (no APK, no store, no installer).
 
 ---
 
-## Android APK
-flutter build apk --debug
-# Output: build/app/outputs/flutter-apk/app-debug.apk
+## How the Groq API key is protected
 
-Upload APK to Google Drive / GitHub Release / Netlify.
-Update _apkUrl in landing_screen.dart to the download link.
-Testers: enable "Install from unknown sources" in Android Settings.
+There are two run modes, selected automatically at build time:
+
+- **Local development — direct mode.** When you build/run with
+  `--dart-define=GROQ_API_KEY=...`, Clara calls the Groq API directly using
+  that key. Convenient for local work.
+
+- **Production — proxy mode.** When **no** key is baked into the build (the
+  production default), Clara instead calls the app's own serverless proxy at
+  `/api/clara`. The proxy (`netlify/functions/clara.js`) adds the real key
+  **server-side** from the `GROQ_API_KEY` Netlify environment variable and
+  forwards the request to Groq. **The key never reaches the browser.**
+
+Groq request parameters (model `qwen/qwen3.8-27b`, temperature `0.3`,
+`max_tokens 950`) are identical in both modes, so answers are unchanged.
 
 ---
 
-## Windows
-flutter build windows --release
-# Output: build/windows/x64/runner/Release/
-Zip the Release/ folder, upload as clarivo-demo-windows.zip.
-Update _windowsUrl in landing_screen.dart.
+## Deploy to Netlify (recommended)
+
+Netlify uses `netlify.toml`, which is already configured to:
+- build the web release **without** embedding the key (proxy mode),
+- publish `build/web`,
+- deploy the function in `netlify/functions`,
+- route `/api/clara` → the `clara` function,
+- serve the SPA fallback and security headers.
+
+Steps:
+
+1. **Push the repo to GitHub/GitLab** and create a new Netlify site from it
+   (or use `netlify deploy` with the Netlify CLI).
+2. **Set the environment variable** in Netlify:
+   - Site settings → Environment variables → add
+     `GROQ_API_KEY = gsk_your_key_here`
+   - This is the ONLY place the production key lives. Do not commit it.
+3. **Trigger a deploy.** Netlify runs the build command in `netlify.toml`
+   (clones Flutter stable, `flutter pub get`, `flutter build web --release`),
+   publishes `build/web`, and deploys the `clara` function.
+4. **Verify:** open the site, ask Clara a question, and confirm you get an
+   answer. In the browser Network tab you should see a request to
+   `/api/clara` (not to `api.groq.com`), and the key must not appear anywhere
+   in the page source or JS bundle.
+
+### Local preview of the full stack (optional)
+
+To test the function + app together locally, use the Netlify CLI:
+
+```bash
+npm install -g netlify-cli
+netlify dev            # serves the app and the /api/clara function
+```
+
+Set `GROQ_API_KEY` in your shell (or a Netlify-linked env) so the function can
+read it.
 
 ---
 
-## Environment Variables
+## Local development (direct mode)
 
-The .env file must contain GROQ_API_KEY and must NOT be committed to git.
-  GROQ_API_KEY=gsk_...
+Run from the project root:
 
-For CI/CD, inject as environment secret:
-  echo "GROQ_API_KEY=$GROQ_API_KEY" > .env
-  flutter build web --release
+```bash
+# Dev server
+flutter run -d chrome --dart-define=GROQ_API_KEY=gsk_your_key
 
-SECURITY NOTE: The Groq API key is embedded in the Flutter Web bundle.
-This is acceptable for a hackathon demo. For production, proxy all Groq
-calls through a backend server so the key is never exposed to the browser.
+# One-off release build with the key embedded (local testing only —
+# do NOT deploy this build publicly, as the key would be in the bundle)
+flutter build web --release --dart-define=GROQ_API_KEY=gsk_your_key
+```
+
+The `.env` file is only a convenience for storing your local key; the key is
+passed via `--dart-define`, not read from `.env` at runtime. `.env` is
+git-ignored and must never be committed.
+
+---
+
+## PWA install (what users do)
+
+- **Android (Chrome):** open the site → ⋮ menu → "Add to Home screen" /
+  "Install app". The landing page "Install on Android" button triggers this
+  automatically when the browser offers it.
+- **Windows (Chrome/Edge):** open the site → install icon in the address bar,
+  or ⋮ → "Install this site as an app". The "Install for Windows" button
+  triggers the native prompt; it then opens in its own window with a desktop /
+  Start Menu shortcut.
+
+---
+
+## Security checklist before going live
+
+- [ ] `GROQ_API_KEY` is set as a **Netlify environment variable**, not embedded
+      in the build.
+- [ ] The production build was made **without** `--dart-define=GROQ_API_KEY`
+      (Netlify's build command already omits it).
+- [ ] Requests go to `/api/clara`; the key is absent from the JS bundle and
+      page source.
+- [ ] `.env` is git-ignored and not present in git history.
+- [ ] Rotate the Groq key if it has ever been shared or embedded in a public
+      build.
+- [ ] Security headers are served (configured in `netlify.toml`).
+
+> Note: `android/`, `ios/`, and `windows/` folders remain as default Flutter
+> scaffolding but are not part of the shipped build path. Clarivo is delivered
+> as a PWA.

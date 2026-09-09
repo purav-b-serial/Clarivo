@@ -1,0 +1,104 @@
+[
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Sexual Reproduction in Flowering Plants",
+    "text": "The flower is the reproductive organ. Stamen (androecium) is the male part: anther (with pollen sacs producing pollen grains via microsporogenesis) and filament. Pistil (gynoecium) is the female part: stigma, style, ovary (containing ovules). Microsporogenesis forms haploid microspores (pollen) from microspore mother cells by meiosis; a mature pollen grain has a vegetative cell and a generative cell. Megasporogenesis forms the megaspore in the ovule; the functional megaspore develops into the embryo sac (female gametophyte), typically 8-nucleate, 7-celled: egg cell + 2 synergids (egg apparatus), 3 antipodal cells, and 2 polar nuclei (central cell)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Sexual Reproduction in Flowering Plants",
+    "text": "Pollination is the transfer of pollen from anther to stigma: autogamy (self, same flower), geitonogamy (different flower, same plant), xenogamy (cross, different plant). Agents: wind, water, insects (biotic). Double fertilisation is unique to angiosperms: one male gamete fuses with the egg (syngamy) forming the diploid zygote (2n); the other fuses with the two polar nuclei (triple fusion) forming the triploid (3n) primary endosperm nucleus, which develops into nutritive endosperm. After fertilisation: ovule -> seed, ovary -> fruit. Apomixis is seed formation without fertilisation; polyembryony is more than one embryo in a seed."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Human Reproduction",
+    "text": "Male reproductive system: testes (produce sperm and testosterone) inside the scrotum; seminiferous tubules contain Sertoli cells (nourish sperm) and Leydig cells (secrete androgens). Sperm pathway: testis -> epididymis -> vas deferens -> ejaculatory duct -> urethra. Accessory glands: seminal vesicles, prostate, bulbourethral glands (form semen). Spermatogenesis: spermatogonia -> primary spermatocyte -> (meiosis) secondary spermatocytes -> spermatids -> spermatozoa. Female system: ovaries (produce ova and hormones estrogen/progesterone), fallopian tubes (site of fertilisation), uterus, cervix, vagina. Oogenesis begins before birth and is arrested; completed at fertilisation."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Human Reproduction",
+    "text": "Menstrual cycle (about 28 days): menstrual phase (shedding of endometrium), follicular/proliferative phase (FSH stimulates follicle; estrogen rebuilds endometrium), ovulation (LH surge releases the ovum around day 14), luteal phase (corpus luteum secretes progesterone maintaining endometrium). Hormones: FSH, LH (pituitary); estrogen, progesterone (ovary). Fertilisation occurs in the fallopian tube (ampulla), forming a zygote; it undergoes cleavage to a blastocyst which implants in the uterine wall. The placenta connects the embryo to the mother for nutrition, gas exchange, and secretes hormones (hCG, hPL). Gestation is about 9 months; parturition (childbirth) is triggered by oxytocin. Lactation: mammary glands produce milk; first milk (colostrum) has antibodies."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Reproductive Health",
+    "text": "Reproductive health means physical, emotional, and social well-being related to reproduction. Programmes: RCH (Reproductive and Child Health) for awareness, sex education, and care. Contraception methods: natural (rhythm, withdrawal), barrier (condoms, diaphragm), IUDs (copper-T), oral pills (hormonal), injectables, implants, and surgical (vasectomy in males, tubectomy in females). MTP (Medical Termination of Pregnancy) is legal under conditions, generally safe up to 12 weeks. STIs (sexually transmitted infections): gonorrhoea, syphilis, HIV/AIDS, hepatitis B — prevention via safe practices. Infertility solutions (ART): IVF (test-tube baby, in vitro fertilisation then transfer), ZIFT, GIFT, ICSI, artificial insemination. Amniocentesis is a foetal test but its misuse for sex determination is banned."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Principles of Inheritance and Variation",
+    "text": "Mendel's laws from pea plant experiments: Law of Dominance (one allele masks the other), Law of Segregation (alleles separate during gamete formation — always true), Law of Independent Assortment (genes for different traits assort independently). Monohybrid cross gives phenotypic ratio 3:1 (F2); dihybrid cross gives 9:3:3:1. Test cross (with homozygous recessive) reveals genotype. Incomplete dominance (e.g. pink flowers, ratio 1:2:1), co-dominance (e.g. AB blood group). Multiple alleles: ABO blood grouping (I^A, I^B, i). Pleiotropy: one gene affects many traits. Polygenic inheritance: traits controlled by many genes (e.g. skin colour, height)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Principles of Inheritance and Variation",
+    "text": "Chromosomal theory of inheritance (Sutton and Boveri): genes are on chromosomes. Linkage: genes on the same chromosome tend to be inherited together; recombination occurs due to crossing over (Morgan's work on Drosophila). Sex determination: humans XX (female), XY (male) — XY type; birds ZW; some insects XO. Sex-linked inheritance: genes on X chromosome (e.g. colour blindness, haemophilia) affect males more. Mutations are changes in DNA (point mutations, frameshift); can be spontaneous or induced by mutagens. Genetic disorders: Mendelian (haemophilia, sickle-cell anaemia — point mutation, thalassemia, phenylketonuria) and chromosomal (Down syndrome — trisomy 21, Turner syndrome XO, Klinefelter XXY)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Molecular Basis of Inheritance",
+    "text": "DNA is the genetic material (Griffith's transforming principle; Avery-MacLeod-McCarty; Hershey-Chase experiment with bacteriophages). DNA structure (Watson and Crick): double helix, antiparallel strands, sugar-phosphate backbone, bases paired A=T (2 H-bonds) and G=C (3 H-bonds); Chargaff's rule A=T, G=C. RNA has ribose and uracil instead of thymine, usually single-stranded. DNA replication is semiconservative (Meselson-Stahl); enzymes: helicase unwinds, DNA polymerase synthesises 5'->3', ligase joins fragments; leading and lagging strands (Okazaki fragments). The central dogma: DNA -> (transcription) RNA -> (translation) protein."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Molecular Basis of Inheritance",
+    "text": "Transcription in eukaryotes uses RNA polymerase to make mRNA from a DNA template; hnRNA is processed (capping, tailing, splicing to remove introns, keep exons). The genetic code is triplet (codons), universal, degenerate (more than one codon per amino acid), non-overlapping, with start codon AUG (methionine) and stop codons UAA, UAG, UGA. Translation occurs at ribosomes; tRNA (with anticodon) carries amino acids. Lac operon (Jacob and Monod) explains gene regulation in prokaryotes: inducible system controlled by a repressor and lactose as inducer. The Human Genome Project mapped all human genes; DNA fingerprinting (based on VNTR repeats) is used in forensics and paternity testing."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Evolution",
+    "text": "Origin of life: Oparin-Haldane theory (chemical evolution in primitive Earth); Miller-Urey experiment produced organic molecules from inorganic gases. Evidence for evolution: fossils (palaeontological), homologous organs (common ancestry, divergent evolution, e.g. forelimbs of mammals), analogous organs (convergent evolution, e.g. wings of bird and insect), embryological, molecular. Darwin's theory of natural selection: variation, struggle for existence, survival of the fittest. Lamarck's inheritance of acquired characters (rejected). Hardy-Weinberg principle: allele frequencies remain constant in a population unless disturbed (p^2 + 2pq + q^2 = 1); factors that change them: gene flow, genetic drift, mutation, recombination, natural selection. Adaptive radiation (e.g. Darwin's finches). Human evolution: Australopithecus -> Homo habilis -> Homo erectus -> Homo sapiens."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Human Health and Diseases",
+    "text": "Health is complete physical, mental, and social well-being. Pathogens cause diseases: bacteria (typhoid - Salmonella, pneumonia, tuberculosis), virus (common cold, influenza), protozoa (malaria - Plasmodium via female Anopheles; amoebiasis - Entamoeba), helminths (ascariasis, filariasis), fungi (ringworm). Immunity: innate (non-specific: skin, phagocytes, inflammation) and acquired (specific). Acquired immunity: humoral (B-cells make antibodies - IgG, IgM, IgA, IgE, IgD) and cell-mediated (T-cells). Active immunity (body makes antibodies, e.g. vaccination) vs passive (ready antibodies given, e.g. mother's milk, antisera). Vaccines contain antigens that generate memory cells. AIDS caused by HIV (attacks helper T-cells); spreads via blood, sexual contact, mother to child. Cancer: uncontrolled cell division (malignant tumours metastasise); caused by carcinogens/oncogenes. Allergies are hypersensitive immune responses (histamine)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Microbes in Human Welfare",
+    "text": "Microbes are useful in many ways. Household products: Lactobacillus (curd from milk), yeast (bread, dough rising via CO2). Fermented beverages: yeast (Saccharomyces cerevisiae) for ethanol, wine, beer. Industrial products: antibiotics (Penicillin from Penicillium, discovered by Fleming), organic acids, enzymes (lipase, pectinase), streptokinase (clot buster), cyclosporin A (immunosuppressant), statins (lower cholesterol). Sewage treatment: primary (physical) and secondary (biological - microbes reduce BOD, form flocs; anaerobic digesters produce biogas). Biogas (mainly methane) produced by methanogens (e.g. Methanobacterium) in gobar gas plants. Biofertilisers: Rhizobium (nitrogen fixation in legume roots), Azospirillum, Azotobacter, mycorrhiza (Glomus), cyanobacteria. Biocontrol agents: Bacillus thuringiensis (Bt), Trichoderma, Baculovirus reduce chemical pesticide use."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Biotechnology: Principles and Processes",
+    "text": "Biotechnology uses living organisms/enzymes for products and processes. Genetic engineering (recombinant DNA technology): isolating DNA, cutting with restriction enzymes (molecular scissors that cut at specific palindromic sequences, leaving sticky ends), joining with DNA ligase into a vector, inserting into a host, and selecting transformants. Tools: restriction endonucleases, DNA ligase, vectors (plasmids like pBR322, with ori, selectable markers, recognition sites), host cells (E. coli). Cloning vector must have origin of replication (ori), selectable marker, and cloning sites. Techniques: PCR (Polymerase Chain Reaction) amplifies DNA using primers and Taq polymerase (denaturation, annealing, extension); gel electrophoresis separates DNA fragments by size; the DNA is made competent to take up recombinant DNA. Bioreactors grow cultures on a large scale (stirred-tank type). Downstream processing: separation and purification of the product."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Biotechnology and its Applications",
+    "text": "Applications in agriculture: Bt crops (Bt cotton, Bt corn) carry the cry gene from Bacillus thuringiensis producing toxins against pests; RNA interference (RNAi) makes plants pest-resistant (e.g. against nematodes). Golden rice (vitamin A). In medicine: recombinant insulin (Humulin - made in E. coli, first genetically engineered insulin), gene therapy (correcting defective genes, e.g. ADA deficiency), molecular diagnosis (PCR, ELISA detect pathogens early). Transgenic animals produce useful proteins (e.g. in milk). Ethical issues and biopiracy: GEAC (Genetic Engineering Approval Committee) regulates GM research and safety in India; biopatents and protecting traditional knowledge (e.g. Basmati, turmeric, neem cases)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Organisms and Populations",
+    "text": "Ecology studies interactions between organisms and their environment at levels: organism, population, community, ecosystem, biome, biosphere. Abiotic factors: temperature, water, light, soil. Responses to abiotic conditions: regulate (homeostasis), conform, migrate, suspend (dormancy, hibernation, aestivation). Population attributes: birth rate (natality), death rate (mortality), sex ratio, age distribution (age pyramids), population density. Population growth: exponential (J-shaped, dN/dt = rN, unlimited resources) and logistic (S-shaped, dN/dt = rN(K-N)/K, with carrying capacity K). Population interactions: mutualism (both benefit +/+), competition (-/-), predation (+/-), parasitism (+/-), commensalism (+/0), amensalism (-/0). Examples: mycorrhiza, lichen (mutualism); Cuscuta (parasite)."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Ecosystem",
+    "text": "An ecosystem is a functional unit of biotic (producers, consumers, decomposers) and abiotic components. Productivity: Gross Primary Productivity (GPP) is total energy fixed by producers; Net Primary Productivity (NPP) = GPP - respiration; Secondary productivity by consumers. Decomposition breaks down detritus (fragmentation, leaching, catabolism, humification, mineralisation). Energy flow is unidirectional, following the 10 percent law (only ~10 percent energy transfers to the next trophic level). Food chain (grazing and detritus types) and food web. Ecological pyramids (of number, biomass, energy); the pyramid of energy is always upright. Nutrient cycling (biogeochemical cycles): carbon cycle and phosphorus cycle. Ecosystem services: pollination, climate regulation, nutrient cycling, oxygen. Ecological succession: primary (bare area) and secondary; leads to a stable climax community."
+  },
+  {
+    "class": 12,
+    "subject": "Biology",
+    "chapter": "Biodiversity and its Conservation",
+    "text": "Biodiversity is the variety of life at three levels: genetic, species, and ecosystem diversity. Species richness is highest in the tropics; the latitudinal gradient. Species-area relationship (Alexander von Humboldt): S = C A^Z on a log scale (log S = log C + Z log A). Importance of biodiversity: ecosystem stability, productivity, and services. Loss of biodiversity causes ('The Evil Quartet'): habitat loss and fragmentation, over-exploitation, alien species invasions, and co-extinctions. Conservation: in-situ (in natural habitat: national parks, wildlife sanctuaries, biosphere reserves, biodiversity hotspots, sacred groves) and ex-situ (outside habitat: zoos, botanical gardens, seed banks, cryopreservation). India has hotspots like the Western Ghats and Eastern Himalayas. The IUCN Red List classifies threatened species (endangered, vulnerable, extinct)."
+  }
+]

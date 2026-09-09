@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:markdown/markdown.dart' as md;
 
 import '../../core/providers/subject_provider.dart';
 import '../../domain/ai/clara_service.dart';
@@ -17,161 +18,367 @@ class _Message {
 // Subject picker bottom sheet — shown when user taps "Choose Subject"
 // ─────────────────────────────────────────────────────────────────────────────
 
+/// Class → Subject picker. Student first picks a class (only classes that
+/// actually have notes are shown), then a subject within that class.
+/// Subjects without notes are shown as "Coming soon" and are not selectable.
 void _showSubjectPicker(BuildContext context, WidgetRef ref) {
-  final theme = Theme.of(context);
-  final current = ref.read(activeSubjectProvider);
-
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-    builder: (_) => StatefulBuilder(
-      builder: (ctx, setState) {
-        return Padding(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Handle
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.outlineVariant,
-                    borderRadius: BorderRadius.circular(2),
+    builder: (_) => const _ClassSubjectPickerSheet(),
+  );
+}
+
+class _ClassSubjectPickerSheet extends ConsumerStatefulWidget {
+  const _ClassSubjectPickerSheet();
+  @override
+  ConsumerState<_ClassSubjectPickerSheet> createState() =>
+      _ClassSubjectPickerSheetState();
+}
+
+class _ClassSubjectPickerSheetState
+    extends ConsumerState<_ClassSubjectPickerSheet> {
+  int? _pickedClass;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start on the subject step if a class is already chosen.
+    _pickedClass = ref.read(studyContextProvider).selectedClass;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 20,
+        right: 20,
+        top: 16,
+        bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.outlineVariant,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          _pickedClass == null
+              ? _buildClassStep(theme)
+              : _buildSubjectStep(theme, _pickedClass!),
+        ],
+      ),
+    );
+  }
+
+  // ── Step 1: choose class ──────────────────────────────────────────────
+  Widget _buildClassStep(ThemeData theme) {
+    final classesAsync = ref.watch(availableClassesProvider);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Choose Your Class',
+            style: theme.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 4),
+        Text(
+          'Clara will focus her answers and notes on this class.',
+          style: theme.textTheme.bodySmall
+              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 16),
+        classesAsync.when(
+          loading: () => const Padding(
+            padding: EdgeInsets.all(24),
+            child: Center(child: CircularProgressIndicator()),
+          ),
+          error: (e, _) => Text('Error loading classes: $e',
+              style: theme.textTheme.bodySmall),
+          data: (classes) {
+            if (classes.isEmpty) {
+              return Text('No classes available yet.',
+                  style: theme.textTheme.bodySmall);
+            }
+            return Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              children: classes.map((cls) {
+                return InkWell(
+                  onTap: () {
+                    ref
+                        .read(studyContextProvider.notifier)
+                        .selectClass(cls.number);
+                    setState(() => _pickedClass = cls.number);
+                  },
+                  borderRadius: BorderRadius.circular(14),
+                  child: Container(
+                    width: 92,
+                    height: 92,
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                          color:
+                              theme.colorScheme.primary.withOpacity(0.3),
+                          width: 1.5),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('${cls.number}',
+                            style: theme.textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: theme.colorScheme.primary)),
+                        Text('Class',
+                            style: theme.textTheme.bodySmall?.copyWith(
+                                color:
+                                    theme.colorScheme.onPrimaryContainer)),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text('Choose Study Subject',
-                  style: theme.textTheme.titleMedium
-                      ?.copyWith(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 4),
-              Text(
-                'Clara will focus her search and answers on the selected subject.',
-                style: theme.textTheme.bodySmall
-                    ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
-              ),
-              const SizedBox(height: 16),
+                );
+              }).toList(),
+            );
+          },
+        ),
 
-              // Subject grid
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 2.8,
-                ),
-                itemCount: kCbseSubjects.length,
-                itemBuilder: (_, i) {
-                  final subject = kCbseSubjects[i];
-                  final isSelected = current == subject.name;
-
-                  return InkWell(
-                    onTap: () {
-                      ref
-                          .read(studyContextProvider.notifier)
-                          .selectSubject(subject.name);
-                      Navigator.of(ctx).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                              'Clara is now focused on ${subject.name}'),
-                          duration: const Duration(seconds: 2),
-                          behavior: SnackBarBehavior.floating,
-                        ),
-                      );
-                    },
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? subject.color.withOpacity(0.15)
-                            : theme.colorScheme.surfaceContainerLow,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: isSelected
-                              ? subject.color
-                              : theme.colorScheme.outlineVariant,
-                          width: isSelected ? 2 : 1,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(subject.icon,
-                              size: 18,
-                              color: isSelected
-                                  ? subject.color
-                                  : theme.colorScheme.onSurfaceVariant),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              subject.name,
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: isSelected
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
-                                color: isSelected
-                                    ? subject.color
-                                    : theme.colorScheme.onSurface,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          if (isSelected)
-                            Icon(Icons.check_circle_rounded,
-                                size: 16, color: subject.color),
-                        ],
-                      ),
+        // ── Competitive exam prep (JEE / NEET) ──────────────────────────
+        const SizedBox(height: 22),
+        Row(
+          children: [
+            Icon(Icons.workspace_premium_outlined,
+                size: 16, color: theme.colorScheme.primary),
+            const SizedBox(width: 6),
+            Text('Competitive Exam Prep',
+                style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary)),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Clara auto-covers Class 11 & 12 across all exam subjects — no class or subject to pick.',
+          style: theme.textTheme.bodySmall
+              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 12),
+        Column(
+          children: kExamPreps.map((exam) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: InkWell(
+                onTap: () {
+                  ref.read(studyContextProvider.notifier).selectExam(exam.id);
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'Clara is now in ${exam.fullName} mode — Class 11 & 12, ${exam.subjects.join(", ")}'),
+                      duration: const Duration(seconds: 3),
+                      behavior: SnackBarBehavior.floating,
                     ),
                   );
                 },
-              ),
-
-              const SizedBox(height: 12),
-
-              // Clear focus option
-              if (current != null)
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      ref
-                          .read(studyContextProvider.notifier)
-                          .clearSubject();
-                      Navigator.of(ctx).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Clara is back in general mode'),
-                          duration: Duration(seconds: 2),
-                          behavior: SnackBarBehavior.floating,
+                borderRadius: BorderRadius.circular(14),
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: exam.color.withOpacity(0.08),
+                    borderRadius: BorderRadius.circular(14),
+                    border:
+                        Border.all(color: exam.color.withOpacity(0.4), width: 1.5),
+                  ),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 22,
+                        backgroundColor: exam.color.withOpacity(0.15),
+                        child: Icon(exam.icon, color: exam.color),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(exam.fullName,
+                                style: theme.textTheme.titleSmall?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: exam.color)),
+                            const SizedBox(height: 2),
+                            Text(exam.description,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.onSurfaceVariant)),
+                          ],
                         ),
-                      );
-                    },
-                    icon: const Icon(Icons.clear_rounded, size: 16),
-                    label: const Text('Clear subject focus'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: theme.colorScheme.error,
-                      side:
-                          BorderSide(color: theme.colorScheme.errorContainer),
+                      ),
+                      Icon(Icons.arrow_forward_ios_rounded,
+                          size: 14, color: exam.color),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
+  // ── Step 2: choose subject within the class ───────────────────────────
+  Widget _buildSubjectStep(ThemeData theme, int classNumber) {
+    final subjectsAsync = ref.watch(availableSubjectsProvider(classNumber));
+    final current = ref.read(activeSubjectProvider);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          children: [
+            InkWell(
+              onTap: () => setState(() => _pickedClass = null),
+              borderRadius: BorderRadius.circular(8),
+              child: const Padding(
+                padding: EdgeInsets.all(4),
+                child: Icon(Icons.arrow_back, size: 20),
+              ),
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text('Class $classNumber — Choose Subject',
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'Clara will focus on Class $classNumber notes for the subject you pick.',
+          style: theme.textTheme.bodySmall
+              ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 16),
+        subjectsAsync.when(
+          loading: () => const Padding(
+            padding: EdgeInsets.all(24),
+            child: Center(child: CircularProgressIndicator()),
+          ),
+          error: (e, _) => Text('Error loading subjects: $e',
+              style: theme.textTheme.bodySmall),
+          data: (subjects) => GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 2.6,
+            ),
+            itemCount: subjects.length,
+            itemBuilder: (_, i) {
+              final entry = subjects[i];
+              final subject = entry.subject;
+              final isSelected = current == subject.name;
+              final enabled = entry.hasContent;
+
+              return Opacity(
+                opacity: enabled ? 1.0 : 0.45,
+                child: InkWell(
+                  onTap: enabled
+                      ? () {
+                          ref
+                              .read(studyContextProvider.notifier)
+                              .selectSubject(subject.name);
+                          Navigator.of(context).pop();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'Clara is now focused on Class $classNumber ${subject.name}'),
+                              duration: const Duration(seconds: 2),
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        }
+                      : null,
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? subject.color.withOpacity(0.15)
+                          : theme.colorScheme.surfaceContainerLow,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: isSelected
+                            ? subject.color
+                            : theme.colorScheme.outlineVariant,
+                        width: isSelected ? 2 : 1,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(subject.icon,
+                            size: 18,
+                            color: isSelected
+                                ? subject.color
+                                : theme.colorScheme.onSurfaceVariant),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                subject.name,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: isSelected
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                  color: isSelected
+                                      ? subject.color
+                                      : theme.colorScheme.onSurface,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              if (!enabled)
+                                Text('Coming soon',
+                                    style: TextStyle(
+                                        fontSize: 9,
+                                        color: theme
+                                            .colorScheme.onSurfaceVariant)),
+                            ],
+                          ),
+                        ),
+                        if (isSelected)
+                          Icon(Icons.check_circle_rounded,
+                              size: 16, color: subject.color),
+                      ],
                     ),
                   ),
                 ),
-            ],
+              );
+            },
           ),
-        );
-      },
-    ),
-  );
+        ),
+      ],
+    );
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -242,34 +449,42 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final studyCtx = ref.watch(studyContextProvider);
+    final exam = studyCtx.exam;
     final activeSubject = ref.watch(activeSubjectProvider);
     final subjectInfo = ref.watch(activeSubjectInfoProvider);
 
+    // A context is "active" (Clara ready) when either a subject is chosen OR
+    // an exam-prep mode is on. The label/colour adapt to whichever is active.
+    final bool hasContext = exam != null || activeSubject != null;
+    final String? activeLabel = exam?.fullName ?? activeSubject;
+    final Color accentColor =
+        exam?.color ?? subjectInfo?.color ?? theme.colorScheme.primary;
+
     return Scaffold(
       appBar: AppBar(
-        // ── Title: Clara + active subject label ──────────────────────────
+        // ── Title: Clara + active subject/exam label ─────────────────────
         title: Row(
           children: [
             CircleAvatar(
               radius: 16,
-              backgroundColor: subjectInfo != null
-                  ? subjectInfo.color.withOpacity(0.2)
+              backgroundColor: hasContext
+                  ? accentColor.withOpacity(0.2)
                   : theme.colorScheme.primaryContainer,
               child: Icon(Icons.smart_toy_rounded,
-                  size: 18,
-                  color: subjectInfo?.color ?? theme.colorScheme.primary),
+                  size: 18, color: accentColor),
             ),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Clara', style: TextStyle(fontSize: 16)),
-                if (activeSubject != null)
+                if (activeLabel != null)
                   Text(
-                    activeSubject,
+                    activeLabel,
                     style: TextStyle(
                         fontSize: 11,
-                        color: subjectInfo?.color,
+                        color: accentColor,
                         fontWeight: FontWeight.w500),
                   ),
               ],
@@ -279,22 +494,20 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
 
         // ── AppBar actions ────────────────────────────────────────────────
         actions: [
-          // ALWAYS-VISIBLE "Choose Subject" button
+          // ALWAYS-VISIBLE "Choose Subject / Change" button
           TextButton.icon(
             onPressed: () => _showSubjectPicker(context, ref),
             icon: Icon(
-              activeSubject != null
-                  ? Icons.swap_horiz_rounded
-                  : Icons.school_outlined,
+              hasContext ? Icons.swap_horiz_rounded : Icons.school_outlined,
               size: 16,
-              color: subjectInfo?.color ?? theme.colorScheme.primary,
+              color: accentColor,
             ),
             label: Text(
-              activeSubject != null ? 'Change' : 'Subject',
+              hasContext ? 'Change' : 'Subject',
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
-                color: subjectInfo?.color ?? theme.colorScheme.primary,
+                color: accentColor,
               ),
             ),
           ),
@@ -311,35 +524,36 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
 
       body: Column(
         children: [
-          // ── Active subject banner ───────────────────────────────────────
-          if (activeSubject != null && subjectInfo != null)
+          // ── Active context banner (exam mode OR subject) ────────────────
+          if (hasContext)
             Container(
               width: double.infinity,
               padding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
-              color: subjectInfo.color.withOpacity(0.09),
+              color: accentColor.withOpacity(0.09),
               child: Row(
                 children: [
-                  Icon(subjectInfo.icon, size: 13, color: subjectInfo.color),
+                  Icon(exam?.icon ?? subjectInfo?.icon ?? Icons.school_outlined,
+                      size: 13, color: accentColor),
                   const SizedBox(width: 7),
                   Expanded(
                     child: Text(
-                      'Focused on $activeSubject — Clara will prioritise this subject',
+                      exam != null
+                          ? '${exam.fullName} mode — Class 11 & 12: ${exam.subjects.join(", ")}'
+                          : 'Focused on $activeSubject — Clara will prioritise this subject',
                       style: TextStyle(
                           fontSize: 11,
-                          color: subjectInfo.color,
+                          color: accentColor,
                           fontWeight: FontWeight.w500),
                     ),
                   ),
                   // Inline clear button in banner
                   GestureDetector(
                     onTap: () {
-                      ref
-                          .read(studyContextProvider.notifier)
-                          .clearSubject();
+                      ref.read(studyContextProvider.notifier).clearAll();
                     },
                     child: Icon(Icons.close_rounded,
-                        size: 14, color: subjectInfo.color),
+                        size: 14, color: accentColor),
                   ),
                 ],
               ),
@@ -378,7 +592,7 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
           Expanded(
             child: _messages.isEmpty
                 ? _EmptyState(
-                    activeSubject: activeSubject,
+                    activeSubject: activeLabel,
                     onChooseSubject: () =>
                         _showSubjectPicker(context, ref),
                   )
@@ -435,9 +649,11 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
                       onSubmitted: (_) => _send(),
                       enabled: !_isLoading,
                       decoration: InputDecoration(
-                        hintText: activeSubject != null
-                            ? 'Ask Clara about $activeSubject…'
-                            : 'Ask Clara a question…',
+                        hintText: exam != null
+                            ? 'Ask Clara any ${exam.name} question…'
+                            : (activeSubject != null
+                                ? 'Ask Clara about $activeSubject…'
+                                : 'Ask Clara a question…'),
                         filled: true,
                         fillColor:
                             theme.colorScheme.surfaceContainerHighest,
@@ -466,7 +682,7 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
                           style: FilledButton.styleFrom(
                             shape: const CircleBorder(),
                             padding: const EdgeInsets.all(14),
-                            backgroundColor: subjectInfo?.color,
+                            backgroundColor: accentColor,
                           ),
                           child: const Icon(Icons.send_rounded, size: 20),
                         ),
@@ -516,6 +732,8 @@ class _Block {
   final String content;
   final bool isBlockMath;
 }
+
+
 
 class _MessageBubble extends StatelessWidget {
   const _MessageBubble({required this.message});
@@ -648,14 +866,67 @@ class _ClaraMessageContent extends StatelessWidget {
             ),
           );
         }
-        // Markdown text block — inline $...$ stays as-is in the string
-        // so sentences remain intact. MarkdownBody renders them as text.
+        // Markdown text block. Inline $...$ math is rendered via a custom
+        // inline syntax + element builder so bullets/bold/headings still work
+        // AND formulas render as real math instead of raw LaTeX.
         return MarkdownBody(
           data: block.content,
-          selectable: true,
+          // selectable must be false: mixing custom WidgetSpan math builders
+          // with SelectableText.rich (selectable:true) breaks inline rendering.
+          selectable: false,
           styleSheet: _sheet(context, textColor),
+          inlineSyntaxes: [InlineMathSyntax()],
+          builders: {
+            'inlineMath': InlineMathBuilder(textColor: textColor),
+          },
         );
       }).toList(),
+    );
+  }
+}
+
+// ── Inline math support for flutter_markdown ────────────────────────────────
+// Parses $...$ within markdown text and emits a custom 'inlineMath' element,
+// which InlineMathBuilder renders using Math.tex. Preserves all other markdown.
+
+class InlineMathSyntax extends md.InlineSyntax {
+  // Match $...$ where the content has no $ or newline and isn't a bare number
+  // (so real currency like "$5" is not treated as math).
+  InlineMathSyntax() : super(r'\$([^\$\n]+?)\$');
+
+  @override
+  bool onMatch(md.InlineParser parser, Match match) {
+    final content = match.group(1)!;
+    final looksMath =
+        RegExp(r'[\\^_{}=+\-*/()]|[A-Za-z]').hasMatch(content) &&
+            !RegExp(r'^\s*\d[\d,.\s]*$').hasMatch(content);
+    if (!looksMath) {
+      // Treat as plain text (e.g. "$5") — emit the original literal.
+      parser.addNode(md.Text(match.group(0)!));
+      return true;
+    }
+    final el = md.Element.text('inlineMath', content.trim());
+    parser.addNode(el);
+    return true;
+  }
+}
+
+class InlineMathBuilder extends MarkdownElementBuilder {
+  InlineMathBuilder({required this.textColor});
+  final Color textColor;
+
+  @override
+  Widget visitElementAfter(md.Element element, TextStyle? preferredStyle) {
+    final tex = element.textContent;
+    return Math.tex(
+      tex,
+      mathStyle: MathStyle.text,
+      textStyle: (preferredStyle ?? const TextStyle()).copyWith(color: textColor),
+      onErrorFallback: (_) => Text(
+        '\$$tex\$',
+        style: TextStyle(
+            fontFamily: 'monospace', fontSize: 13, color: textColor),
+      ),
     );
   }
 }
@@ -680,9 +951,17 @@ class _EmptyState extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 20),
-          Icon(Icons.school_rounded,
-              size: 60,
-              color: theme.colorScheme.primary.withOpacity(0.4)),
+          Image.asset(
+            'assets/images/clara_mascot.png',
+            width: 96,
+            height: 96,
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) => Icon(
+              Icons.smart_toy_rounded,
+              size: 76,
+              color: theme.colorScheme.primary.withOpacity(0.4),
+            ),
+          ),
           const SizedBox(height: 14),
           Text(
             'Hi! I\'m Clara 👋',

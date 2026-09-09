@@ -18,9 +18,10 @@ class ContentScreen extends ConsumerWidget {
     if (!ctx.hasClass) return const _ClassPickerScreen();
     if (!ctx.hasSubject) return _SubjectPickerScreen(selectedClass: ctx.selectedClass!);
 
-    final subjectInfo = kCbseSubjects.firstWhere(
+    final catalogue = subjectsForClass(ctx.selectedClass!);
+    final subjectInfo = catalogue.firstWhere(
       (s) => s.name == ctx.selectedSubject,
-      orElse: () => kCbseSubjects.first,
+      orElse: () => catalogue.first,
     );
 
     return _ChapterListScreen(
@@ -252,22 +253,38 @@ class _SubjectPickerScreen extends ConsumerWidget {
             const SizedBox(height: 12),
 
             Expanded(
-              child: GridView.builder(
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  childAspectRatio: 1.35,
-                ),
-                itemCount: kCbseSubjects.length,
-                itemBuilder: (context, i) {
-                  final subject = kCbseSubjects[i];
-                  return _SubjectCard(
-                    subject: subject,
-                    onTap: () => ref
-                        .read(studyContextProvider.notifier)
-                        .selectSubject(subject.name),
+              child: Consumer(
+                builder: (context, ref, _) {
+                  final subjectsAsync =
+                      ref.watch(availableSubjectsProvider(selectedClass));
+                  return subjectsAsync.when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (e, _) => Center(
+                        child: Text('Error loading subjects: $e',
+                            style: theme.textTheme.bodySmall)),
+                    data: (subjects) => GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 12,
+                        crossAxisSpacing: 12,
+                        childAspectRatio: 1.35,
+                      ),
+                      itemCount: subjects.length,
+                      itemBuilder: (context, i) {
+                        final entry = subjects[i];
+                        return _SubjectCard(
+                          subject: entry.subject,
+                          available: entry.hasContent,
+                          onTap: entry.hasContent
+                              ? () => ref
+                                  .read(studyContextProvider.notifier)
+                                  .selectSubject(entry.subject.name)
+                              : null,
+                        );
+                      },
+                    ),
                   );
                 },
               ),
@@ -280,50 +297,81 @@ class _SubjectPickerScreen extends ConsumerWidget {
 }
 
 class _SubjectCard extends StatelessWidget {
-  const _SubjectCard({required this.subject, required this.onTap});
+  const _SubjectCard({
+    required this.subject,
+    required this.onTap,
+    this.available = true,
+  });
   final CbseSubject subject;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final bool available;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final color = subject.color;
+    final opacity = available ? 1.0 : 0.45;
 
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.07),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: color.withOpacity(0.3), width: 1.5),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: 20,
-              backgroundColor: color.withOpacity(0.15),
-              child: Icon(subject.icon, color: color, size: 20),
-            ),
-            const Spacer(),
-            Text(
-              subject.name,
-              style: theme.textTheme.titleSmall
-                  ?.copyWith(fontWeight: FontWeight.bold),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 2),
-            Text(
-              subject.description,
-              style: theme.textTheme.bodySmall?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+    return Opacity(
+      opacity: opacity,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: color.withOpacity(available ? 0.07 : 0.04),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withOpacity(0.3), width: 1.5),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: color.withOpacity(0.15),
+                    child: Icon(subject.icon, color: color, size: 20),
+                  ),
+                  const Spacer(),
+                  if (!available)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surfaceContainerHighest,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'Coming soon',
+                        style: TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.w600,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const Spacer(),
+              Text(
+                subject.name,
+                style: theme.textTheme.titleSmall
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subject.description,
+                style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -359,7 +407,8 @@ class _ChapterListScreenState extends ConsumerState<_ChapterListScreen> {
 
   Future<void> _load() async {
     final db = ref.read(demoDatabaseProvider);
-    final chapters = await db.getChaptersForSubject(widget.subject.name);
+    final chapters = await db.getChaptersForSubject(widget.subject.name,
+        classNumber: widget.selectedClass);
     if (mounted) setState(() { _chapters = chapters; _loading = false; });
   }
 
@@ -426,48 +475,118 @@ class _ChapterListScreenState extends ConsumerState<_ChapterListScreen> {
                     ),
                   ),
                 )
-              : ListView.builder(
-                  padding: const EdgeInsets.all(12),
-                  itemCount: _chapters.length,
-                  itemBuilder: (context, i) => Card(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
-                      leading: CircleAvatar(
-                        radius: 18,
-                        backgroundColor: color.withOpacity(0.12),
-                        child: Text(
-                          '${i + 1}',
-                          style: TextStyle(
-                            fontSize: 12,
+              : _isGrouped
+                  ? _buildGrouped(context, theme, color)
+                  : _buildFlatList(context, theme, color),
+    );
+  }
+
+  // Chapters whose names carry a "Book: chapter" or "Book (Section): chapter"
+  // prefix are grouped (used for English: Flamingo/Vistas/Writing Skills).
+  bool get _isGrouped => _chapters.any((c) => c.contains(': '));
+
+  /// Opens the notes viewer for a chapter.
+  void _openChapter(BuildContext context, String chapter) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => _ChapterDetailScreen(
+          subject: widget.subject,
+          chapter: chapter,
+          selectedClass: widget.selectedClass,
+        ),
+      ),
+    );
+  }
+
+  /// Strips the "Book (Section): " prefix, returning just the chapter title.
+  String _chapterTitle(String full) {
+    final idx = full.indexOf(': ');
+    return idx >= 0 ? full.substring(idx + 2) : full;
+  }
+
+  Widget _buildFlatList(BuildContext context, ThemeData theme, Color color) {
+    return ListView.builder(
+      padding: const EdgeInsets.all(12),
+      itemCount: _chapters.length,
+      itemBuilder: (context, i) => Card(
+        margin: const EdgeInsets.only(bottom: 8),
+        child: ListTile(
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          leading: CircleAvatar(
+            radius: 18,
+            backgroundColor: color.withOpacity(0.12),
+            child: Text('${i + 1}',
+                style: TextStyle(
+                    fontSize: 12,
+                    color: color,
+                    fontWeight: FontWeight.bold)),
+          ),
+          title: Text(_chapters[i],
+              style: theme.textTheme.titleSmall
+                  ?.copyWith(fontWeight: FontWeight.w600)),
+          trailing: Icon(Icons.arrow_forward_ios_rounded,
+              size: 14, color: theme.colorScheme.onSurfaceVariant),
+          onTap: () => _openChapter(context, _chapters[i]),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGrouped(BuildContext context, ThemeData theme, Color color) {
+    // Group chapters by the prefix before ': ' (e.g. "Flamingo (Prose)").
+    final groups = <String, List<String>>{};
+    for (final ch in _chapters) {
+      final idx = ch.indexOf(': ');
+      final group = idx >= 0 ? ch.substring(0, idx) : 'Other';
+      groups.putIfAbsent(group, () => []).add(ch);
+    }
+    final groupNames = groups.keys.toList();
+
+    return ListView.builder(
+      padding: const EdgeInsets.all(12),
+      itemCount: groupNames.length,
+      itemBuilder: (context, gi) {
+        final name = groupNames[gi];
+        final items = groups[name]!;
+        return Card(
+          margin: const EdgeInsets.only(bottom: 10),
+          child: ExpansionTile(
+            initiallyExpanded: gi == 0,
+            leading: Icon(Icons.menu_book_rounded, color: color, size: 22),
+            title: Text(name,
+                style: theme.textTheme.titleSmall
+                    ?.copyWith(fontWeight: FontWeight.bold, color: color)),
+            subtitle: Text('${items.length} chapters',
+                style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant)),
+            childrenPadding: const EdgeInsets.only(bottom: 6),
+            children: [
+              for (var i = 0; i < items.length; i++)
+                ListTile(
+                  dense: true,
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                  leading: CircleAvatar(
+                    radius: 14,
+                    backgroundColor: color.withOpacity(0.12),
+                    child: Text('${i + 1}',
+                        style: TextStyle(
+                            fontSize: 11,
                             color: color,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      title: Text(
-                        _chapters[i],
-                        style: theme.textTheme.titleSmall
-                            ?.copyWith(fontWeight: FontWeight.w600),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 14,
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => _ChapterDetailScreen(
-                            subject: widget.subject,
-                            chapter: _chapters[i],
-                            selectedClass: widget.selectedClass,
-                          ),
-                        ),
-                      ),
-                    ),
+                            fontWeight: FontWeight.bold)),
                   ),
+                  title: Text(_chapterTitle(items[i]),
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                  trailing: Icon(Icons.arrow_forward_ios_rounded,
+                      size: 13, color: theme.colorScheme.onSurfaceVariant),
+                  onTap: () => _openChapter(context, items[i]),
                 ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

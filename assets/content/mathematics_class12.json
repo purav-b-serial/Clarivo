@@ -1,0 +1,92 @@
+[
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Relations and Functions",
+    "text": "A relation R on set A is a subset of A x A. Types: Reflexive (aRa for all a), Symmetric (aRb implies bRa), Transitive (aRb and bRc implies aRc). An equivalence relation is reflexive, symmetric AND transitive; it partitions the set into equivalence classes. Functions: one-one (injective) if f(a)=f(b) implies a=b; onto (surjective) if range = codomain; bijective if both one-one and onto. Only bijective functions are invertible. Composition of functions: (g o f)(x) = g(f(x)); composition is associative but not commutative. If f: A->B and g: B->C are both bijective, then g o f is bijective. Inverse function f^-1 exists only when f is bijective, and (f^-1 o f)(x) = x."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Inverse Trigonometric Functions",
+    "text": "Inverse trig functions are defined on restricted (principal value) domains. Principal value ranges: sin^-1 x in [-pi/2, pi/2], cos^-1 x in [0, pi], tan^-1 x in (-pi/2, pi/2), cosec^-1 x in [-pi/2, pi/2] minus {0}, sec^-1 x in [0, pi] minus {pi/2}, cot^-1 x in (0, pi). Key properties: sin^-1 x + cos^-1 x = pi/2; tan^-1 x + cot^-1 x = pi/2; sec^-1 x + cosec^-1 x = pi/2. sin^-1(-x) = -sin^-1 x (odd); cos^-1(-x) = pi - cos^-1 x. tan^-1 x + tan^-1 y = tan^-1((x+y)/(1-xy)) when xy < 1. 2 tan^-1 x = tan^-1(2x/(1-x^2)) = sin^-1(2x/(1+x^2)) = cos^-1((1-x^2)/(1+x^2))."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Matrices",
+    "text": "A matrix is a rectangular array of numbers of order m x n (m rows, n columns). Types: row, column, square, diagonal, scalar, identity (I), zero matrix. Equality requires same order and equal corresponding elements. Operations: addition/subtraction (same order, element-wise), scalar multiplication. Matrix multiplication AB is defined only when columns of A = rows of B; (AB)_ij = sum of a_ik b_kj. Matrix multiplication is associative and distributive but NOT commutative (AB is generally not BA). Transpose A': rows become columns; (AB)' = B'A'. Symmetric matrix: A' = A; skew-symmetric: A' = -A (diagonal elements zero). Any square matrix = symmetric part (1/2)(A+A') + skew-symmetric part (1/2)(A-A'). Invertible matrix: AB = BA = I means B = A^-1; inverse is unique if it exists."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Determinants",
+    "text": "Determinant is a scalar associated with a square matrix. For 2x2 [[a,b],[c,d]], det = ad - bc. For 3x3, expand along any row/column using cofactors: det A = sum of a_ij C_ij, where cofactor C_ij = (-1)^(i+j) M_ij (minor). Properties: det changes sign when two rows/columns are swapped; det = 0 if two rows/columns are identical or proportional; det(A') = det(A); det(kA) = k^n det(A) for n x n; det(AB) = det(A) det(B). Area of triangle with vertices (x1,y1),(x2,y2),(x3,y3) = (1/2)|determinant|; points are collinear if this determinant = 0. Adjoint: adj A = transpose of cofactor matrix; A(adj A) = |A| I. Inverse: A^-1 = adj(A)/|A|, exists iff |A| is not 0 (non-singular). Solving linear equations AX = B: X = A^-1 B; Cramer's rule uses determinants. System is consistent with unique solution if |A| not 0."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Continuity and Differentiability",
+    "text": "A function f is continuous at x = c if lim(x->c) f(x) = f(c) (left limit = right limit = function value). Sum, difference, product, quotient (denominator not 0) and composition of continuous functions are continuous. Differentiability: f'(c) = lim(h->0) [f(c+h) - f(c)]/h exists. Differentiability implies continuity, but not conversely (e.g. |x| at 0 is continuous but not differentiable). Standard derivatives: d/dx(x^n)=nx^(n-1), d/dx(sin x)=cos x, d/dx(cos x)=-sin x, d/dx(tan x)=sec^2 x, d/dx(e^x)=e^x, d/dx(ln x)=1/x, d/dx(a^x)=a^x ln a. Rules: product rule (uv)'=u'v+uv'; quotient rule; chain rule dy/dx=(dy/du)(du/dx)."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Continuity and Differentiability",
+    "text": "Derivatives of inverse trig: d/dx(sin^-1 x)=1/sqrt(1-x^2), d/dx(cos^-1 x)=-1/sqrt(1-x^2), d/dx(tan^-1 x)=1/(1+x^2). Logarithmic differentiation for y = [f(x)]^g(x): take ln both sides then differentiate. Implicit differentiation: differentiate both sides w.r.t x treating y as a function of x. Parametric form: if x=f(t), y=g(t) then dy/dx = (dy/dt)/(dx/dt). Second derivative d^2y/dx^2. Rolle's theorem: if f is continuous on [a,b], differentiable on (a,b), and f(a)=f(b), then there exists c in (a,b) with f'(c)=0. Mean Value Theorem (Lagrange): f'(c) = [f(b)-f(a)]/(b-a) for some c in (a,b)."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Application of Derivatives",
+    "text": "Rate of change: dy/dx gives the rate of change of y with respect to x; related rates use the chain rule. Increasing/decreasing: f is increasing where f'(x) > 0, decreasing where f'(x) < 0. Tangent to y=f(x) at (x1,y1) has slope f'(x1); equation y - y1 = f'(x1)(x - x1). Normal has slope -1/f'(x1). Maxima and minima: critical points where f'(x)=0 or undefined. First derivative test: f' changes + to - means local max, - to + means local min. Second derivative test: f'(c)=0 and f''(c) < 0 means local max; f''(c) > 0 means local min. Absolute (global) max/min on [a,b] found by comparing values at critical points and endpoints."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Integrals",
+    "text": "Integration is the inverse of differentiation (antiderivative). Standard integrals: integral x^n dx = x^(n+1)/(n+1) + C (n not -1), integral 1/x dx = ln|x| + C, integral e^x dx = e^x + C, integral sin x dx = -cos x + C, integral cos x dx = sin x + C, integral sec^2 x dx = tan x + C. integral 1/(1+x^2) dx = tan^-1 x + C, integral 1/sqrt(1-x^2) dx = sin^-1 x + C. Methods: substitution (change of variable), integration by parts integral u dv = uv - integral v du (choose u by ILATE: Inverse, Log, Algebraic, Trig, Exponential), partial fractions (for rational functions). integral 1/(x^2-a^2) dx = (1/2a) ln|(x-a)/(x+a)| + C."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Integrals",
+    "text": "Definite integral: integral from a to b of f(x) dx = F(b) - F(a) (Fundamental Theorem of Calculus), where F is an antiderivative of f. Represents the signed area under the curve. Properties: integral a to b f = -integral b to a f; integral a to a f = 0; integral a to b f = integral a to c f + integral c to b f. integral 0 to a f(x) dx = integral 0 to a f(a-x) dx (king property). integral -a to a f(x) dx = 2 integral 0 to a f(x) dx if f is even, and = 0 if f is odd. Definite integral as the limit of a sum (Riemann sum) is the fundamental definition."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Application of Integrals",
+    "text": "Area under a curve y = f(x) between x = a and x = b (above x-axis): A = integral from a to b of y dx = integral a to b f(x) dx. Area between the curve x = g(y) and the y-axis from y = c to y = d: A = integral c to d x dy. Area between two curves y = f(x) (upper) and y = g(x) (lower) from a to b: A = integral a to b [f(x) - g(x)] dx. If a curve lies below the x-axis, the integral is negative, so take the absolute value or split the interval at points where the curve crosses the axis. Common applications: area of circles, ellipses, parabolas, and regions bounded by lines and curves."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Differential Equations",
+    "text": "A differential equation contains derivatives of a dependent variable w.r.t an independent variable. Order = highest derivative order; degree = power of the highest-order derivative (when polynomial in derivatives). General solution has arbitrary constants; particular solution fixes them via initial conditions. Variable separable form: dy/dx = g(x)h(y) solved as integral dy/h(y) = integral g(x) dx. Homogeneous equation dy/dx = F(y/x): substitute y = vx. Linear differential equation dy/dx + Py = Q (P, Q functions of x): integrating factor IF = e^(integral P dx); solution y(IF) = integral Q(IF) dx + C. Applications include growth/decay problems."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Vector Algebra",
+    "text": "A vector has magnitude and direction. Position vector of point P(x,y,z) is x i + y j + z k, magnitude sqrt(x^2+y^2+z^2). Unit vector: a_hat = a/|a|. Types: zero, unit, collinear, coplanar, equal. Addition follows triangle/parallelogram law. Scalar (dot) product: a.b = |a||b| cos(theta) = a1b1 + a2b2 + a3b3; it is a scalar. a.b = 0 means perpendicular. Projection of a on b = (a.b)/|b|. Vector (cross) product: a x b = |a||b| sin(theta) n_hat; it is a vector perpendicular to both. |a x b| = area of parallelogram; a x b = 0 means parallel. a x b = -(b x a) (anti-commutative). Scalar triple product [a b c] = a.(b x c) gives volume of parallelepiped; = 0 means coplanar."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Three Dimensional Geometry",
+    "text": "Direction cosines (l, m, n) of a line are cosines of angles with x, y, z axes; l^2 + m^2 + n^2 = 1. Direction ratios (a, b, c) are proportional to direction cosines. Line through point A (position vector a) parallel to vector b: r = a + lambda b (vector form); Cartesian: (x-x1)/a = (y-y1)/b = (z-z1)/c. Angle between two lines: cos(theta) = |b1.b2|/(|b1||b2|). Skew lines: shortest distance = |(a2-a1).(b1 x b2)| / |b1 x b2|. Plane: r.n_hat = d (normal form); Cartesian ax + by + cz = d, where (a,b,c) is the normal. Angle between two planes uses their normals. Distance of point (x1,y1,z1) from plane ax+by+cz+d=0 = |ax1+by1+cz1+d|/sqrt(a^2+b^2+c^2)."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Linear Programming",
+    "text": "Linear Programming Problem (LPP) optimises (maximises or minimises) a linear objective function Z = ax + by subject to linear constraints (inequalities) and non-negativity restrictions (x >= 0, y >= 0). Feasible region: the common region satisfying all constraints, bounded by straight lines. Corner point theorem: the optimal value of the objective function, if it exists, occurs at a corner (vertex) of the feasible region. Method: plot constraints, find the feasible region, evaluate Z at each corner point, and choose the maximum/minimum. A feasible region may be bounded (optimum always exists) or unbounded (optimum may not exist). Applications: manufacturing, diet, transportation, and allocation problems."
+  },
+  {
+    "class": 12,
+    "subject": "Mathematics",
+    "chapter": "Probability",
+    "text": "Conditional probability: P(A|B) = P(A intersect B)/P(B), P(B) not 0. Multiplication theorem: P(A intersect B) = P(A) P(B|A). Independent events: P(A intersect B) = P(A) P(B), equivalently P(A|B) = P(A). Total probability theorem: if E1, E2, ... En are a partition, P(A) = sum P(Ei) P(A|Ei). Bayes' theorem: P(Ei|A) = P(Ei) P(A|Ei) / [sum P(Ej) P(A|Ej)] — used to find reverse conditional probabilities. Random variable X assigns numbers to outcomes; probability distribution lists values with probabilities (sum = 1). Mean (expectation) E(X) = sum x_i p_i; variance Var(X) = E(X^2) - [E(X)]^2. Bernoulli trials and Binomial distribution: P(X = r) = nCr p^r q^(n-r), where q = 1-p; mean = np, variance = npq."
+  }
+]

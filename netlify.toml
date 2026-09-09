@@ -1,0 +1,46 @@
+[build]
+  # Install Flutter, then build the web release.
+  #
+  # IMPORTANT: we deliberately do NOT pass --dart-define=GROQ_API_KEY here.
+  # Leaving the build-time key empty makes the app run in PROXY MODE: Clara
+  # calls the /api/clara serverless function, which holds the real key
+  # server-side (Netlify env var GROQ_API_KEY). The key is never shipped to
+  # the browser bundle.
+  command = """
+    if [ ! -d "$HOME/flutter" ]; then \
+      git clone --depth 1 -b stable https://github.com/flutter/flutter.git "$HOME/flutter"; \
+    fi && \
+    export PATH="$PATH:$HOME/flutter/bin" && \
+    flutter --version && \
+    flutter pub get && \
+    flutter build web --release
+  """
+  publish = "build/web"
+  functions = "netlify/functions"
+
+[functions]
+  # Node runtime for the Clara proxy function.
+  node_bundler = "esbuild"
+
+# Route the app's proxy calls to the serverless function.
+[[redirects]]
+  from = "/api/clara"
+  to = "/.netlify/functions/clara"
+  status = 200
+  force = true
+
+# SPA fallback — every other path serves the Flutter app shell.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers for all responses.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"

@@ -1,0 +1,104 @@
+[
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "text": "Matter exists as solid, liquid, gas; classified as pure substances (elements, compounds) and mixtures (homogeneous, heterogeneous). Laws of chemical combination: Law of Conservation of Mass (mass is neither created nor destroyed), Law of Definite Proportions (a compound always has the same elements in fixed ratio by mass), Law of Multiple Proportions, Gay-Lussac's Law of Gaseous Volumes, Avogadro's Law (equal volumes of gases at same T and P contain equal number of molecules). Atomic mass unit (u) = 1/12 mass of C-12 atom. Mole concept: 1 mole = 6.022x10^23 particles (Avogadro number NA); molar mass = mass of 1 mole in grams. Moles n = given mass / molar mass = number of particles / NA = volume at STP / 22.4 L (for gases)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Some Basic Concepts of Chemistry",
+    "text": "Percentage composition: mass % of element = (mass of element in 1 mole / molar mass) x 100. Empirical formula: simplest whole-number ratio of atoms; Molecular formula = n x (empirical formula), where n = molar mass / empirical formula mass. Concentration terms: Molarity (M) = moles of solute / volume of solution (L); Molality (m) = moles of solute / mass of solvent (kg); Mole fraction; Mass percent. Stoichiometry: balanced equations give mole ratios of reactants and products. Limiting reagent is the reactant fully consumed first, deciding the amount of product. Empirical calculations use the mole ratio from the balanced equation. Molarity is temperature-dependent; molality is not."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Structure of Atom",
+    "text": "Discovery of subatomic particles: electron (Thomson, cathode rays, e/m ratio; Millikan oil-drop gave charge), proton and neutron. Rutherford's alpha-scattering model: small dense positive nucleus with electrons around; failed to explain atomic stability and spectra. Atomic number Z = protons; mass number A = protons + neutrons. Isotopes (same Z), isobars (same A). Electromagnetic radiation: c = nu x lambda; energy E = h x nu = hc/lambda (Planck's quantum theory, h = 6.626x10^-34 J s). Photoelectric effect (Einstein). Bohr's model of hydrogen: energy of nth orbit En = -13.6/n^2 eV (or -2.18x10^-18/n^2 J); radius rn = 0.529 n^2 angstrom; angular momentum mvr = n h/2pi (quantised). Hydrogen spectrum series: Lyman (UV), Balmer (visible), Paschen, Brackett, Pfund (IR)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Structure of Atom",
+    "text": "Quantum mechanical model: de Broglie (dual nature, lambda = h/mv), Heisenberg uncertainty principle (delta_x . delta_p >= h/4pi — position and momentum cannot both be known exactly). Schrodinger equation gives orbitals (regions of high probability). Quantum numbers: principal (n = shell, 1,2,3...), azimuthal (l = subshell/shape, 0 to n-1: s,p,d,f), magnetic (m_l = orientation, -l to +l), spin (m_s = +1/2 or -1/2). Orbital shapes: s spherical, p dumb-bell. Rules for filling electrons: Aufbau principle (lowest energy first, n+l rule), Pauli exclusion principle (no two electrons have all four quantum numbers same; max 2 per orbital, opposite spins), Hund's rule (orbitals of a subshell singly filled before pairing). Extra stability of half-filled and fully-filled subshells (e.g. Cr, Cu)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Classification of Elements and Periodicity in Properties",
+    "text": "Modern periodic law (Moseley): properties of elements are a periodic function of their atomic numbers. Long form periodic table: 7 periods (horizontal), 18 groups (vertical); blocks s, p, d, f based on the subshell being filled. Period number = highest principal quantum number; group relates to valence electrons. Elements: metals (left/centre), non-metals (right), metalloids (borderline). Periodic trends across a period (left to right): atomic radius decreases, ionisation enthalpy increases, electron gain enthalpy becomes more negative, electronegativity increases, metallic character decreases. Down a group: atomic radius increases, ionisation enthalpy decreases, metallic character increases (more shells, more shielding)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Classification of Elements and Periodicity in Properties",
+    "text": "Atomic radius: covalent and van der Waals radius; cations are smaller than parent atoms, anions larger. Isoelectronic species have the same number of electrons; size decreases with increasing nuclear charge. Ionisation enthalpy (IE): energy to remove an electron from a gaseous atom; IE1 < IE2 < IE3. Factors: nuclear charge, atomic size, shielding, and stability of half/fully filled subshells (e.g. N has higher IE than O). Electron gain enthalpy: energy change on adding an electron (halogens most negative); Cl more negative than F (small size, e-e repulsion in F). Electronegativity: tendency to attract shared electrons (F most electronegative; Pauling scale). These trends explain reactivity and bonding behaviour."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Chemical Bonding and Molecular Structure",
+    "text": "Chemical bonds form to attain stability (octet rule). Ionic bond: transfer of electrons (metal to non-metal), e.g. NaCl; lattice enthalpy measures ionic bond strength; ionic compounds have high melting points, conduct when molten/aqueous. Covalent bond: sharing of electrons; Lewis structures show bonding and lone pairs; formal charge. Bond parameters: bond length, bond angle, bond enthalpy, bond order. VSEPR theory: electron pairs around the central atom arrange to minimise repulsion, deciding shape (linear, trigonal planar, tetrahedral, trigonal bipyramidal, octahedral); lone pairs cause more repulsion, reducing bond angles (e.g. H2O bent 104.5, NH3 pyramidal 107). Dipole moment (mu = q x d) indicates polarity; symmetrical molecules (CO2, CH4) are non-polar."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Chemical Bonding and Molecular Structure",
+    "text": "Valence Bond Theory: bond forms by overlap of atomic orbitals (sigma = head-on, stronger; pi = sidewise). Hybridisation: mixing of orbitals to form equivalent hybrid orbitals — sp (linear, 180, e.g. BeCl2), sp2 (trigonal planar, 120, e.g. BF3), sp3 (tetrahedral, 109.5, e.g. CH4), sp3d (trigonal bipyramidal), sp3d2 (octahedral). Molecular Orbital Theory (MOT): atomic orbitals combine into bonding and antibonding molecular orbitals; bond order = (Nb - Na)/2; higher bond order means more stable, shorter bond. O2 is paramagnetic (two unpaired electrons) by MOT. Hydrogen bonding: attraction between H (bonded to N, O, F) and an electronegative atom; explains high boiling point of water, structure of ice, and DNA."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Chemical Thermodynamics",
+    "text": "Thermodynamics studies energy changes. System and surroundings; types: open, closed, isolated. State functions (depend only on state): internal energy (U), enthalpy (H), entropy (S), Gibbs energy (G). First law of thermodynamics (conservation of energy): delta_U = q + w, where q = heat, w = work (w = -p delta_V for expansion). Enthalpy H = U + pV; at constant pressure delta_H = qp. Enthalpy change of reactions: exothermic (delta_H negative, releases heat), endothermic (delta_H positive). Types: enthalpy of formation, combustion, neutralisation, solution, atomisation. Hess's Law of constant heat summation: total enthalpy change is the same whether the reaction occurs in one step or several (since H is a state function). Heat capacity, Cp - Cv = R for ideal gas."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Chemical Thermodynamics",
+    "text": "Second law and spontaneity. Entropy (S) is a measure of disorder/randomness; entropy increases for spontaneous processes in an isolated system. delta_S = q_rev / T. Gibbs free energy: delta_G = delta_H - T delta_S. Criteria for spontaneity (at constant T, P): delta_G < 0 spontaneous, delta_G = 0 equilibrium, delta_G > 0 non-spontaneous. Effect of temperature: a reaction with delta_H < 0 and delta_S > 0 is always spontaneous; with delta_H > 0 and delta_S < 0 never spontaneous; others depend on T. Relation to equilibrium: delta_G0 = -RT ln K. Third law: entropy of a perfect crystal at 0 K is zero. Standard enthalpies and Gibbs energies of formation are used to calculate reaction feasibility."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Equilibrium",
+    "text": "Equilibrium is the state where forward and backward reaction rates are equal (dynamic). For aA + bB <=> cC + dD, equilibrium constant Kc = [C]^c[D]^d / ([A]^a[B]^b); Kp uses partial pressures; Kp = Kc(RT)^(delta_n). Large K favours products, small K favours reactants. Reaction quotient Q predicts direction: Q < K forward, Q > K backward, Q = K equilibrium. Le Chatelier's principle: a system at equilibrium shifts to counteract a change in concentration, pressure, or temperature. Increasing pressure shifts toward fewer gas moles; increasing temperature favours the endothermic direction; catalysts do not shift equilibrium (only speed up attainment). Applications: Haber process (NH3), contact process (SO3)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Equilibrium",
+    "text": "Ionic equilibrium. Acids and bases: Arrhenius (H+/OH-), Bronsted-Lowry (proton donor/acceptor, conjugate pairs), Lewis (electron pair acceptor/donor). Ionic product of water Kw = [H+][OH-] = 1.0x10^-14 at 298 K. pH = -log[H+]; pH + pOH = 14; pH < 7 acidic, 7 neutral, > 7 basic. Strong acids/bases ionise completely; weak ones partially (dissociation constants Ka, Kb; pKa = -log Ka). Ostwald's dilution law for weak electrolytes. Common ion effect: adding a common ion suppresses ionisation. Buffer solutions resist pH change (Henderson equation pH = pKa + log[salt]/[acid]). Salt hydrolysis affects pH. Solubility product Ksp for sparingly soluble salts; precipitation occurs when ionic product > Ksp."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Redox Reactions",
+    "text": "Redox reactions involve simultaneous oxidation and reduction. Oxidation = loss of electrons / increase in oxidation number / gain of oxygen or loss of hydrogen. Reduction = gain of electrons / decrease in oxidation number. Oxidising agent gets reduced (gains electrons); reducing agent gets oxidised (loses electrons). Oxidation number rules: free elements = 0; O usually -2 (peroxide -1); H usually +1 (metal hydrides -1); sum of oxidation numbers = charge on the species. Types: combination, decomposition, displacement, disproportionation (same element oxidised and reduced, e.g. Cl2 in NaOH). Balancing redox reactions: oxidation number method and ion-electron (half-reaction) method. Redox reactions form the basis of electrochemical cells and titrations."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+    "text": "Organic chemistry is the study of carbon compounds. Carbon shows catenation and tetravalency. Representation: complete, condensed, bond-line formulas. Classification: acyclic (open chain) and cyclic; functional groups define families. IUPAC nomenclature: root word (chain length) + suffix (functional group) + prefix (substituents); identify longest chain, lowest locants. Isomerism: structural (chain, position, functional, metamerism, tautomerism) and stereoisomerism. Electronic effects: inductive effect (I, permanent, through sigma bonds — electron withdrawing -I or releasing +I), resonance/mesomeric effect (delocalisation of pi electrons), electromeric effect (temporary), hyperconjugation (sigma-pi delocalisation, stabilises carbocations/alkenes)."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Organic Chemistry - Some Basic Principles and Techniques",
+    "text": "Reaction intermediates: carbocations (positive C, sp2, stability 3>2>1 due to +I and hyperconjugation), carbanions (negative C), free radicals (unpaired electron), carbenes. Types of bond fission: homolytic (gives free radicals) and heterolytic (gives ions). Reagents: electrophiles (electron-loving, e.g. H+, NO2+) and nucleophiles (electron-rich, e.g. OH-, CN-). Types of organic reactions: substitution, addition, elimination, rearrangement. Purification methods: crystallisation, sublimation, distillation (simple, fractional, steam, under reduced pressure), chromatography (separation by differential adsorption/partition). Qualitative analysis detects N, S, halogens (Lassaigne's test); quantitative estimation of C, H, N (Dumas, Kjeldahl), etc."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Hydrocarbons",
+    "text": "Hydrocarbons contain only carbon and hydrogen. Alkanes (CnH2n+2, saturated, sp3): prepared by hydrogenation of alkenes, Wurtz reaction, decarboxylation; reactions: substitution (free radical halogenation), combustion, isomerisation. Conformations of ethane (staggered more stable than eclipsed). Alkenes (CnH2n, one C=C double bond, sp2): prepared by dehydration of alcohols, dehydrohalogenation; reactions: electrophilic addition of HX (Markovnikov rule — H adds to C with more H; anti-Markovnikov/peroxide effect with HBr), addition of water, halogens, hydrogenation, ozonolysis, oxidation (Baeyer's reagent test for unsaturation). Alkynes (CnH2n-2, C triple bond C, sp): acidic terminal H; addition reactions; used to prepare many compounds."
+  },
+  {
+    "class": 11,
+    "subject": "Chemistry",
+    "chapter": "Hydrocarbons",
+    "text": "Aromatic hydrocarbons (arenes): benzene (C6H6) is the simplest, with delocalised pi electrons (resonance) giving special stability. Huckel's rule: aromatic if planar, cyclic, conjugated, with (4n+2) pi electrons. Benzene undergoes electrophilic aromatic substitution (retains aromaticity): nitration (conc. HNO3/H2SO4), sulphonation, halogenation (Cl2/FeCl3), Friedel-Crafts alkylation and acylation. Directive influence of groups: electron-donating groups (-OH, -NH2, -CH3) are ortho/para-directing and activating; electron-withdrawing groups (-NO2, -COOH) are meta-directing and deactivating. Carcinogenicity and toxicity of some polynuclear hydrocarbons. Hydrocarbons are important fuels and raw materials for the chemical industry."
+  }
+]

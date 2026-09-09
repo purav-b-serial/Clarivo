@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,27 +11,32 @@ import 'l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load .env for any future config values (GROQ_API_KEY now comes from
-  // --dart-define=GROQ_API_KEY=... at build time — not from dotenv).
-  await dotenv.load(fileName: '.env').catchError((_) {});
-
-  // Verify key is available from build-time dart-define
+  // AI transport mode:
+  //  - build-time key present  -> direct Groq calls (local dev, --dart-define)
+  //  - no key                  -> server-side proxy at /api/clara (production;
+  //                               the key lives only in the Netlify env var)
   const apiKey = String.fromEnvironment('GROQ_API_KEY', defaultValue: '');
   // ignore: avoid_print
-  print(apiKey.isNotEmpty ? 'GROQ_API_KEY: build-time key loaded' : 'GROQ_API_KEY: WARNING — not set via --dart-define');
+  print(apiKey.isNotEmpty
+      ? 'Clara: direct mode (build-time GROQ_API_KEY present)'
+      : 'Clara: proxy mode (calls /api/clara — key held server-side)');
 
-  // Open database and seed all subject content if needed
+  // Open database and seed all subject content if needed.
+  // Re-seed when the bundled content version is newer than what's stored,
+  // OR when the chunk count is suspiciously low (safety net).
   final db = DemoDatabase();
   final count = await db.contentCount();
-  if (count < kSeedThreshold) {
+  final storedVersion = await db.getSeedVersion();
+  if (storedVersion < kCurrentSeedVersion || count < kSeedThreshold) {
     // ignore: avoid_print
-    print('main: count=$count < threshold=$kSeedThreshold, clearing and re-seeding...');
+    print('main: seed v$storedVersion < v$kCurrentSeedVersion (or count=$count) — clearing and re-seeding...');
     await db.clearContent();
   }
   await ContentSeeder.seedIfEmpty(db);
+  await db.setSeedVersion(kCurrentSeedVersion);
 
   // ignore: avoid_print
-  print('main: database ready with ${await db.contentCount()} chunks');
+  print('main: database ready with ${await db.contentCount()} chunks (seed v$kCurrentSeedVersion)');
 
   runApp(
     ProviderScope(

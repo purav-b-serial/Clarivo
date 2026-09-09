@@ -32,7 +32,7 @@ class _StorageScreenState extends ConsumerState<StorageScreen> {
         children: [
           Text('Installed', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          _Item(Icons.menu_book_rounded, 'CBSE Class 10 Science', '$_chunks chunks, 9 chapters', 'Installed', Colors.green, theme),
+          _Item(Icons.menu_book_rounded, 'CBSE Study Notes', '$_chunks chunks across classes & subjects', 'Installed', Colors.green, theme),
           const SizedBox(height: 6),
           _Item(Icons.chat_bubble_outline, 'Chat History', '$_history conversations', 'Active', Colors.green, theme),
           const SizedBox(height: 6),
@@ -41,8 +41,6 @@ class _StorageScreenState extends ConsumerState<StorageScreen> {
           Text('Coming Soon', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           _SoonItem(Icons.download_outlined, 'Download More Content', 'Physics, Biology - Classes 6-12', theme),
-          const SizedBox(height: 6),
-          _SoonItem(Icons.memory_outlined, 'On-device AI Model', 'Qwen2.5-3B (~1.9 GB) for offline use', theme),
           const SizedBox(height: 6),
           _SoonItem(Icons.upload_file_outlined, 'Upload Your Notes', 'PDF and text files', theme),
         ],

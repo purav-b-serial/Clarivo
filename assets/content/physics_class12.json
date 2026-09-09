@@ -1,0 +1,176 @@
+[
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electric Charges and Fields",
+    "text": "Electric charge is a fundamental property of matter; two types: positive and negative. Charge is quantised: q = ne, where e = 1.6x10^-19 C. Charge is conserved (total charge of isolated system is constant) and additive. Coulomb's Law: force between two point charges F = k q1 q2 / r^2, where k = 1/(4*pi*epsilon0) = 9x10^9 N m^2 C^-2, and epsilon0 = 8.854x10^-12 C^2 N^-1 m^-2 (permittivity of free space). In a medium, F is reduced by the dielectric constant (relative permittivity) K: F_medium = F_vacuum / K. Force is a vector along the line joining the charges; like charges repel, unlike attract. Superposition principle: net force on a charge is the vector sum of forces due to all other charges."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electric Charges and Fields",
+    "text": "Electric field E at a point is force per unit positive test charge: E = F/q0, unit N/C or V/m. Field of a point charge: E = k q / r^2, directed radially outward for +q, inward for -q. Electric field lines start on positive charge, end on negative, never intersect, and their density indicates field strength. Electric dipole: two equal and opposite charges +q and -q separated by 2a. Dipole moment p = q(2a), a vector pointing from -q to +q, unit C m. Field on axial line (end-on) at distance r: E = 2kp / r^3 (for r >> a). Field on equatorial line (broadside-on): E = kp / r^3, opposite to p. Torque on a dipole in uniform field E: tau = pE sin(theta), vector tau = p x E. Potential energy of dipole: U = -pE cos(theta) = -p.E."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electric Charges and Fields",
+    "text": "Electric flux phi = E.A = EA cos(theta), unit N m^2/C; it measures field lines through a surface. Gauss's Law: the net electric flux through any closed surface equals the enclosed charge divided by epsilon0: phi = q_enclosed / epsilon0. Applications of Gauss's law: (1) Field of infinite line charge with linear density lambda: E = lambda / (2*pi*epsilon0*r). (2) Field of infinite charged plane sheet with surface density sigma: E = sigma / (2*epsilon0), independent of distance. (3) Field between two oppositely charged parallel plates: E = sigma / epsilon0. (4) Field of a uniformly charged spherical shell: outside E = kQ/r^2 (as if all charge at centre), inside E = 0. Linear charge density lambda = q/l, surface density sigma = q/A, volume density rho = q/V."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electrostatic Potential and Capacitance",
+    "text": "Electric potential V at a point is work done per unit charge to bring a positive test charge from infinity to that point: V = W/q0, unit volt (V) = J/C. Potential due to a point charge: V = kq/r. Potential is a scalar and follows superposition (algebraic sum). Potential difference V_AB = V_A - V_B = W_AB/q. Relation between field and potential: E = -dV/dr (field points from high to low potential). Equipotential surfaces: surfaces of constant potential; no work is done moving a charge along them; field lines are always perpendicular to equipotential surfaces. Potential energy of a system of two charges: U = k q1 q2 / r. Potential due to a dipole: V = kp cos(theta) / r^2."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electrostatic Potential and Capacitance",
+    "text": "Capacitance C = Q/V, unit farad (F); it is the ability to store charge per unit potential. Parallel plate capacitor: C = epsilon0 A / d (vacuum), where A is plate area and d is separation. With a dielectric of constant K filling the gap: C = K epsilon0 A / d = K C0. Energy stored in a capacitor: U = (1/2) Q V = (1/2) C V^2 = Q^2 / (2C). Energy density in the field: u = (1/2) epsilon0 E^2. Combination of capacitors: in series 1/C_eq = 1/C1 + 1/C2 + ... (charge same, voltage divides); in parallel C_eq = C1 + C2 + ... (voltage same, charge adds). Dielectrics: insulators that reduce field and increase capacitance; polarisation P is induced dipole moment per unit volume. A dielectric increases C, decreases V (at constant Q), and increases stored energy capacity."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Current Electricity",
+    "text": "Electric current I = Q/t, unit ampere (A); it is the rate of flow of charge. Drift velocity v_d = -eE tau / m; current I = n A e v_d, where n is number density of electrons. Current density J = I/A = n e v_d. Ohm's Law: V = IR, valid when physical conditions (temperature) are constant. Resistance R = rho l / A, where rho is resistivity (unit ohm-metre). Conductance = 1/R; conductivity sigma = 1/rho. Resistivity depends on material and temperature: rho_T = rho_0 [1 + alpha(T - T0)], alpha is temperature coefficient of resistance. For conductors rho increases with temperature; for semiconductors it decreases. Mobility mu = v_d / E = e tau / m."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Current Electricity",
+    "text": "Combination of resistors: series R_eq = R1 + R2 + ... (same current); parallel 1/R_eq = 1/R1 + 1/R2 + ... (same voltage). EMF (electromotive force) E is the energy given per unit charge by a cell; terminal voltage V = E - Ir, where r is internal resistance. During charging V = E + Ir. Kirchhoff's Laws: (1) Junction rule (KCL): sum of currents into a junction equals sum out (conservation of charge). (2) Loop rule (KVL): the algebraic sum of potential differences around any closed loop is zero (conservation of energy). Wheatstone bridge: balanced when P/Q = R/S, giving no current through the galvanometer. Meter bridge and potentiometer are practical applications. Electrical power P = VI = I^2 R = V^2/R. Heat produced (Joule heating) H = I^2 R t."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Moving Charges and Magnetism",
+    "text": "A moving charge experiences a magnetic force (Lorentz force): F = q(v x B), magnitude F = qvB sin(theta); force is maximum when v perpendicular to B and zero when parallel. Combined Lorentz force with electric field: F = q(E + v x B). A charged particle in a uniform B moves in a circle: radius r = mv/(qB); frequency (cyclotron) f = qB/(2*pi*m). Force on a current-carrying conductor: F = I(L x B), magnitude F = BIL sin(theta). Biot-Savart Law: dB = (mu0/4pi) I dl sin(theta) / r^2, where mu0 = 4*pi*10^-7 T m/A (permeability of free space). Field at centre of a circular loop of radius R: B = mu0 I / (2R). Field on the axis: B = mu0 I R^2 / [2(R^2 + x^2)^(3/2)]."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Moving Charges and Magnetism",
+    "text": "Ampere's Circuital Law: the line integral of B around a closed loop equals mu0 times the enclosed current: integral B.dl = mu0 I_enclosed. Applications: (1) Field due to a long straight wire: B = mu0 I / (2*pi*r). (2) Field inside a long solenoid: B = mu0 n I, where n is turns per unit length; field outside is nearly zero. (3) Field inside a toroid: B = mu0 N I / (2*pi*r). Force between two parallel currents: F/l = mu0 I1 I2 / (2*pi*d); parallel currents attract, anti-parallel repel. This defines the ampere. Torque on a current loop in field B: tau = NIA B sin(theta) = m x B, where magnetic moment m = NIA. Moving coil galvanometer: deflection proportional to current; converted to ammeter using a low shunt resistance in parallel, and to voltmeter using a high resistance in series."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Magnetism and Matter",
+    "text": "A bar magnet behaves like a magnetic dipole with moment m; field on axial line B = (mu0/4pi)(2m/r^3) and on equatorial line B = (mu0/4pi)(m/r^3). Torque on a magnet in field B: tau = m x B, tau = mB sin(theta). Potential energy U = -m.B = -mB cos(theta). Gauss's law for magnetism: net magnetic flux through any closed surface is zero (isolated magnetic monopoles do not exist); field lines are continuous closed loops. Earth's magnetism described by three elements: declination (angle between geographic and magnetic meridian), dip/inclination (angle of B with horizontal), and horizontal component B_H = B cos(dip)."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Magnetism and Matter",
+    "text": "Magnetic intensity H, magnetisation M (magnetic moment per unit volume), and field B = mu0(H + M). Magnetic susceptibility chi = M/H; relative permeability mu_r = 1 + chi. Three types of magnetic materials: (1) Diamagnetic (chi small and negative, mu_r slightly less than 1, weakly repelled, e.g. bismuth, copper, water) — expelled from field. (2) Paramagnetic (chi small and positive, mu_r slightly greater than 1, weakly attracted, e.g. aluminium, sodium) — obey Curie's law chi = C/T. (3) Ferromagnetic (chi large and positive, strongly attracted, e.g. iron, cobalt, nickel) — show domains, hysteresis, and lose ferromagnetism above the Curie temperature. Hysteresis loop shows retentivity (residual magnetism) and coercivity (reverse field to demagnetise); soft iron (thin loop) for electromagnets, steel (wide loop) for permanent magnets."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electromagnetic Induction",
+    "text": "Magnetic flux phi = B.A = BA cos(theta), unit weber (Wb). Faraday's Laws of electromagnetic induction: (1) EMF is induced when flux through a circuit changes. (2) Induced EMF equals the negative rate of change of flux: e = -N (d phi / dt). Lenz's Law: the induced current opposes the change causing it (consequence of conservation of energy); this gives the negative sign. Motional EMF: a rod of length l moving with velocity v perpendicular to B develops EMF e = Bvl. Eddy currents: induced circulating currents in bulk conductors; cause heating (used in induction furnaces, electromagnetic braking, metal detectors) but wasteful in transformer cores, reduced by lamination."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electromagnetic Induction",
+    "text": "Self-induction: a changing current in a coil induces an EMF in itself: e = -L (dI/dt), where L is self-inductance (unit henry, H). For a solenoid L = mu0 n^2 A l = mu0 N^2 A / l. Mutual induction: changing current in one coil induces EMF in a nearby coil: e2 = -M (dI1/dt), M is mutual inductance. Energy stored in an inductor: U = (1/2) L I^2. AC generator: converts mechanical energy to electrical using electromagnetic induction; a coil rotating in a magnetic field produces sinusoidal EMF e = e0 sin(omega t), with peak EMF e0 = NBA omega."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Alternating Current",
+    "text": "Alternating current varies sinusoidally: I = I0 sin(omega t), V = V0 sin(omega t). RMS (root mean square) values: I_rms = I0/sqrt(2) = 0.707 I0; V_rms = V0/sqrt(2). AC is rated by rms values (e.g. 220 V mains is rms). Average of AC over a full cycle is zero. Reactance: inductive reactance X_L = omega L = 2*pi*f*L (increases with frequency); capacitive reactance X_C = 1/(omega C) = 1/(2*pi*f*C) (decreases with frequency). In a pure resistor, V and I are in phase; in a pure inductor, current lags voltage by 90 degrees; in a pure capacitor, current leads voltage by 90 degrees."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Alternating Current",
+    "text": "Series LCR circuit: impedance Z = sqrt(R^2 + (X_L - X_C)^2); current I = V/Z. Phase angle tan(phi) = (X_L - X_C)/R. Resonance occurs when X_L = X_C, giving minimum impedance Z = R and maximum current; resonant frequency f0 = 1/(2*pi*sqrt(LC)). Quality factor Q = (1/R) sqrt(L/C) measures sharpness of resonance. Power in AC: P = V_rms I_rms cos(phi), where cos(phi) is the power factor. In a pure inductor or capacitor cos(phi) = 0, so average power (wattless current) is zero. Transformer: changes AC voltage using mutual induction; V_s/V_p = N_s/N_p = I_p/I_s. Step-up increases voltage (N_s > N_p); step-down decreases it. Ideal transformer conserves power: V_p I_p = V_s I_s. Losses: copper (I^2R), eddy currents (reduced by lamination), hysteresis, flux leakage."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electromagnetic Waves",
+    "text": "Maxwell introduced displacement current I_d = epsilon0 (d phi_E / dt) to make Ampere's law consistent for changing electric fields (as between capacitor plates). Maxwell's equations predict electromagnetic (EM) waves: mutually perpendicular oscillating electric and magnetic fields that are also perpendicular to the direction of propagation (transverse waves). Speed in vacuum c = 1/sqrt(mu0 epsilon0) = 3x10^8 m/s. Relation of field amplitudes: E0 = c B0, and E/B = c at every instant. EM waves carry energy and momentum, need no medium, and travel at c in vacuum. Energy is shared equally between electric and magnetic fields."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Electromagnetic Waves",
+    "text": "Electromagnetic spectrum in order of increasing frequency (decreasing wavelength): radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, gamma rays. Radio waves: communication, TV, radio (produced by oscillating circuits). Microwaves: radar, microwave ovens, mobile phones. Infrared: heat/thermal imaging, remote controls (produced by hot bodies and molecular vibrations). Visible light (400-700 nm): vision. Ultraviolet: sterilisation, causes sunburn (absorbed by ozone). X-rays: medical imaging, crystallography (produced by fast electrons hitting metal). Gamma rays: nuclear origin, cancer treatment, highest energy. All travel at c in vacuum; c = f * lambda."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Ray Optics and Optical Instruments",
+    "text": "Reflection: angle of incidence equals angle of reflection. Spherical mirror formula: 1/v + 1/u = 1/f, where f = R/2. Magnification m = -v/u = h'/h. Sign convention (Cartesian): distances measured from pole, in the direction of incident light positive. Refraction: Snell's Law n1 sin(i) = n2 sin(r); refractive index n = c/v = speed in vacuum / speed in medium. Total internal reflection occurs when light goes from denser to rarer medium at an angle greater than the critical angle C, where sin(C) = 1/n; applications: optical fibres, mirage, sparkling of diamond. Refraction at a spherical surface: n2/v - n1/u = (n2 - n1)/R."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Ray Optics and Optical Instruments",
+    "text": "Lens maker's formula: 1/f = (n - 1)(1/R1 - 1/R2). Thin lens formula: 1/v - 1/u = 1/f. Magnification m = v/u = h'/h. Power of a lens P = 1/f (in metres), unit dioptre (D); converging lens has positive power, diverging negative. Lenses in contact: P = P1 + P2 + ..., and 1/f = 1/f1 + 1/f2. Prism: refraction gives deviation; at minimum deviation D_m, n = sin[(A + D_m)/2] / sin(A/2), where A is the prism angle. Dispersion: white light splits into colours because n depends on wavelength (violet bends most, red least). Simple microscope magnification m = 1 + D/f. Compound microscope M = (L/f_o)(D/f_e). Telescope (normal adjustment) M = f_o/f_e."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Wave Optics",
+    "text": "Huygens' principle: every point on a wavefront acts as a source of secondary wavelets; the new wavefront is their common tangent. Explains reflection and refraction. Interference: superposition of two coherent waves. Young's double slit experiment: fringe width beta = lambda D / d, where D is slit-to-screen distance and d is slit separation. Constructive interference (bright fringe): path difference = n*lambda. Destructive (dark fringe): path difference = (n + 1/2)*lambda. Coherent sources have a constant phase difference. Resultant intensity I = I1 + I2 + 2 sqrt(I1 I2) cos(phi); for equal sources I_max = 4I0, I_min = 0."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Wave Optics",
+    "text": "Diffraction: bending of light around obstacles/edges, noticeable when the size is comparable to wavelength. Single slit diffraction: central maximum is bright and wide; minima at a sin(theta) = n*lambda (n = 1, 2, ...). Angular width of central maximum = 2*lambda/a. Diffraction limits the resolving power of optical instruments. Polarisation: confirms light is a transverse wave; only transverse waves can be polarised. Unpolarised light has vibrations in all directions perpendicular to propagation; a polaroid transmits one plane. Malus's law: I = I0 cos^2(theta), where theta is the angle between the polariser axis and the light's plane. Brewster's law: at the polarising angle theta_p, tan(theta_p) = n, and reflected light is completely plane polarised."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Dual Nature of Radiation and Matter",
+    "text": "Photoelectric effect: emission of electrons from a metal surface when light of sufficient frequency falls on it. Observations: emission is instantaneous; there is a threshold frequency v0 below which no emission occurs (regardless of intensity); stopping potential (hence max kinetic energy) depends on frequency, not intensity; number of photoelectrons depends on intensity. Einstein's photoelectric equation: hv = W0 + K_max, where W0 = h*v0 is the work function and K_max = (1/2) m v_max^2 = eV0 (V0 = stopping potential). Photon energy E = hv = hc/lambda; momentum p = h/lambda; h = 6.63x10^-34 J s (Planck's constant). Light shows particle nature here."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Dual Nature of Radiation and Matter",
+    "text": "de Broglie hypothesis: matter also has a wave nature; wavelength lambda = h/p = h/(mv). For an electron accelerated through potential V: lambda = 1.227/sqrt(V) nm (approximately 12.27/sqrt(V) angstrom). Larger mass or speed gives a smaller (undetectable) wavelength, which is why wave nature is significant only for microscopic particles. The Davisson-Germer experiment confirmed the wave nature of electrons through electron diffraction by a nickel crystal. This establishes wave-particle duality: radiation and matter both show wave and particle characteristics depending on the experiment."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Atoms",
+    "text": "Rutherford's alpha-scattering experiment showed the atom has a tiny, dense, positively charged nucleus with electrons around it; most of the atom is empty space. Limitation: an orbiting electron should radiate energy and spiral into the nucleus (unstable atom) and give a continuous spectrum. Bohr's model postulates: (1) electrons revolve in certain stable orbits without radiating; (2) angular momentum is quantised: mvr = n h/(2*pi); (3) energy is emitted or absorbed only when an electron jumps between orbits: hv = E_i - E_f. For hydrogen: radius r_n = 0.529 n^2 angstrom; energy E_n = -13.6/n^2 eV (ground state -13.6 eV). Ionisation energy of hydrogen = 13.6 eV."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Atoms",
+    "text": "Hydrogen spectral series from electron transitions: Lyman series (to n=1, ultraviolet), Balmer series (to n=2, visible), Paschen, Brackett, Pfund (infrared). Rydberg formula: 1/lambda = R (1/n_f^2 - 1/n_i^2), where R = 1.097x10^7 m^-1 is the Rydberg constant. Energy of a photon emitted: E = 13.6 (1/n_f^2 - 1/n_i^2) eV in magnitude. The Balmer series lies in the visible region and was historically key evidence for quantised energy levels. Bohr's model successfully explains the hydrogen spectrum but fails for multi-electron atoms."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Nuclei",
+    "text": "The nucleus contains protons and neutrons (nucleons). Atomic number Z = number of protons; mass number A = protons + neutrons. Isotopes (same Z, different A), isobars (same A, different Z), isotones (same neutron number). Nuclear radius R = R0 A^(1/3), with R0 = 1.2x10^-15 m; nuclear density is nearly constant for all nuclei. Mass defect: the mass of a nucleus is less than the sum of its nucleons; the difference delta_m appears as binding energy via E = delta_m c^2. 1 atomic mass unit (u) = 931.5 MeV. Binding energy per nucleon is maximum (about 8.8 MeV) near iron (A around 56), making such nuclei most stable."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Nuclei",
+    "text": "Radioactivity: spontaneous emission of alpha, beta, or gamma radiation. Alpha (helium nucleus, +2 charge, low penetration), beta (electron/positron, medium penetration), gamma (high-energy EM wave, high penetration, no charge). Radioactive decay law: N = N0 e^(-lambda t), where lambda is the decay constant. Half-life T_1/2 = 0.693/lambda (time for half the nuclei to decay). Mean life tau = 1/lambda. Activity R = lambda N, unit becquerel (Bq) or curie (Ci). Nuclear fission: a heavy nucleus (e.g. U-235) splits into lighter nuclei releasing energy (basis of reactors and atom bombs). Nuclear fusion: light nuclei combine to form a heavier nucleus releasing large energy (powers the Sun); requires very high temperature and pressure."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Semiconductors",
+    "text": "Based on conductivity: conductors (low resistivity), insulators (very high), semiconductors (intermediate, e.g. silicon, germanium). Band theory: valence band (filled), conduction band (empty at 0 K), separated by an energy gap. In conductors bands overlap; insulators have a large gap (>3 eV); semiconductors have a small gap (about 1 eV). Intrinsic semiconductor: pure; conduction by electron-hole pairs (n_e = n_h). Extrinsic (doped): n-type doped with pentavalent impurity (P, As) — electrons are majority carriers; p-type doped with trivalent impurity (B, Al) — holes are majority carriers. Doping greatly increases conductivity. Conductivity increases with temperature for semiconductors (more carriers)."
+  },
+  {
+    "class": 12,
+    "subject": "Physics",
+    "chapter": "Semiconductors",
+    "text": "p-n junction: formed by joining p-type and n-type; diffusion of carriers creates a depletion region and a barrier potential (about 0.7 V for Si, 0.3 V for Ge). Forward bias (p to +, n to -): barrier reduces, current flows easily. Reverse bias: barrier increases, only tiny leakage current, until breakdown. A diode acts as a one-way valve; used as a rectifier. Half-wave rectifier uses one diode (conducts half the cycle); full-wave rectifier uses two diodes or a bridge of four diodes (both halves), giving a smoother DC. Special diodes: Zener diode (works in reverse breakdown, used as a voltage regulator); LED (emits light on forward bias); photodiode (reverse-biased light detector); solar cell (converts light to electricity)."
+  }
+]

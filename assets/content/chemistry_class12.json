@@ -1,0 +1,128 @@
+[
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Solutions",
+    "text": "A solution is a homogeneous mixture of two or more components; the component present in largest amount is the solvent, the rest are solutes. Concentration terms: Mass percentage (w/w) = (mass of solute / mass of solution) x 100. Molarity M = moles of solute / volume of solution in litres (depends on temperature). Molality m = moles of solute / mass of solvent in kg (independent of temperature). Mole fraction x = moles of component / total moles. ppm = (parts of solute / total parts) x 10^6. Solubility of a gas in liquid follows Henry's Law: p = K_H x, partial pressure of gas above the solution is proportional to its mole fraction; higher K_H means lower solubility. Solubility of gases decreases with rise in temperature."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Solutions",
+    "text": "Raoult's Law for volatile liquids: partial vapour pressure of each component is proportional to its mole fraction: p_A = p_A0 x_A, and total pressure p = p_A0 x_A + p_B0 x_B. Ideal solutions obey Raoult's law over the whole range, with delta_mix H = 0 and delta_mix V = 0 (e.g. benzene + toluene). Non-ideal solutions show positive deviation (weaker A-B interactions, e.g. ethanol + water) or negative deviation (stronger A-B interactions, e.g. chloroform + acetone). Azeotropes are constant-boiling mixtures that cannot be separated by distillation: minimum-boiling (positive deviation) and maximum-boiling (negative deviation)."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Solutions",
+    "text": "Colligative properties depend only on the number of solute particles, not their nature. (1) Relative lowering of vapour pressure = (p0 - p)/p0 = x_solute. (2) Elevation of boiling point delta_Tb = Kb m, where Kb is the molal elevation constant. (3) Depression of freezing point delta_Tf = Kf m, where Kf is the molal depression constant. (4) Osmotic pressure pi = C R T = (n/V) R T; osmosis is the flow of solvent through a semipermeable membrane from lower to higher concentration. Molar mass can be found from any colligative property. van't Hoff factor i accounts for dissociation (i > 1) or association (i < 1); modified equations use i (e.g. pi = i C R T). Abnormal molar mass arises when solutes dissociate or associate."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Electrochemistry",
+    "text": "Electrochemical (galvanic/voltaic) cell converts chemical energy to electrical energy via a spontaneous redox reaction (e.g. Daniell cell: Zn + Cu2+ -> Zn2+ + Cu). Oxidation occurs at the anode (negative in galvanic cell), reduction at the cathode (positive). Standard electrode potential is measured against the Standard Hydrogen Electrode (SHE, E0 = 0). Cell EMF E0_cell = E0_cathode - E0_anode; positive EMF means spontaneous. Nernst equation: E_cell = E0_cell - (0.059/n) log Q at 298 K. Relation to thermodynamics: delta_G = -nFE, and delta_G0 = -nFE0_cell = -RT ln K, where F = 96500 C/mol (Faraday constant)."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Electrochemistry",
+    "text": "Conductance: conductivity (kappa) = conductance x cell constant; molar conductivity Lambda_m = kappa x 1000 / c. Molar conductivity increases on dilution. Kohlrausch's law of independent migration of ions: Lambda0_m = lambda0(cation) + lambda0(anion); used to find limiting molar conductivity of weak electrolytes and their degree of dissociation. Electrolytic cell uses electrical energy to drive a non-spontaneous reaction. Faraday's laws of electrolysis: (1) mass deposited is proportional to charge passed (Q = It); (2) masses of different substances deposited by the same charge are proportional to their equivalent masses. Batteries: primary (dry cell, mercury cell — non-rechargeable), secondary (lead storage battery, Ni-Cd — rechargeable). Fuel cell (H2-O2) converts fuel energy directly to electricity. Corrosion is an electrochemical process (rusting of iron)."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Chemical Kinetics",
+    "text": "Chemical kinetics studies reaction rates. Rate = change in concentration / time. Average rate over an interval; instantaneous rate at a point. Rate law: rate = k [A]^x [B]^y, where x and y are orders (found experimentally, not from stoichiometry). Overall order = x + y. Molecularity is the number of species colliding in an elementary step (1, 2, or 3). Rate constant k units depend on order. Zero order: rate = k, [R] = [R]0 - kt, half-life t_1/2 = [R]0/2k. First order: rate = k[R], k = (2.303/t) log([R]0/[R]), t_1/2 = 0.693/k (independent of concentration). Radioactive decay is first order."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Chemical Kinetics",
+    "text": "Factors affecting rate: concentration, temperature, catalyst, surface area, nature of reactants. Temperature dependence — Arrhenius equation: k = A e^(-Ea/RT), where Ea is activation energy and A is the frequency factor. Taking log: log k = log A - Ea/(2.303 RT); a plot of log k vs 1/T is a straight line. Rate roughly doubles for every 10 degree rise. Collision theory: molecules must collide with sufficient energy (>= Ea) and correct orientation to react. A catalyst provides an alternative path with lower activation energy, increasing rate without being consumed; it does not change delta_G or the equilibrium position. Activated complex (transition state) is the highest-energy arrangement along the reaction path."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "d- and f-Block Elements",
+    "text": "d-block (transition) elements have partially filled d-orbitals (groups 3-12). General configuration (n-1)d^1-10 ns^1-2. Characteristic properties: variable oxidation states (due to close (n-1)d and ns energies), formation of coloured ions (d-d transitions), paramagnetism (unpaired electrons; magnetic moment mu = sqrt(n(n+2)) BM), catalytic activity, formation of complexes, and alloys. High melting points and densities due to strong metallic bonding. Zn, Cd, Hg are not typical transition metals (full d10). Enthalpy of atomisation is high. Cr and Cu show anomalous configurations (3d5 4s1 and 3d10 4s1) for extra stability of half/fully filled d-subshells."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "d- and f-Block Elements",
+    "text": "Lanthanoid contraction: steady decrease in atomic/ionic size across the lanthanoids due to poor shielding by 4f electrons; consequences include similar sizes of 4d and 5d elements (Zr and Hf), difficulty in separating lanthanoids, and basicity differences. f-block (inner transition) elements: lanthanoids (4f, Ce-Lu) and actinoids (5f, Th-Lr). Actinoids are all radioactive, show more oxidation states than lanthanoids, and exhibit actinoid contraction. Important compounds: KMnO4 (potassium permanganate, strong oxidiser, Mn +7, purple) and K2Cr2O7 (potassium dichromate, oxidiser, Cr +6, orange). In acidic medium MnO4- is reduced to Mn2+, and Cr2O7^2- to Cr3+."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Coordination Compounds",
+    "text": "A coordination compound contains a central metal atom/ion bonded to ligands by coordinate bonds. Ligands are Lewis bases (donate electron pairs): monodentate (Cl-, NH3, H2O, CN-), bidentate (ethylenediamine 'en', oxalate), polydentate, ambidentate (NO2-/ONO-, SCN-/NCS-), chelating (form rings, e.g. EDTA). Coordination number = number of ligand donor atoms bonded to the metal. Werner's theory: primary valence (ionisable, = oxidation state) and secondary valence (non-ionisable, = coordination number, fixed geometry). IUPAC nomenclature: ligands named alphabetically before the metal, with prefixes di/tri; anionic complex ends in -ate. Oxidation number of metal is calculated from overall charge and ligand charges."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Coordination Compounds",
+    "text": "Isomerism in coordination compounds: structural (linkage, coordination, ionisation, solvate/hydrate) and stereoisomerism (geometrical cis/trans, optical). Valence Bond Theory (VBT): metal uses hybrid orbitals (sp3, dsp2, sp3d2, d2sp3) to bond ligands; explains geometry and magnetism (inner vs outer orbital complexes). Crystal Field Theory (CFT): ligands split the metal d-orbitals; in an octahedral field they split into lower t2g and higher eg by energy delta_o. Strong field (low spin) ligands cause large splitting and pairing; weak field (high spin) give small splitting. Spectrochemical series (increasing field strength): I- < Br- < Cl- < F- < H2O < NH3 < en < CN- < CO. Colour arises from d-d electronic transitions of energy delta_o."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Haloalkanes and Haloarenes",
+    "text": "Haloalkanes (R-X) and haloarenes (Ar-X) contain a halogen bonded to sp3 carbon or an aromatic ring respectively. Preparation: from alcohols (with HX, PCl3, PCl5, SOCl2), free radical halogenation of alkanes, addition of HX to alkenes (Markovnikov), and from arenes by electrophilic halogenation. Nucleophilic substitution: SN1 (two steps via carbocation, favoured by 3-degree/polar protic solvents, racemisation) and SN2 (one step, backside attack, favoured by 1-degree/polar aprotic, inversion of configuration — Walden inversion). Reactivity order for SN2: 1-degree > 2-degree > 3-degree; for SN1: 3-degree > 2-degree > 1-degree. C-X bond in haloarenes is stronger (resonance + sp2 carbon) so they are less reactive to nucleophilic substitution."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Haloalkanes and Haloarenes",
+    "text": "Elimination reactions: dehydrohalogenation with alcoholic KOH gives alkenes; Saytzeff rule — the more substituted (more stable) alkene is the major product. Reaction with metals: Grignard reagent R-MgX (formed in dry ether) is a very useful, moisture-sensitive reagent for building C-C bonds. Wurtz reaction: 2 R-X + 2 Na -> R-R (higher alkane). Optical isomerism: chiral molecules with an asymmetric carbon rotate plane-polarised light; enantiomers are non-superimposable mirror images. Some environmentally important compounds: chloroform, iodoform, freons (CFCs, deplete ozone), DDT (persistent pesticide). Polyhalogen compounds have industrial and medicinal uses."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Alcohols, Phenols and Ethers",
+    "text": "Alcohols (R-OH), phenols (Ar-OH), and ethers (R-O-R'). Alcohols classified as 1-degree, 2-degree, 3-degree. Preparation of alcohols: hydration of alkenes (Markovnikov), hydroboration-oxidation (anti-Markovnikov, syn addition), reduction of aldehydes/ketones, from Grignard reagents. Phenol preparation: from cumene, from chlorobenzene (Dow process), from benzene diazonium salt. Acidity: phenols (pKa ~10) are more acidic than alcohols because the phenoxide ion is resonance-stabilised; electron-withdrawing groups (-NO2) increase acidity, electron-donating groups decrease it. Alcohols react with active metals (Na) to give alkoxides + H2."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Alcohols, Phenols and Ethers",
+    "text": "Reactions of alcohols: dehydration to alkenes (conc. H2SO4, ease 3>2>1), oxidation (1-degree -> aldehyde -> carboxylic acid; 2-degree -> ketone; 3-degree resists oxidation), esterification with acids. Lucas test distinguishes 1/2/3-degree alcohols (3-degree reacts fastest with Lucas reagent HCl/ZnCl2). Reactions of phenols: electrophilic aromatic substitution (-OH is o/p-directing and activating) — nitration, halogenation (bromine water gives 2,4,6-tribromophenol), Kolbe reaction (gives salicylic acid), Reimer-Tiemann reaction (gives salicylaldehyde), FeCl3 gives violet colour. Ethers: prepared by Williamson synthesis (R-X + R'-O-Na -> R-O-R'); cleaved by HI/HBr. Ethers are relatively unreactive, used as solvents."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "text": "Carbonyl compounds: aldehydes (R-CHO) and ketones (R-CO-R'). Preparation: oxidation of alcohols, ozonolysis of alkenes, from acyl chlorides (Rosenmund reduction gives aldehyde), Gattermann-Koch (benzaldehyde), Stephen reaction. The carbonyl carbon is electrophilic, so they undergo nucleophilic addition: with HCN (cyanohydrin), NaHSO3, alcohols (acetals/ketals), Grignard reagents, ammonia derivatives (imines, oximes, hydrazones — addition-elimination). Reactivity toward nucleophilic addition: aldehydes > ketones (steric and electronic reasons). Reduction: to alcohols (NaBH4, LiAlH4) or to alkanes (Clemmensen: Zn-Hg/HCl; Wolff-Kishner: NH2NH2/KOH)."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "text": "Alpha-hydrogen reactions: aldol condensation (aldehydes/ketones with alpha-H give beta-hydroxy carbonyl, then alpha-beta unsaturated product); Cannizzaro reaction (aldehydes with NO alpha-H undergo disproportionation to alcohol + acid). Oxidation: aldehydes are easily oxidised to acids; Tollens' test (silver mirror) and Fehling's test (red Cu2O) distinguish aldehydes from ketones. Iodoform test (I2/NaOH) is positive for methyl ketones and ethanal (yellow CHI3). Carboxylic acids (R-COOH): prepared by oxidation of 1-degree alcohols/aldehydes, hydrolysis of nitriles/esters, from Grignard + CO2. Acidity increases with electron-withdrawing groups (Cl3C-COOH is very strong). Reactions: form salts, esters (esterification), acid chlorides (SOCl2), amides, and undergo decarboxylation and HVZ reaction (alpha-halogenation)."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Amines",
+    "text": "Amines are derivatives of ammonia (NH3) with H replaced by alkyl/aryl groups: primary (R-NH2), secondary (R2NH), tertiary (R3N). Preparation: reduction of nitro compounds, nitriles, amides; ammonolysis of alkyl halides (gives a mixture); Gabriel phthalimide synthesis (gives pure 1-degree aliphatic amines only, not aromatic); Hoffmann bromamide degradation (amide -> amine with one fewer carbon). Basicity: amines are basic (lone pair on N). In gas phase order is 3>2>1>NH3; in aqueous solution the order is influenced by inductive effect, solvation, and steric factors (often 2>1>3 for alkyl amines). Aromatic amines (aniline) are weaker bases than aliphatic amines because the N lone pair is delocalised into the ring."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Amines",
+    "text": "Reactions of amines: with acids form salts; acylation gives amides; carbylamine reaction (1-degree amines + CHCl3 + KOH -> foul-smelling isocyanide) is a test for 1-degree amines; Hinsberg's test distinguishes 1/2/3-degree amines using benzenesulphonyl chloride. Reaction with nitrous acid (HNO2): 1-degree aliphatic amines give alcohols + N2; 1-degree aromatic amines (aniline) at 0-5 degrees give diazonium salts (Ar-N2+). Diazonium salts are very useful synthetic intermediates: Sandmeyer reaction (replace -N2+ with Cl, Br, CN using CuX), replacement by I, F, OH, H; and coupling reactions with phenols/amines to give azo dyes (coloured). Amines are o/p-directing on the aromatic ring."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Biomolecules",
+    "text": "Carbohydrates (polyhydroxy aldehydes/ketones or compounds giving them on hydrolysis): monosaccharides (glucose, fructose — cannot be hydrolysed), disaccharides (sucrose = glucose + fructose, maltose, lactose), polysaccharides (starch, cellulose, glycogen). Glucose is an aldohexose; exists as alpha and beta anomers (ring forms), showing mutarotation. Reducing sugars reduce Tollens'/Fehling's (have free -CHO/-C=O); sucrose is non-reducing. Glycosidic linkage joins monosaccharide units. Proteins are polymers of alpha-amino acids joined by peptide (amide) bonds. Amino acids are amphoteric and exist as zwitterions; the pH at which net charge is zero is the isoelectric point."
+  },
+  {
+    "class": 12,
+    "subject": "Chemistry",
+    "chapter": "Biomolecules",
+    "text": "Protein structure: primary (sequence of amino acids), secondary (alpha-helix and beta-pleated sheet, held by H-bonds), tertiary (overall 3D folding), quaternary (assembly of subunits). Denaturation destroys secondary/tertiary structure (loss of function), e.g. by heat or acid; primary structure remains. Enzymes are biological protein catalysts, highly specific, lowering activation energy. Vitamins: fat-soluble (A, D, E, K) and water-soluble (B group, C); deficiencies cause diseases (e.g. vitamin C — scurvy, vitamin D — rickets). Nucleic acids (DNA and RNA) are polymers of nucleotides (base + pentose sugar + phosphate). DNA is double helix (Watson-Crick), stores genetic information; base pairing A-T (A-U in RNA) and G-C. DNA has deoxyribose; RNA has ribose and is usually single-stranded, involved in protein synthesis. Hormones are chemical messengers."
+  }
+]

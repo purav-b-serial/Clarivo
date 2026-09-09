@@ -1,13 +1,19 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/router.dart';
 import '../../shared/widgets/clarivo_logo.dart';
 
+// JS interop bindings to the install helpers defined in web/index.html.
+@JS('clarivoCanInstall')
+external JSBoolean? _jsCanInstall();
+
+@JS('clarivoInstall')
+external JSBoolean? _jsInstall();
+
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
-  static const _apkUrl = 'https://clarivo.netlify.app/downloads/clarivo-demo.apk';
-  static const _windowsUrl = 'https://clarivo.netlify.app/downloads/clarivo-demo-windows.zip';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,7 @@ class LandingScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Text(
-                      'Clara helps CBSE Class 10 students understand Science topics using AI-powered explanations grounded in your textbook. Ask any question about Chemical Reactions, Acids and Bases, or Metals and Non-metals and get a clear, student-friendly answer instantly.',
+                      'Clara helps CBSE students understand any subject using AI-powered explanations grounded in your textbook. Pick your class and subject, then ask any question and get a clear, student-friendly answer instantly.',
                       style: theme.textTheme.bodyLarge,
                       textAlign: TextAlign.center,
                     ),
@@ -50,7 +56,7 @@ class LandingScreen extends StatelessWidget {
                     spacing: 8, runSpacing: 8, alignment: WrapAlignment.center,
                     children: const [
                       _Pill(icon: Icons.bolt_rounded, label: 'Powered by Groq'),
-                      _Pill(icon: Icons.menu_book_outlined, label: 'CBSE Class 10'),
+                      _Pill(icon: Icons.menu_book_outlined, label: 'All CBSE Classes'),
                       _Pill(icon: Icons.lock_outline, label: 'Private and Free'),
                     ],
                   ),
@@ -75,17 +81,37 @@ class LandingScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        _DownloadBtn(icon: Icons.android, label: 'Download for Android', url: _apkUrl),
+                        _DownloadBtn(
+                          icon: Icons.android,
+                          label: 'Install on Android',
+                          onPressed: () => _installApp(context),
+                        ),
                         const SizedBox(height: 10),
-                        _DownloadBtn(icon: Icons.desktop_windows_rounded, label: 'Download for Windows', url: _windowsUrl),
+                        _DownloadBtn(
+                          icon: Icons.desktop_windows_rounded,
+                          label: 'Install for Windows',
+                          onPressed: () => _installOnWindows(context),
+                        ),
                       ],
                     )
                   else
                     Row(
                       children: [
-                        Expanded(child: _DownloadBtn(icon: Icons.android, label: 'Download for Android', url: _apkUrl)),
+                        Expanded(
+                          child: _DownloadBtn(
+                            icon: Icons.android,
+                            label: 'Install on Android',
+                            onPressed: () => _installApp(context),
+                          ),
+                        ),
                         const SizedBox(width: 12),
-                        Expanded(child: _DownloadBtn(icon: Icons.desktop_windows_rounded, label: 'Download for Windows', url: _windowsUrl)),
+                        Expanded(
+                          child: _DownloadBtn(
+                            icon: Icons.desktop_windows_rounded,
+                            label: 'Install for Windows',
+                            onPressed: () => _installOnWindows(context),
+                          ),
+                        ),
                       ],
                     ),
                   const SizedBox(height: 60),
@@ -97,6 +123,102 @@ class LandingScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  /// Android install: if the browser has captured an install prompt, trigger the
+  /// native "Add to Home Screen". Otherwise show clear manual instructions.
+  void _installApp(BuildContext context) {
+    bool triggered = false;
+    try {
+      final canInstall = _jsCanInstall()?.toDart ?? false;
+      if (canInstall) {
+        triggered = _jsInstall()?.toDart ?? false;
+      }
+    } catch (_) {
+      triggered = false;
+    }
+
+    if (!triggered) {
+      _showInstallInstructions(context);
+    }
+  }
+
+  void _showInstallInstructions(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.install_mobile_rounded),
+            SizedBox(width: 10),
+            Expanded(child: Text('Install Clarivo')),
+          ],
+        ),
+        content: const Text(
+          'Clarivo installs as an app straight from your browser — no store needed.\n\n'
+          'On Android (Chrome):\n'
+          '1. Tap the ⋮ menu (top-right).\n'
+          '2. Choose "Add to Home screen" / "Install app".\n'
+          '3. Confirm — the Clarivo icon appears on your home screen.\n\n'
+          'It then opens full-screen like a normal app.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Got it'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Windows: install Clarivo as a desktop app. Chrome/Edge capture a native
+  /// install prompt (beforeinstallprompt); triggering it adds a Start Menu /
+  /// desktop shortcut and launches Clarivo in its own standalone window — a
+  /// real "installed app" feel. If no prompt is available, show manual steps.
+  void _installOnWindows(BuildContext context) {
+    bool triggered = false;
+    try {
+      final canInstall = _jsCanInstall()?.toDart ?? false;
+      if (canInstall) {
+        triggered = _jsInstall()?.toDart ?? false;
+      }
+    } catch (_) {
+      triggered = false;
+    }
+
+    if (!triggered) {
+      _showWindowsInstallInstructions(context);
+    }
+  }
+
+  void _showWindowsInstallInstructions(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.install_desktop_rounded),
+            SizedBox(width: 10),
+            Expanded(child: Text('Install Clarivo for Windows')),
+          ],
+        ),
+        content: const Text(
+          'Clarivo installs as a desktop app straight from your browser — no store, no download file needed.\n\n'
+          'On Chrome or Edge (Windows):\n'
+          '1. Click the install icon (a monitor with a down-arrow) in the address bar, or open the ⋮ menu.\n'
+          '2. Choose "Install Clarivo" / "Apps → Install this site as an app".\n'
+          '3. Confirm — Clarivo gets a desktop and Start Menu shortcut.\n\n'
+          'It then opens in its own window, just like a normal installed app.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Got it'),
+          ),
+        ],
       ),
     );
   }
@@ -125,14 +247,14 @@ class _Pill extends StatelessWidget {
 }
 
 class _DownloadBtn extends StatelessWidget {
-  const _DownloadBtn({required this.icon, required this.label, required this.url});
+  const _DownloadBtn({required this.icon, required this.label, required this.onPressed});
   final IconData icon;
   final String label;
-  final String url;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
-      onPressed: () => debugPrint('Download: $url'),
+      onPressed: onPressed,
       icon: Icon(icon),
       label: Text(label),
       style: OutlinedButton.styleFrom(

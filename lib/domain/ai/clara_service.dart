@@ -13,6 +13,7 @@ class ClaraService {
     required KeywordSearchService searchService,
     this.activeSubject,
     this.activeClass,
+    this.exam,
   })  : _db = db,
         _groq = groqClient,
         _search = searchService;
@@ -23,32 +24,71 @@ class ClaraService {
   final String? activeSubject;
   final int? activeClass;
 
+  /// When set, Clara is in competitive-exam mode (JEE/NEET) and searches
+  /// across multiple classes and subjects at once.
+  final ExamPrep? exam;
+
   Future<String> ask(String question) async {
-    final context =
-        await _search.findContext(question, subject: activeSubject);
+    final isExam = exam != null;
 
-    final classLabel =
-        activeClass != null ? 'Class $activeClass' : 'Class 10';
+    final search = isExam
+        ? await _search.findContextMulti(question,
+            subjects: exam!.subjects, classes: exam!.classes)
+        : await _search.findContext(question,
+            subject: activeSubject, classNumber: activeClass);
 
-    final contextSection = context.isEmpty
-        ? '\n\n[No matching study notes found for this topic.]'
-        : '\n\n---\nREFERENCE NOTES:\n$context\n---';
+    // Label used in the prompt and stored with history.
+    final classLabel = isExam
+        ? '${exam!.name} (Class ${exam!.classes.join(" & ")})'
+        : (activeClass != null ? 'Class $activeClass' : 'the selected class');
+
+    final hasNotes = !search.isEmpty;
+
+    final contextSection = hasNotes
+        ? '\n\n---\nREFERENCE NOTES (these ARE from the student\'s official study material — treat them as authoritative and answer FROM them):\n${search.context}\n---'
+        : '\n\n[No matching study notes were found for this question.]';
+
+    // The disclaimer is driven purely by whether notes were actually retrieved
+    // from the database — not by subject or class. It appears ONLY when Clara
+    // must fall back to its own general knowledge.
+    final sourceRule = hasNotes
+        ? '2. ANSWER FROM THE NOTES. Reference notes were found for this question '
+            '(shown below). Base your answer on them and treat them as the correct, '
+            'authoritative source. Do NOT add any disclaimer or verification warning '
+            '— the content is from the student\'s own study material.\n'
+        : '2. GENERAL KNOWLEDGE FALLBACK. No study notes were found for this '
+            'question, so you must answer from your own general knowledge. In this '
+            'case ONLY, you MUST begin your answer with exactly this line:\n'
+            '"⚠️ General knowledge answer — please verify with your textbook."\n'
+            'Then give the best accurate answer you can.\n';
+
+    final intro = isExam
+        ? 'You are Clara, a precise and helpful ${exam!.fullName} preparation '
+            'assistant. You cover the full CBSE Class 11 and 12 syllabus for '
+            '${exam!.subjects.join(", ")}, and answer ${exam!.name} exam-style '
+            'questions across these subjects.'
+        : 'You are Clara, a precise and helpful CBSE $classLabel study assistant'
+            '${activeSubject != null ? " specialising in $activeSubject" : ""}.';
 
     final systemPrompt =
-        'You are Clara, a precise and helpful CBSE $classLabel study assistant'
-        '${activeSubject != null ? " specialising in $activeSubject" : ""}.\n\n'
+        '$intro\n\n'
 
         'CRITICAL OUTPUT RULES — follow these exactly:\n'
         '1. OUTPUT ONLY THE FINAL ANSWER. Never show thinking, reasoning steps, '
         'draft attempts, self-corrections, or intermediate work. If you realise '
         'an example is wrong mid-response, silently correct it — do not tell the '
         'student you made an error or are correcting yourself.\n'
-        '2. VERIFIED CONTENT ONLY. For Hindi, Sanskrit, and English grammar: if '
-        'the exact rule or example is not in the reference notes, you MUST start '
-        'with: "⚠️ General knowledge answer — please verify with your textbook."\n'
+        '$sourceRule'
         '3. NO FABRICATION. Never invent grammar rules, example words, chemical '
         'formulas, dates, or facts. If unsure, say so in one sentence.\n'
-        '4. COMPLETE ANSWERS. Never cut off mid-sentence. Give the full answer.\n\n'
+        '4. FIT THE ANSWER IN ONE RESPONSE — this is critical. You have a hard '
+        'limit of about 900 output tokens (~550 words). PLAN the answer to '
+        'finish completely within this budget. Prefer crisp points over long '
+        'prose. For big topics, cover the most important sub-points concisely '
+        'and STOP with a proper concluding sentence — never begin a long list '
+        'or derivation you cannot finish. It is far better to give a shorter, '
+        'fully complete answer than a longer one that gets cut off. NEVER end '
+        'mid-sentence or mid-word.\n\n'
 
         'FORMATTING RULES:\n'
         '- Use markdown: **bold** key terms, ## headings for sections, '
@@ -72,7 +112,11 @@ class ClaraService {
             question: question,
             answer: answer,
             timestamp: DateTime.now().millisecondsSinceEpoch,
-            subject: Value(activeSubject),
+            // In exam mode, record the exam name as the "subject" for progress.
+            subject: Value(isExam ? exam!.name : activeSubject),
+            // Exam mode spans multiple classes, so leave class null there.
+            classNumber: Value(isExam ? null : activeClass),
+            topicsUsed: Value(search.topics.join(' | ')),
           ),
         );
 
@@ -88,5 +132,6 @@ final claraServiceProvider = Provider<ClaraService>((ref) {
     searchService: ref.watch(keywordSearchProvider),
     activeSubject: ctx.selectedSubject,
     activeClass: ctx.selectedClass,
+    exam: ctx.exam,
   );
 });

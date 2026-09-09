@@ -1,0 +1,68 @@
+[
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Computer Systems and Organisation",
+    "text": "A computer system has hardware (physical parts) and software (programs). Basic organisation follows the von Neumann model: Input unit, CPU, Memory, and Output unit. The CPU (Central Processing Unit) has the ALU (Arithmetic Logic Unit — does calculations and logic), the CU (Control Unit — directs operations), and registers (small fast storage). Input devices: keyboard, mouse, scanner, microphone. Output devices: monitor, printer, speaker. Memory types: Primary memory — RAM (Random Access Memory, volatile, temporary working memory) and ROM (Read Only Memory, non-volatile, stores boot firmware). Cache is very fast memory between CPU and RAM. Secondary memory (non-volatile, permanent storage): hard disk (HDD), SSD, CD/DVD, pen drive. Memory units: bit, byte (8 bits), KB, MB, GB, TB."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Computer Systems and Organisation",
+    "text": "Software is of two main types. System software manages hardware and runs the computer: the Operating System (OS), language processors (compiler, interpreter, assembler), and utilities. Application software performs user tasks: general-purpose (word processors, spreadsheets, browsers) and specific-purpose (billing, payroll, railway reservation). The Operating System (e.g. Windows, Linux, Android) is the most important system software; its functions include process management, memory management, file management, device management, and providing a user interface. Firmware is software permanently stored in ROM. A device driver is software that lets the OS communicate with a specific hardware device."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Boolean Logic",
+    "text": "Boolean logic deals with two values: true (1) and false (0). Basic logic gates: NOT (inverts input, one input), AND (output 1 only if all inputs are 1), OR (output 1 if any input is 1). Derived gates: NAND (NOT of AND), NOR (NOT of OR), XOR (exclusive OR — output 1 when inputs differ), XNOR. A truth table lists the output for every combination of inputs. Boolean operators: AND (.), OR (+), NOT (bar/'). Basic laws: identity, complement (A + A' = 1, A . A' = 0), idempotent (A + A = A), commutative, associative, distributive. De Morgan's Theorems: (A + B)' = A' . B' and (A . B)' = A' + B' — the complement of a sum is the product of complements, and vice versa. These are used to simplify logic circuits."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Number Systems and Encoding",
+    "text": "Number systems by base: Binary (base 2, digits 0-1), Octal (base 8, digits 0-7), Decimal (base 10, digits 0-9), Hexadecimal (base 16, digits 0-9 and A-F). Conversions: to decimal — multiply each digit by base raised to its positional power and add (positional/weighted method); from decimal — repeatedly divide by the base and read remainders in reverse. Binary to octal: group bits in 3s from the right; binary to hex: group bits in 4s. Encoding schemes represent characters as numbers: ASCII (American Standard Code for Information Interchange, 7/8-bit, English characters), ISCII (Indian Script Code, for Indian language scripts), and Unicode (a universal scheme, e.g. UTF-8, that can represent characters of all world languages including emoji). Encoding lets computers store and exchange text."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Programming Basics (Python)",
+    "text": "Problem-solving methodology: understand the problem, design an algorithm (step-by-step solution), draw a flowchart, write code, then test and debug. An algorithm is a finite set of ordered steps; a flowchart is its diagram (oval = start/stop, parallelogram = input/output, rectangle = process, diamond = decision). Python is a high-level, interpreted, easy-to-read language. Tokens are the smallest units: keywords (reserved words like if, for, def), identifiers (names), literals (constants — numeric, string, boolean, None), operators, and punctuators. Variables store data and are created by assignment (x = 5); Python is dynamically typed (type decided at runtime). Comments start with #. print() displays output; input() reads input as a string."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Data Types and Operators (Python)",
+    "text": "Python data types: int (integers), float (decimals), complex, bool (True/False), str (text), and collections — list, tuple, set, dictionary. Mutable (changeable): list, dict, set. Immutable: int, float, str, tuple, bool. Type conversion uses int(), float(), str(). Operators: arithmetic (+ - * / // % **, where // is floor division and ** is power), relational (== != < > <= >=), logical (and, or, not), assignment (=, +=, -=), membership (in, not in), identity (is, is not), and bitwise (&, |, ^, ~, <<, >>). Operator precedence (highest to lowest, roughly): ** , then unary, then * / // % , then + - , then relational, then not, and, or. Parentheses () override precedence; expressions evaluate left to right for equal precedence."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Control Structures (Python)",
+    "text": "Control structures decide the flow of a program. Sequential: statements run top to bottom. Conditional branching: if, if-else, and if-elif-else choose a block based on a condition (indentation defines blocks; the colon : begins a suite). Example: if marks >= 40: print('Pass') else: print('Fail'). Iteration (loops): the for loop iterates over a sequence or range(), e.g. for i in range(1,6): print(i); the while loop repeats while a condition is True. Loop control: break exits the loop, continue skips to the next iteration, and pass is a placeholder that does nothing. Nested loops and conditionals are allowed. range(start, stop, step) generates numbers (stop is excluded)."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Strings and Data Structures (Python)",
+    "text": "A string (str) is an immutable sequence of characters; indexing starts at 0 (and -1 from the end); slicing s[start:stop:step] extracts substrings. String methods: len(), upper(), lower(), strip(), split(), replace(), find(), count(); concatenation with + and repetition with *. Core built-in data structures: (1) List — ordered, mutable, in [], e.g. [1,2,3]; methods append(), insert(), pop(), remove(), sort(), reverse(). (2) Tuple — ordered, immutable, in (), e.g. (1,2,3). (3) Dictionary — unordered key-value pairs in {}, e.g. {'a':1}; access by key, methods keys(), values(), items(), get(). (4) Set — unordered, unique elements. Useful built-in modules: math (sqrt, pow, floor, ceil, pi), random (random, randint, randrange), statistics (mean, median, mode); import with 'import module'."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Society, Law and Ethics: Digital Footprint and Netiquette",
+    "text": "A digital footprint is the trail of data you leave online — active (posts, emails you deliberately share) and passive (data collected without your knowledge, e.g. browsing history, cookies, IP address). Digital footprints are almost permanent, so one should be careful online. Netiquette (network etiquette) is polite, responsible online behaviour: be respectful, do not spread rumours or hate, respect others' privacy and time, avoid spamming, and give credit. Digital communication etiquette applies to email, chat, and social media. Data protection: personal and sensitive data should be kept private and shared cautiously; use strong passwords and privacy settings. Being a responsible digital citizen means ethical, safe, and lawful use of technology."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Society, Law and Ethics: IPR, Licenses and Plagiarism",
+    "text": "Intellectual Property Rights (IPR) protect creations of the mind. Types: copyright (protects original works — writing, music, software, art), patent (protects inventions), and trademark (protects brand names/logos/symbols). Plagiarism is using someone else's work or ideas as your own without giving credit; it is unethical and can be illegal — avoid it by citing sources and paraphrasing properly. Licensing defines how software/content may be used. Proprietary software is owned and restricted (e.g. Windows). Free and Open Source Software (FOSS) can be freely used, studied, modified, and shared. Common open-source licenses: GNU GPL (General Public License), Apache, MIT, and Creative Commons (for creative works). Free software is about freedom, not necessarily price."
+  },
+  {
+    "class": 11,
+    "subject": "Computer Science",
+    "chapter": "Society, Law and Ethics: Cyber Safety, Cybercrime and Malware",
+    "text": "Cyber safety means using the internet safely and responsibly — protect identity, use secure/HTTPS sites, strong passwords, and be wary of sharing personal data. Common cybercrimes: hacking (unauthorised access), phishing (fake messages/sites to steal information), identity theft, cyberbullying, and cyberstalking. Malware (malicious software) types: virus (attaches to files and spreads), worm (self-replicates over networks), trojan horse (disguised as useful software), spyware (secretly collects data), adware, and ransomware (locks data and demands payment). Protection: antivirus software, firewalls, regular updates, and caution with unknown links/attachments. E-waste (discarded electronics) should be managed by the 3 Rs — Reduce, Reuse, Recycle — and disposed through authorised recyclers, as it contains toxic materials. The IT Act 2000 (amended 2008) is India's law that gives legal recognition to electronic transactions and defines penalties for cybercrimes."
+  }
+]

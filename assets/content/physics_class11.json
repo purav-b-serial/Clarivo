@@ -1,0 +1,86 @@
+[
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Units and Measurements",
+    "text": "Physical quantities are measured in units. Fundamental (base) SI units: metre (length), kilogram (mass), second (time), ampere (current), kelvin (temperature), mole (amount), candela (luminous intensity). Derived units come from base units (e.g. N = kg m/s^2). Dimensions of a quantity show the powers of base quantities [M^a L^b T^c]. Dimensional analysis is used to check the correctness of equations (principle of homogeneity: dimensions on both sides must match), to derive relations, and to convert units. Limitations: cannot find dimensionless constants or check equations with sums of terms of different nature. Significant figures indicate precision; rules govern rounding. Errors: absolute error, relative error = |Δa|/a, percentage error = relative error x 100. In sums/differences absolute errors add; in products/quotients relative errors add; for x = a^n, relative error is n times that of a."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Motion in a Straight Line",
+    "text": "Kinematics describes motion. Distance is total path length (scalar); displacement is change in position (vector). Average speed = total distance/time; average velocity = displacement/time. Instantaneous velocity v = dx/dt; acceleration a = dv/dt = d^2x/dt^2. For uniform acceleration (equations of motion): v = u + at; s = ut + (1/2)at^2; v^2 = u^2 + 2as; distance in nth second s_n = u + (a/2)(2n-1). For free fall, a = g (about 9.8 m/s^2), downward. Graphs: slope of position-time graph = velocity; slope of velocity-time graph = acceleration; area under velocity-time graph = displacement. Relative velocity of A with respect to B: v_AB = v_A - v_B."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Motion in a Plane",
+    "text": "Scalars have magnitude only; vectors have magnitude and direction. Vector addition: triangle and parallelogram laws; resultant R = sqrt(A^2 + B^2 + 2AB cos θ). Vectors are resolved into components: Ax = A cos θ, Ay = A sin θ. Scalar (dot) product A.B = AB cos θ; vector (cross) product |A x B| = AB sin θ. Projectile motion: horizontal and vertical motions are independent; path is a parabola. For projection at angle θ with speed u: time of flight T = 2u sin θ/g; maximum height H = u^2 sin^2 θ/(2g); range R = u^2 sin 2θ/g (maximum at θ = 45°). Uniform circular motion: speed constant but velocity direction changes; centripetal acceleration a = v^2/r = ω^2 r directed toward the centre; angular velocity ω = 2π/T, v = rω."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Laws of Motion",
+    "text": "Newton's Laws: (1) A body continues at rest or uniform motion unless acted on by a net external force (inertia). (2) F = dp/dt = ma, where p = mv is momentum; force is a vector. (3) Every action has an equal and opposite reaction (forces act on different bodies). Impulse = F Δt = change in momentum. Law of conservation of momentum: for an isolated system total momentum is constant (basis of recoil, collisions, rockets). Free-body diagrams help solve force problems. Friction: static friction (up to f_s ≤ μ_s N) opposes tendency of motion; kinetic friction f_k = μ_k N opposes motion; μ_s > μ_k. Circular motion needs centripetal force F = mv^2/r; for a vehicle on a level road maximum safe speed v = sqrt(μ r g); banking of roads reduces reliance on friction (tan θ = v^2/rg)."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Work, Energy, and Power",
+    "text": "Work done by a constant force W = F.d = Fd cos θ (scalar, unit joule). Work is positive, negative, or zero depending on θ. Work-energy theorem: net work done = change in kinetic energy, W = ΔKE = (1/2)mv^2 - (1/2)mu^2. Kinetic energy KE = (1/2)mv^2; also KE = p^2/2m. Potential energy: gravitational PE = mgh; elastic (spring) PE = (1/2)kx^2. Conservative forces (gravity, spring): work is path-independent, and mechanical energy (KE + PE) is conserved. Power = work/time = P = W/t = F.v, unit watt (W); 1 hp = 746 W. Collisions: momentum is conserved in all collisions; in elastic collisions KE is also conserved; in inelastic collisions KE is not conserved (in perfectly inelastic, bodies stick together). Coefficient of restitution e = relative velocity of separation/approach (e = 1 elastic, e = 0 perfectly inelastic)."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "System of Particles and Rotational Motion",
+    "text": "Centre of mass (COM) moves as if all mass and external force act there: R_cm = Σm_i r_i / Σm_i. For rigid bodies, motion = translation of COM + rotation about COM. Torque (moment of force) τ = r x F, magnitude τ = rF sin θ; it causes angular acceleration. Angular momentum L = r x p; L = Iω for a rigid body. Conservation of angular momentum: if net external torque is zero, L is constant (e.g. spinning skater pulling arms in). Moment of inertia I = Σm_i r_i^2 is rotational inertia; depends on mass distribution and axis. Radius of gyration k: I = Mk^2. Theorems: parallel axis I = I_cm + Md^2; perpendicular axis (for planar bodies) Iz = Ix + Iy. Rotational KE = (1/2)Iω^2. Rotational analogues: τ = Iα, work = τθ, power = τω. Rolling motion combines translation and rotation."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Gravitation",
+    "text": "Newton's law of gravitation: F = G m1 m2 / r^2, where G = 6.67 x 10^-11 N m^2/kg^2 (universal gravitational constant). Acceleration due to gravity g = GM/R^2. Variation of g: decreases with altitude (g_h = g(1 - 2h/R) for small h), decreases with depth (g_d = g(1 - d/R)), and varies with latitude due to Earth's rotation and shape. Gravitational potential energy U = -G m1 m2 / r; gravitational potential V = -GM/r. Escape velocity v_e = sqrt(2GM/R) = sqrt(2gR) (about 11.2 km/s for Earth). Orbital velocity of a satellite v_o = sqrt(GM/r); for a satellite near Earth's surface v_o = sqrt(gR). Time period of satellite T = 2π sqrt(r^3/GM). Geostationary satellite has T = 24 h. Kepler's laws: (1) orbits are ellipses with the Sun at a focus; (2) equal areas in equal times (constant areal velocity); (3) T^2 ∝ a^3."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Mechanical Properties of Solids",
+    "text": "Elasticity is the property by which a body regains its original shape after the deforming force is removed. Stress = force/area (N/m^2); strain = change in dimension/original dimension (dimensionless). Types: longitudinal (tensile/compressive), volumetric, and shear. Hooke's law: within the elastic limit, stress ∝ strain, so stress/strain = a constant (modulus of elasticity). Young's modulus Y = longitudinal stress/longitudinal strain = (F L)/(A ΔL). Bulk modulus B = -pressure/volumetric strain = -P/(ΔV/V); compressibility = 1/B. Shear (rigidity) modulus G = shear stress/shear strain. Stress-strain curve: proportional limit, elastic limit, yield point, and breaking (fracture) point. Elastic potential energy per unit volume = (1/2) x stress x strain. Poisson's ratio = lateral strain/longitudinal strain."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Mechanical Properties of Fluids",
+    "text": "Pressure P = F/A (normal force per unit area); in a fluid at depth h, P = P0 + ρgh (hydrostatic pressure). Pascal's law: pressure applied to an enclosed fluid is transmitted equally in all directions (used in hydraulic lift/brakes). Buoyancy (Archimedes' principle): upward force on a body = weight of fluid displaced; a body floats when its weight equals the buoyant force. Surface tension: energy per unit area of a liquid surface (N/m), caused by cohesive forces; leads to capillary rise h = 2T cos θ/(ρgr). Angle of contact and excess pressure inside a drop (2T/r) and bubble (4T/r). Viscosity: internal friction in fluids; viscous force F = ηA(dv/dx), η is coefficient of viscosity. Stokes' law: F = 6πηrv; terminal velocity v_t = (2r^2(ρ-σ)g)/(9η). Fluid flow: streamline vs turbulent (Reynolds number). Equation of continuity: Av = constant. Bernoulli's theorem: P + (1/2)ρv^2 + ρgh = constant (energy conservation for flowing fluid)."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Thermal Properties of Matter",
+    "text": "Temperature scales: Celsius, Fahrenheit (F = 9C/5 + 32), Kelvin (K = C + 273.15). Thermal expansion: linear ΔL = αLΔT, area ΔA = βAΔT, volume ΔV = γVΔT, with β = 2α and γ = 3α. Heat Q is energy transferred due to temperature difference. Specific heat capacity c: Q = mcΔT. Molar specific heat. Latent heat L: Q = mL (heat for phase change at constant temperature) — latent heat of fusion and vaporisation. Calorimetry: heat lost = heat gained (principle of conservation of energy). Heat transfer modes: conduction (through solids, rate = KA(ΔT)/L, K = thermal conductivity), convection (fluids, bulk movement), and radiation (electromagnetic waves, no medium needed). Stefan-Boltzmann law: E = σT^4. Newton's law of cooling: rate of cooling ∝ temperature difference with surroundings. Wien's displacement law: λ_max T = constant. Black body radiation."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Thermodynamics",
+    "text": "Thermodynamics studies heat and its conversion to work. Thermal equilibrium and the Zeroth law: if A is in thermal equilibrium with C and B with C, then A and B are in equilibrium (defines temperature). Internal energy U is a state function. First law of thermodynamics: ΔQ = ΔU + ΔW (heat supplied = increase in internal energy + work done by gas), where work ΔW = PΔV. Thermodynamic processes: isothermal (constant T, ΔU = 0), adiabatic (no heat exchange, ΔQ = 0, PV^γ = constant), isobaric (constant P), isochoric (constant V, ΔW = 0). Specific heats of gases: Cp - Cv = R (Mayer's relation); γ = Cp/Cv. Second law of thermodynamics: heat cannot flow spontaneously from cold to hot (Clausius), and no engine can be 100% efficient (Kelvin-Planck). Heat engine efficiency η = W/Q1 = 1 - Q2/Q1. Carnot engine (ideal): η = 1 - T2/T1. Refrigerator coefficient of performance = Q2/W."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Kinetic Theory",
+    "text": "Kinetic theory explains gas behaviour from molecular motion. Assumptions: gas has a large number of tiny molecules in constant random motion, collisions are perfectly elastic, molecular size and intermolecular forces are negligible (ideal gas). Ideal gas equation: PV = nRT (R = 8.314 J/mol K), or PV = NkT (k = Boltzmann constant = 1.38 x 10^-23 J/K). Pressure of a gas: P = (1/3)(mN/V) v_rms^2 = (1/3)ρ v_rms^2. Kinetic interpretation of temperature: average KE per molecule = (3/2)kT, so it depends only on temperature. RMS speed v_rms = sqrt(3kT/m) = sqrt(3RT/M). Law of equipartition of energy: each degree of freedom has average energy (1/2)kT. Degrees of freedom: monatomic (3), diatomic (5). Mean free path is the average distance between successive collisions."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Oscillations",
+    "text": "Periodic motion repeats at regular intervals; oscillatory motion is to-and-fro about a mean position. Simple Harmonic Motion (SHM): acceleration is proportional to displacement and directed toward the mean position, a = -ω^2 x. Displacement x = A sin(ωt + φ), where A is amplitude, ω is angular frequency, φ is phase. Time period T = 2π/ω; frequency f = 1/T. Velocity v = ω sqrt(A^2 - x^2) (max at mean position, zero at extremes); acceleration a = -ω^2 x (max at extremes). Energy in SHM: KE = (1/2)mω^2(A^2 - x^2), PE = (1/2)mω^2 x^2, total E = (1/2)mω^2 A^2 (constant). Simple pendulum: T = 2π sqrt(L/g). Spring: T = 2π sqrt(m/k). Free, damped (amplitude decreases due to friction), forced, and resonant oscillations (amplitude maximum when driving frequency = natural frequency)."
+  },
+  {
+    "class": 11,
+    "subject": "Physics",
+    "chapter": "Waves",
+    "text": "A wave transfers energy without transferring matter. Types: mechanical (need a medium — transverse like waves on a string, and longitudinal like sound) and electromagnetic (no medium needed). Wave speed v = fλ = λ/T. For a wave on a string, v = sqrt(T/μ) (T tension, μ linear mass density). Speed of sound in a medium v = sqrt(E/ρ); in a gas (Laplace) v = sqrt(γP/ρ). Wave equation: y = A sin(kx - ωt), where k = 2π/λ (wave number), ω = 2πf. Principle of superposition: resultant displacement is the sum of individual displacements. Interference: constructive and destructive. Standing (stationary) waves form nodes and antinodes; in strings and organ pipes they give harmonics (closed pipe: only odd harmonics; open pipe: all harmonics). Beats: periodic variation in loudness when two nearby frequencies superpose; beat frequency = |f1 - f2|. Doppler effect: change in observed frequency due to relative motion between source and observer, f' = f(v ± v_o)/(v ∓ v_s)."
+  }
+]
