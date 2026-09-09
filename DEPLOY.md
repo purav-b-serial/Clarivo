@@ -111,3 +111,41 @@ git-ignored and must never be committed.
 > Note: `android/`, `ios/`, and `windows/` folders remain as default Flutter
 > scaffolding but are not part of the shipped build path. Clarivo is delivered
 > as a PWA.
+
+---
+
+## Troubleshooting (lessons learned)
+
+Two issues that broke the live site during initial deploy, and how they were fixed:
+
+1. **`/api/clara` returned a 404 / the app HTML instead of the function.**
+   Cause: `web/_redirects` had only the SPA catch-all (`/* /index.html 200`),
+   and a `_redirects` file takes precedence over `netlify.toml` redirects — so
+   the catch-all swallowed `/api/clara` before it could reach the function.
+   Fix: put the function route **before** the catch-all in `web/_redirects`,
+   using a forced rule:
+   ```
+   /api/clara    /.netlify/functions/clara    200!
+   /*            /index.html                  200
+   ```
+
+2. **The function returned "GROQ_API_KEY is missing" even though the variable existed.**
+   Cause: environment-variable changes only take effect on a **new deploy**,
+   and the variable must be present in the **Production** deploy context with
+   the **Functions** scope enabled.
+   Fix: after adding/changing `GROQ_API_KEY`, always trigger a fresh deploy
+   (Deploys → Trigger deploy → Deploy site), and confirm the Production context
+   has a value.
+
+3. **Build failed with "demo_database.g.dart is missing."**
+   Cause: generated `*.g.dart` files are git-ignored, so Netlify never received
+   them. Fix: the Netlify build command runs `dart run build_runner build`
+   before `flutter build web` to regenerate them (see `netlify.toml`).
+
+### Quick health check of the deployed function
+```bash
+# Should return JSON {"content":"..."} (not HTML, not a 404/500)
+curl -X POST https://<your-site>.netlify.app/api/clara \
+  -H "Content-Type: application/json" \
+  -d '{"systemPrompt":"You are a test.","userMessage":"Reply with OK"}'
+```

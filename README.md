@@ -2,59 +2,69 @@
 
 > **Learn Smarter. Go Further.**
 
-Clarivo is a free AI study assistant for CBSE Class 10 students, built for the AI Hackathon (September 2026). It runs in the browser — no installation required.
+Clarivo is a free AI study assistant for CBSE students, built for the AI Hackathon (September 2026). It runs entirely in the browser and installs as a Progressive Web App (PWA) — no app store, no APK, no installer.
+
+**Live:** https://superb-licorice-8c14a1.netlify.app
 
 ---
 
 ## What Clarivo Can Do Right Now
 
 ### Clara — AI Tutor
-- Ask questions about CBSE Class 10 topics and get clear, detailed answers
-- Clara is powered by the Groq API (Qwen3 27B model)
-- Answers are grounded in seeded study notes where available
-- When answering from general knowledge (not from notes), Clara displays a disclaimer
+- Ask questions about CBSE topics and get clear, detailed answers
+- Powered by the Groq API (`qwen/qwen3.8-27b`)
+- Answers are grounded in seeded study notes when relevant material is found
+- When answering from general knowledge (no matching notes), Clara prefixes a clear disclaimer
 - Full markdown rendering — **bold**, headings, bullet points, numbered steps
 - LaTeX math rendering — equations like `$$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$` display as proper math
 
-### Subject + Class Selection
-- Select your class (currently Class 10) before starting
-- Choose a subject — Clara focuses her search and answers on that subject
-- Active subject shown in the AppBar with a coloured banner
-- Switch subject anytime via the "Change" button or the subject picker sheet
-- Subject selection persists during the session
+### Class + Subject Selection
+- Two-step picker: choose your class (only classes with content appear), then a subject
+- Clara scopes her retrieval and answers to the selected class and subject
+- Subjects without notes are shown as "Coming soon" and are not selectable
+- Active class/subject shown in the AppBar; switch anytime via the picker
+- Selection persists during the session
+
+### Competitive Exam Prep (JEE / NEET)
+- One-tap **JEE** or **NEET** mode — no need to pick a single class or subject
+- Clara auto-scopes across **Class 11 and 12** and multiple subjects at once:
+  - **JEE** → Physics, Chemistry, Mathematics
+  - **NEET** → Physics, Chemistry, Biology
+- Retrieval searches the whole exam syllabus; answers are framed for exam-style questions
+
+### Content Covered (CBSE Classes 10, 11, 12)
+- **Class 10** — Science, Mathematics, Social Science, English, Hindi, Sanskrit
+- **Class 11** — Physics, Chemistry, Biology, Mathematics, Computer Science, English
+- **Class 12** — Physics, Chemistry, Mathematics, Biology, Computer Science, English
 
 ### Content Library
-- Browse all 6 subjects organised by chapter
+- Browse seeded content organised by class → subject → chapter
 - Tap any chapter to read the full study notes
-- Notes are stored locally in the browser (IndexedDB) — no internet needed to read them
-
-### 6 Subjects Covered (CBSE Class 10)
-- **Science** — Chemical Reactions, Acids/Bases/Salts, Metals/Non-metals, Life Processes, Control & Coordination, Reproduction, Light, Electricity, Magnetic Effects
-- **Mathematics** — Real Numbers, Polynomials, Linear Equations, Quadratic Equations, Arithmetic Progressions, Triangles, Coordinate Geometry, Trigonometry, Circles, Areas, Surface Areas & Volumes, Statistics, Probability
-- **Social Science** — History (Nationalism in Europe, Indo-China, India), Geography (Resources, Agriculture, Minerals, Manufacturing, Transport), Civics (Power Sharing, Federalism, Democracy), Economics (Development, Sectors, Money & Credit, Globalisation)
-- **English** — First Flight (prose + poetry), Footprints Without Feet, Grammar (reported speech, active/passive, tenses)
-- **Hindi** — Kshitij (poems + prose), Kritika, Vyakaran overview
-- **Sanskrit** — Shemushi (10 lessons), Vyakaranavithi (grammar)
+- Notes are stored locally in the browser (SQLite via `sqlite3.wasm`), so reading them needs no network
 
 ### Progress Tracker
-- View all questions you have asked Clara
-- Expandable cards showing each question and Clara's full answer
-- Shows when each question was asked
+- Summary stats: questions asked, distinct topics covered, distinct subjects
+- Expandable per-question cards showing the topics used to answer (or a note when answered from general knowledge) and Clara's full answer
 
-### Storage Screen
-- See what content is currently installed (106 study chunks, 9 chapters per subject)
-- Shows the AI model in use (Groq Cloud)
-- Lists planned future storage features
+### Storage & Settings
+- Storage screen shows installed content, chat history, and the AI model in use (Groq Cloud)
+- Settings shows app info and a short list of planned features
 
-### Settings Screen
-- View app version and current AI model
-- See what content is active
-- Lists planned future features
-
-### Landing Page (Web)
+### Landing Page (Web / PWA)
 - Clean landing page at the root URL
-- "Try Clara Online" button goes straight into the app
-- Download buttons for Android and Windows (links to be updated after APK build)
+- "Try Clara Online" opens the app instantly
+- **Install on Android** and **Install for Windows** buttons trigger the browser's native PWA install (Add to Home screen / Install as desktop app) with a manual-instructions fallback
+
+---
+
+## How the AI Key Stays Secure
+
+Clarivo never ships the Groq API key to the browser. Two modes, chosen automatically:
+
+- **Production (default):** the web app calls its own serverless proxy at `/api/clara` (a Netlify function). The function holds the real key in the `GROQ_API_KEY` Netlify environment variable and forwards the request to Groq. **The key never reaches the client bundle.**
+- **Local development:** if you build/run with `--dart-define=GROQ_API_KEY=...`, Clara calls Groq directly using that key (convenient for local work).
+
+Groq request parameters are identical in both modes, so answers are unchanged.
 
 ---
 
@@ -62,22 +72,23 @@ Clarivo is a free AI study assistant for CBSE Class 10 students, built for the A
 
 | Layer | Technology |
 |-------|-----------|
-| Framework | Flutter 3.47 (Dart) — single codebase for Web, Android, Windows |
+| Framework | Flutter (Dart), delivered as a PWA |
 | State Management | Riverpod |
 | Navigation | GoRouter |
-| Local Database | Drift (SQLite + WASM for web via IndexedDB) |
-| AI | Groq API — qwen/qwen3.8-27b |
-| Content | 106 study note chunks across 6 subjects (JSON assets seeded on first load) |
+| Local Database | Drift (SQLite; `sqlite3.wasm` + `drift_worker.js` on web) |
+| AI | Groq API — `qwen/qwen3.8-27b` |
+| AI transport | Netlify serverless function proxy (`/api/clara`) in production |
+| Content | 18 subject content packs across Classes 10–12 (JSON assets seeded on first load) |
 | Markdown | flutter_markdown |
 | Math Rendering | flutter_math_fork (LaTeX via `$$...$$`) |
-| Hosting | Netlify |
+| Hosting | Netlify (Git-connected continuous deploy) |
 
 ---
 
 ## Running Locally
 
 ### Prerequisites
-- Flutter SDK 3.47+
+- Flutter SDK (stable)
 - Free Groq API key from [console.groq.com](https://console.groq.com)
 
 ### Setup
@@ -90,43 +101,47 @@ cd Clarivo
 # 2. Install dependencies
 flutter pub get
 
-# 3. Run on Chrome
-flutter run -d chrome --dart-define=GROQ_API_KEY=your_key_here
+# 3. Generate Drift/Riverpod code
+dart run build_runner build --delete-conflicting-outputs
 
-# 4. Release build
-flutter build web --release --dart-define=GROQ_API_KEY=your_key_here
+# 4. Run on Chrome (local dev — key passed via --dart-define)
+flutter run -d chrome --dart-define=GROQ_API_KEY=your_key_here
 ```
 
-> The API key is injected at build time via `--dart-define`. It is never committed to git. Copy `.env.example` to `.env` for local reference.
+> Locally, the key is passed via `--dart-define` and is never committed to git. In production, the key is **not** in the build at all — it lives only in the Netlify `GROQ_API_KEY` environment variable and is used server-side by the `/api/clara` function.
+
+---
+
+## Deployment (Netlify, Git-connected)
+
+Deployment is automatic: every push to `main` triggers a Netlify build that installs Flutter, runs `build_runner`, builds the web release (with **no** key baked in), and deploys the `clara` function. See `DEPLOY.md` for the full guide, including the required Netlify environment variable and routing notes.
 
 ---
 
 ## Planned Future Features
 
-These are not available in the current demo but are planned for future development:
+Not in the current build, planned for later:
 
-- **On-device AI** — local LLM (Qwen2.5-3B GGUF via llama.cpp) for fully offline answers, no Groq needed
-- **Full CBSE content matrix** — Classes 6–12 for all subjects, plus JEE, NEET, UPSC, SSC/Banking tracks
+- **Full CBSE content matrix** — Classes 6–12 across all subjects, plus UPSC and SSC/Banking tracks
 - **PDF and file upload** — ingest your own notes; Clara answers from them
 - **Vector search** — semantic similarity search replacing the current keyword search
 - **Student accounts** — login, profiles, progress sync across devices
-- **6-language UI** — Hindi, Tamil, Telugu, Kannada, Bengali alongside English
+- **6-language UI** — Hindi, Tamil, Telugu, Kannada, Bengali alongside English (localization is scaffolded)
 - **OCR / image input** — photograph a question and ask Clara
 - **Push notifications** — daily study reminders and tips
 - **Supervisor dashboard** — parent/teacher read-only view of student progress
-- **iOS build** — App Store and TestFlight distribution
-- **Offline-first** — all features work without internet when on-device AI is integrated
+- **Server-side rate limiting** — throttle the proxy to protect the Groq quota
 
 See `FUTURE_UPDATES.md` for the full roadmap.
 
 ---
 
-## Hackathon Spec Documents
+## Spec Documents
 
-Located in `.kiro/specs/`:
-- `requirements.md` — core requirements for the hackathon demo scope
+Located in `.kiro/specs/AI/clarivo/`:
+- `requirements.md` — product requirements for the shipped app
 - `design.md` — architecture, data model, AI pipeline, component design
-- `tasks.md` — 5-phase implementation plan
+- `tasks.md` — implementation record
 
 ---
 
@@ -135,14 +150,18 @@ Located in `.kiro/specs/`:
 ```
 Clarivo/
 ├── lib/
-│   ├── core/              # Router, providers (subject, language)
+│   ├── core/              # Router, providers (subject/exam, language)
 │   ├── data/              # Database (Drift), seed content (JSON), keyword search
 │   ├── domain/            # Services: Clara AI, Groq client, keyword search
 │   └── features/          # UI: tutor (Clara), content, progress, storage, settings, landing
 ├── assets/
-│   ├── content/           # Subject JSON files (science, maths, sst, english, hindi, sanskrit)
+│   ├── content/           # 18 subject JSON packs (Classes 10–12)
 │   └── i18n/              # Localisation ARB files
-├── .kiro/specs/           # Hackathon spec documents
-├── web/                   # Flutter web files + _redirects for SPA routing
-└── .env.example           # API key template — never commit .env
+├── netlify/
+│   └── functions/         # clara.js — serverless Groq proxy (holds the key server-side)
+├── web/                   # Flutter web files + _redirects (routes /api/clara + SPA fallback)
+├── netlify.toml           # Build command, functions dir, redirects, security headers
+├── package.json           # Node engine for the Netlify function
+├── .kiro/specs/AI/clarivo/ # Spec documents
+└── .env.example           # Local-only key template — never commit a real key
 ```
