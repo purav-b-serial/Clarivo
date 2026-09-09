@@ -23,6 +23,12 @@
   # Node runtime for the Clara proxy function.
   node_bundler = "esbuild"
 
+[build.environment]
+  # Node 18+ so the function has a native global fetch() and the functions
+  # directory is built. Without this the /api/clara function may not deploy,
+  # causing /api/clara to 404 (served the Netlify 404 page instead).
+  NODE_VERSION = "20"
+
 # Route the app's proxy calls to the serverless function.
 [[redirects]]
   from = "/api/clara"

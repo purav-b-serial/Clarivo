@@ -1,0 +1,9 @@
+{
+  "name": "clarivo-netlify-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify serverless functions for Clarivo (Groq proxy).",
+  "engines": {
+    "node": ">=18"
+  }
+}
