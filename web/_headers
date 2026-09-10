@@ -1,0 +1,8 @@
+# Security headers. Read by Cloudflare Pages (and also honoured by Netlify).
+# Netlify additionally sets these via netlify.toml; duplicates are harmless.
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
