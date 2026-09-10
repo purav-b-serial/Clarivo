@@ -51,17 +51,24 @@ class GroqClient {
   Future<String> complete({
     required String systemPrompt,
     required String userMessage,
+    int? maxTokens,
   }) async {
     return _useDirect
-        ? _completeDirect(systemPrompt: systemPrompt, userMessage: userMessage)
+        ? _completeDirect(
+            systemPrompt: systemPrompt,
+            userMessage: userMessage,
+            maxTokens: maxTokens)
         : _completeViaProxy(
-            systemPrompt: systemPrompt, userMessage: userMessage);
+            systemPrompt: systemPrompt,
+            userMessage: userMessage,
+            maxTokens: maxTokens);
   }
 
   // --- Production: call our own serverless proxy (key stays on the server) ---
   Future<String> _completeViaProxy({
     required String systemPrompt,
     required String userMessage,
+    int? maxTokens,
   }) async {
     final response = await _http
         .post(
@@ -70,6 +77,7 @@ class GroqClient {
           body: jsonEncode({
             'systemPrompt': systemPrompt,
             'userMessage': userMessage,
+            if (maxTokens != null) 'maxTokens': maxTokens,
           }),
         )
         .timeout(const Duration(seconds: 60));
@@ -92,6 +100,7 @@ class GroqClient {
   Future<String> _completeDirect({
     required String systemPrompt,
     required String userMessage,
+    int? maxTokens,
   }) async {
     final response = await _http
         .post(
@@ -107,11 +116,10 @@ class GroqClient {
               {'role': 'user', 'content': userMessage},
             ],
             'temperature': 0.3,
-            // Groq free tier caps output at 1000 tokens/minute (OTPM).
-            // Keep max_tokens safely under that so requests aren't rejected
-            // with a 429 "Request too large" error. Clara is prompted to
-            // structure answers to finish cleanly within this budget.
-            'max_tokens': 950,
+            // Chat answers stay under Groq's free-tier ~1000 output-tokens
+            // budget; quizzes/flashcards can request more via [maxTokens]
+            // since a longer structured JSON response needs the room.
+            'max_tokens': maxTokens ?? 950,
           }),
         )
         .timeout(const Duration(seconds: 60));

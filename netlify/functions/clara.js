@@ -82,8 +82,15 @@ exports.handler = async (event) => {
   const safeSystem = systemPrompt.slice(0, MAX_CHARS);
   const safeUser = userMessage.slice(0, MAX_CHARS);
 
-  // Match the parameters the app used when it called Groq directly, so answers
-  // are identical to the previous behavior.
+  // Output token budget. Chat defaults to 950; quizzes/flashcards may request
+  // more (via maxTokens) since a full 10-question JSON response needs room.
+  // Hard-capped at 2000 to stay clear of Groq free-tier per-minute limits.
+  const HARD_CAP = 2000;
+  let maxTokens = 950;
+  if (typeof payload.maxTokens === 'number' && payload.maxTokens > 0) {
+    maxTokens = Math.min(Math.floor(payload.maxTokens), HARD_CAP);
+  }
+
   const body = {
     model: MODEL,
     messages: [
@@ -91,7 +98,7 @@ exports.handler = async (event) => {
       { role: 'user', content: safeUser },
     ],
     temperature: 0.3,
-    max_tokens: 950,
+    max_tokens: maxTokens,
   };
 
   try {

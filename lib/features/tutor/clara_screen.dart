@@ -8,6 +8,7 @@ import '../../core/providers/subject_provider.dart';
 import '../../domain/ai/clara_service.dart';
 import '../../domain/ai/groq_client.dart';
 import 'quiz_sheet.dart';
+import 'flashcard_sheet.dart';
 
 class _Message {
   const _Message({required this.text, required this.isUser});
@@ -526,6 +527,13 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
             icon: const Icon(Icons.quiz_outlined, size: 20),
             tooltip: 'Quiz me on this subject',
             onPressed: () => showQuizSheet(context, ref),
+          ),
+
+          // Flashcards
+          IconButton(
+            icon: const Icon(Icons.style_outlined, size: 20),
+            tooltip: 'Flashcards for this subject',
+            onPressed: () => showFlashcardSheet(context, ref),
           ),
 
           // ALWAYS-VISIBLE "Choose Subject / Change" button

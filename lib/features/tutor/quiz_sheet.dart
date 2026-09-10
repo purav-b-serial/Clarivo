@@ -34,6 +34,9 @@ class _QuizSheetState extends ConsumerState<_QuizSheet> {
   List<QuizQuestion> _questions = const [];
   String _topicLabel = '';
 
+  // How many questions the student wants (1-10).
+  int _count = QuizService.questionCount;
+
   // Per-question selected answer index (null = unanswered).
   final Map<int, int> _selected = {};
 
@@ -47,6 +50,7 @@ class _QuizSheetState extends ConsumerState<_QuizSheet> {
             subject: subject,
             classNumber: classNumber,
             topic: topic,
+            count: _count,
           );
       if (!mounted) return;
       setState(() {
@@ -185,10 +189,32 @@ class _QuizSheetState extends ConsumerState<_QuizSheet> {
         ),
         const SizedBox(height: 4),
         Text(
-          'Choose a topic. Clara will make ${QuizService.questionCount} '
-          'questions from your notes.',
+          'Pick how many questions, then choose a topic. Clara makes them from your notes.',
           style: theme.textTheme.bodySmall
               ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+        ),
+        const SizedBox(height: 12),
+        // ── Question count selector (1-10) ──────────────────────────────
+        Row(
+          children: [
+            Text('Questions:',
+                style: theme.textTheme.bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.w600)),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Wrap(
+                spacing: 6,
+                children: [3, 5, 7, 10].map((n) {
+                  final selected = _count == n;
+                  return ChoiceChip(
+                    label: Text('$n'),
+                    selected: selected,
+                    onSelected: (_) => setState(() => _count = n),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 14),
         chaptersFuture.when(
@@ -245,7 +271,7 @@ class _QuizSheetState extends ConsumerState<_QuizSheet> {
         children: [
           const CircularProgressIndicator(),
           const SizedBox(height: 20),
-          Text('Building your quiz on "$_topicLabel"…',
+          Text('Building a $_count-question quiz on "$_topicLabel"…',
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyMedium),
           const SizedBox(height: 6),
