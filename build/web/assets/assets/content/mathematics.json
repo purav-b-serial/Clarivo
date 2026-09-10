@@ -1,0 +1,67 @@
+﻿[
+  {
+    "subject": "Mathematics",
+    "chapter": "Real Numbers",
+    "text": "Euclid's Division Lemma: for positive integers a and b, there exist unique q and r such that a = bq + r, 0 <= r < b. Euclid's Division Algorithm finds the HCF of two numbers by repeated application. Fundamental Theorem of Arithmetic: every composite number can be expressed as a unique product of primes (order apart). For two numbers, HCF x LCM = product of the numbers. A rational number p/q (in lowest terms) has a terminating decimal expansion if and only if q is of the form 2^m x 5^n; otherwise it is non-terminating repeating. Proofs of irrationality (e.g. sqrt 2 is irrational) use contradiction with the Fundamental Theorem."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Polynomials",
+    "text": "A polynomial p(x) has degree = highest power of x. Types: linear (degree 1), quadratic (degree 2), cubic (degree 3). A zero of a polynomial is a value of x for which p(x) = 0; geometrically, zeros are where the graph meets the x-axis. A polynomial of degree n has at most n zeros. For a quadratic ax^2 + bx + c: sum of zeros (alpha + beta) = -b/a, and product of zeros (alpha x beta) = c/a. For a cubic ax^3 + bx^2 + cx + d: sum = -b/a, sum of products in pairs = c/a, product = -d/a. Division algorithm for polynomials: p(x) = g(x) q(x) + r(x), where degree of r < degree of g."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Pair of Linear Equations in Two Variables",
+    "text": "A pair of linear equations a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0. Solution methods: graphical, substitution, elimination, and cross-multiplication. Consistency by comparing ratios: (1) a1/a2 not equal b1/b2 — unique solution, lines intersect (consistent, independent). (2) a1/a2 = b1/b2 = c1/c2 — infinitely many solutions, coincident lines (consistent, dependent). (3) a1/a2 = b1/b2 not equal c1/c2 — no solution, parallel lines (inconsistent). Cross-multiplication: x/(b1c2 - b2c1) = y/(c1a2 - c2a1) = 1/(a1b2 - a2b1). Used to solve real-life word problems (ages, speed, cost)."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Quadratic Equations",
+    "text": "Standard form: ax^2 + bx + c = 0, a not 0. Solving methods: (1) Factorisation (splitting the middle term). (2) Completing the square. (3) Quadratic formula: x = [-b +/- sqrt(b^2 - 4ac)] / 2a. Discriminant D = b^2 - 4ac decides the nature of roots: D > 0 two distinct real roots; D = 0 two equal real roots (x = -b/2a); D < 0 no real roots (imaginary). Sum of roots = -b/a, product of roots = c/a. Used for word problems involving areas, speed, time, and numbers."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Arithmetic Progressions",
+    "text": "An Arithmetic Progression (AP) is a sequence where each term differs from the previous by a fixed common difference d. General AP: a, a+d, a+2d, ... nth term: a_n = a + (n-1)d, where a is the first term. Sum of first n terms: S_n = (n/2)[2a + (n-1)d] = (n/2)(a + l), where l is the last term. The nth term can also be written as a_n = S_n - S_(n-1). Applications: finding a particular term, number of terms, and sums in patterns, savings, and installment problems."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Triangles",
+    "text": "Similar triangles have equal corresponding angles and proportional corresponding sides. Criteria for similarity: AA (or AAA), SSS, SAS. Basic Proportionality Theorem (Thales): a line drawn parallel to one side of a triangle divides the other two sides in the same ratio. Converse is also true. In similar triangles, the ratio of areas equals the square of the ratio of corresponding sides. Pythagoras theorem: in a right triangle, (hypotenuse)^2 = (base)^2 + (perpendicular)^2; its converse identifies right triangles. These are used to find unknown sides and to prove geometric relationships."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Coordinate Geometry",
+    "text": "Distance formula: distance between (x1,y1) and (x2,y2) = sqrt[(x2-x1)^2 + (y2-y1)^2]. Section formula: a point dividing the join of (x1,y1) and (x2,y2) in the ratio m:n is ((mx2 + nx1)/(m+n), (my2 + ny1)/(m+n)). Midpoint = ((x1+x2)/2, (y1+y2)/2). Area of a triangle with vertices (x1,y1), (x2,y2), (x3,y3) = (1/2)|x1(y2-y3) + x2(y3-y1) + x3(y1-y2)|; if area = 0, the points are collinear. These are used to find lengths, dividing points, and areas on the Cartesian plane."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Trigonometry",
+    "text": "Trigonometric ratios in a right triangle: sin A = opposite/hypotenuse, cos A = adjacent/hypotenuse, tan A = opposite/adjacent = sin A/cos A; cosec, sec, cot are their reciprocals. Standard values: sin 0=0, 30=1/2, 45=1/sqrt2, 60=sqrt3/2, 90=1 (cos is the reverse). Identities: sin^2 A + cos^2 A = 1; 1 + tan^2 A = sec^2 A; 1 + cot^2 A = cosec^2 A. Complementary angles: sin(90-A) = cos A, tan(90-A) = cot A, sec(90-A) = cosec A. Applications (heights and distances): use angle of elevation (looking up) and angle of depression (looking down) with tan to find heights and distances."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Circles",
+    "text": "A tangent to a circle touches it at exactly one point. Theorem 1: the tangent at any point of a circle is perpendicular to the radius through the point of contact. Theorem 2: the lengths of the two tangents drawn from an external point to a circle are equal. There is exactly one tangent at a point on the circle, and two tangents can be drawn from an external point. A line intersecting a circle at two points is a secant. These properties are used to solve problems on tangents, chords, and angles in circles."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Areas Related to Circles",
+    "text": "For a circle of radius r: circumference = 2*pi*r, area = pi*r^2. For a sector with central angle theta (degrees): length of arc = (theta/360) x 2*pi*r; area of sector = (theta/360) x pi*r^2. Area of a segment = area of the corresponding sector - area of the triangle formed by the two radii and the chord. Problems combine circles with squares, triangles, and other shapes to find shaded/remaining areas. Use pi = 22/7 or 3.14 as given."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Surface Areas and Volumes",
+    "text": "Key formulas — Cuboid: volume = lbh, total surface area (TSA) = 2(lb+bh+hl). Cube: volume = a^3, TSA = 6a^2. Cylinder: volume = pi*r^2*h, curved surface area (CSA) = 2*pi*r*h, TSA = 2*pi*r(r+h). Cone: volume = (1/3)pi*r^2*h, CSA = pi*r*l, TSA = pi*r(r+l), slant height l = sqrt(r^2 + h^2). Sphere: volume = (4/3)pi*r^3, surface area = 4*pi*r^2. Hemisphere: volume = (2/3)pi*r^3, CSA = 2*pi*r^2, TSA = 3*pi*r^2. Problems involve combinations of solids and conversion of one solid into another (volume is conserved on melting/recasting)."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Statistics",
+    "text": "Measures of central tendency for grouped data. Mean by (1) direct method: mean = sum(f_i x_i)/sum(f_i); (2) assumed mean method: mean = a + sum(f_i d_i)/sum(f_i), where d_i = x_i - a; (3) step-deviation: mean = a + h[sum(f_i u_i)/sum(f_i)], u_i = (x_i - a)/h. Mode = l + [(f1 - f0)/(2f1 - f0 - f2)] x h, where l is the lower limit of the modal class. Median = l + [((n/2) - cf)/f] x h, where cf is the cumulative frequency before the median class. Empirical relationship: 3 Median = Mode + 2 Mean. Cumulative frequency curves (ogives) are used to find the median graphically."
+  },
+  {
+    "subject": "Mathematics",
+    "chapter": "Probability",
+    "text": "Probability measures the chance of an event. Theoretical (classical) probability: P(E) = (number of favourable outcomes)/(total number of equally likely outcomes). P(E) always lies between 0 and 1: P = 0 means an impossible event, P = 1 means a sure/certain event. The sum of probabilities of all elementary outcomes is 1. Complementary events: P(not E) = 1 - P(E). Applications use coins, dice, and playing cards (a deck has 52 cards: 26 red, 26 black, 4 suits of 13, with 12 face cards). Example: probability of getting a head on a coin toss = 1/2."
+  }
+]

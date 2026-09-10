@@ -1,0 +1,7 @@
+# Route Clara's proxy calls to the serverless function.
+# IMPORTANT: this specific rule MUST come before the SPA catch-all below,
+# and _redirects takes precedence over netlify.toml, so it lives here too.
+/api/clara    /.netlify/functions/clara    200!
+
+# SPA fallback — every other path serves the Flutter app shell.
+/*    /index.html   200

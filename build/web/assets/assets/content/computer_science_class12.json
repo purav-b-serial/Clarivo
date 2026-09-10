@@ -1,0 +1,80 @@
+[
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Revision of Python",
+    "text": "Python is an interpreted, high-level, dynamically-typed language. Tokens: keywords, identifiers, literals, operators, punctuators. Data types: int, float, complex, bool, str, and collections (list, tuple, dict, set). Mutable types: list, dict, set; immutable: int, float, str, tuple, bool. Variables are references to objects. Operators: arithmetic (+ - * / // % **), relational (== != < > <= >=), logical (and or not), assignment, membership (in, not in), identity (is). Control flow: if-elif-else; loops for (over sequences/range) and while; break, continue, pass. Comments use #. input() reads a string; type conversion with int(), float(), str(). print() with sep and end parameters."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Functions",
+    "text": "A function is a named reusable block of code defined with def name(parameters): and called by name. Types: built-in (len, print), modules (math, random), user-defined. Arguments: positional, keyword, default (must come after non-default), and variable-length (*args, **kwargs). return sends a value back (a function without return returns None). Scope: local (inside function) and global; the global keyword modifies a global variable inside a function. LEGB rule for name resolution (Local, Enclosing, Global, Built-in). Functions can return multiple values as a tuple. Modules are imported with import module or from module import name; useful modules: math (sqrt, pow, floor, ceil), random (random, randint, randrange), statistics (mean, median, mode)."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Exception Handling",
+    "text": "An exception is a runtime error that disrupts normal program flow. Exception handling uses try-except to catch and handle errors gracefully. Syntax: try block contains risky code; except catches specific exceptions (e.g. ZeroDivisionError, ValueError, TypeError, FileNotFoundError, IndexError, KeyError, NameError). else runs if no exception occurs; finally always runs (used for cleanup, e.g. closing files). Multiple except blocks can handle different exceptions. raise generates an exception manually. Handling exceptions prevents abnormal program termination and lets the program continue or exit cleanly. Example: try: x = int(input()); except ValueError: print('invalid input')."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "File Handling — Text Files",
+    "text": "Files store data permanently. A text file stores data as human-readable characters (ASCII/Unicode) with an EOL (newline) character. Open with open(filename, mode); modes: 'r' (read), 'w' (write, overwrites), 'a' (append), 'r+' (read and write); add 't' for text (default). Always close() the file, or use with open(...) as f: (auto-closes). Reading methods: read() (whole file or n chars), readline() (one line), readlines() (list of lines). Writing methods: write(string), writelines(list). File pointer: tell() gives current position; seek(offset) moves it. flush() forces write to disk. Text files are easy to read but take more space than binary."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "File Handling — Binary Files",
+    "text": "A binary file stores data in binary form (not human-readable), preserving the exact object structure. Used with the pickle module for serialisation. pickle.dump(object, fileobject) writes (serialises/pickles) a Python object to a binary file; pickle.load(fileobject) reads (deserialises/unpickles) it back. Open binary files in binary modes: 'rb', 'wb', 'ab', 'rb+'. Binary files are faster and more compact than text files and can store complex objects (lists, dictionaries) directly. To update a record, read data into memory, modify it, and write it back. seek() and tell() work on byte positions. Import pickle before use."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "File Handling — CSV Files",
+    "text": "A CSV (Comma Separated Values) file stores tabular data as plain text, each row on a line with values separated by a delimiter (comma by default). Import the csv module. Open with newline='' to avoid blank lines. Writing: create a writer with csv.writer(fileobject); writer.writerow(list) writes one row, writer.writerows(list_of_lists) writes many. Reading: csv.reader(fileobject) returns an iterable of rows (each a list of strings). The delimiter can be changed (e.g. delimiter=';'). CSV files are portable across spreadsheets and databases. Modes: 'w' to write, 'r' to read, 'a' to append. Example: import csv; with open('data.csv','w',newline='') as f: csv.writer(f).writerow(['name','marks'])."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Data Structure — Stack",
+    "text": "A stack is a linear data structure following LIFO (Last In First Out) — the last element added is the first removed. Operations: push (add an element to the top), pop (remove the top element), peek/top (view the top without removing), and checking isEmpty. In Python a stack is easily implemented using a list: push with append(item), pop with pop() (removes the last element), peek with list[-1], and empty check with len(list)==0. Stack overflow occurs when pushing to a full stack; underflow when popping from an empty stack. Applications: reversing a string, expression conversion (infix to postfix/prefix) and evaluation, undo operations, function call management (call stack), and browser back history."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Computer Networks - I",
+    "text": "A computer network is interconnected computers that share data and resources. Advantages: resource sharing, communication, centralised data, cost reduction. Data communication components: sender, receiver, message, medium, protocol. Data transmission modes: simplex (one direction, e.g. keyboard), half-duplex (both directions but one at a time, e.g. walkie-talkie), full-duplex (both directions simultaneously, e.g. phone). Transmission media: guided/wired — twisted pair cable (cheap, common in LAN), coaxial cable (TV, higher bandwidth), optical fibre (light signals, very high speed, immune to interference); unguided/wireless — radio waves, microwaves, infrared, satellite. Bandwidth is the data-carrying capacity (bits per second, bps). Data transfer rate units: bps, Kbps, Mbps, Gbps."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Computer Networks - II",
+    "text": "Network devices: modem (modulates/demodulates signals for phone lines), NIC (Network Interface Card, has a unique MAC address), hub (broadcasts to all ports, dumb), switch (sends data to the specific destination port, intelligent), router (connects different networks, routes packets using IP), gateway (connects networks with different protocols), repeater (regenerates weak signals), bridge (connects two LAN segments). Network types by area: PAN, LAN (Local, small area), MAN (Metropolitan, city), WAN (Wide, e.g. Internet). Topologies: bus, star (central device), ring, tree, mesh (fully connected, reliable). Protocols: HTTP/HTTPS (web), FTP (file transfer), SMTP/POP3/IMAP (email), TCP/IP (core internet suite), PPP, TELNET, VoIP. Web services and terms: WWW, URL, web browser, web server, web hosting, HTML, XML, domain name, DNS, IP address, cookies, e-mail, chat, video conferencing."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Database Concepts",
+    "text": "A database is an organised collection of related data. A DBMS (Database Management System) is software to create, store, manage, and retrieve data (e.g. MySQL, Oracle). Advantages over file systems: reduced data redundancy, data consistency, data integrity, data security, data sharing, and backup/recovery. Key terms: data (raw facts), information (processed data), field/attribute (a column), record/tuple (a row), table/relation. Data abstraction levels: physical (how stored), logical (what data and relationships), view (what the user sees). Keys: primary key (unique identifier, no nulls), candidate key (possible primary keys), alternate key (candidate keys not chosen as primary), foreign key (refers to a primary key in another table, enforces referential integrity)."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Relational Data Model",
+    "text": "The relational data model organises data into relations (tables) of rows (tuples) and columns (attributes). Concepts: domain (set of allowed values for an attribute), degree (number of attributes/columns), cardinality (number of tuples/rows). Properties: each cell holds a single value (atomic), column values are of the same type, each row is unique, order of rows/columns does not matter. Relational constraints: not null, unique, primary key (unique + not null), foreign key (referential integrity), and default. Entities and relationships are modelled with an ER diagram (entities as rectangles, attributes as ovals, relationships as diamonds). This model, proposed by E.F. Codd, is the basis of relational DBMS and SQL."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "SQL",
+    "text": "SQL (Structured Query Language) manages relational databases. Categories: DDL (Data Definition — CREATE, ALTER, DROP), DML (Data Manipulation — INSERT, UPDATE, DELETE, SELECT), DCL, TCL. Data types: INT, FLOAT/DECIMAL, CHAR(n), VARCHAR(n), DATE. CREATE TABLE name (col type constraints); INSERT INTO table VALUES (...); SELECT columns FROM table WHERE condition; UPDATE table SET col=value WHERE ...; DELETE FROM table WHERE .... Clauses: WHERE (filter rows), ORDER BY (sort, ASC/DESC), GROUP BY (group rows), HAVING (filter groups), DISTINCT (remove duplicates). Operators: BETWEEN, IN, LIKE (% and _ wildcards), IS NULL, AND/OR/NOT. Aggregate functions: COUNT(), SUM(), AVG(), MAX(), MIN(). Joins combine rows from multiple tables (equi-join, natural join) using matching keys. NULL means unknown/missing value."
+  },
+  {
+    "class": 12,
+    "subject": "Computer Science",
+    "chapter": "Python-SQL Connectivity",
+    "text": "Python connects to a MySQL database using the mysql.connector module (interface). Steps: (1) import mysql.connector; (2) create a connection with mysql.connector.connect(host, user, password, database); (3) create a cursor object with conn.cursor(); (4) execute SQL with cursor.execute(query); (5) for SELECT, fetch results with fetchone() (one row), fetchall() (all rows as a list of tuples), or fetchmany(n); (6) for INSERT/UPDATE/DELETE, call conn.commit() to save changes; (7) close with cursor.close() and conn.close(). cursor.rowcount gives the number of affected rows. Parameterised queries (using %s placeholders) prevent SQL injection. This connectivity lets a Python program store and retrieve data from a database dynamically."
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "subject": "Science",
+    "chapter": "Chemical Reactions and Equations",
+    "text": "A chemical reaction changes reactants into products with new properties. Signs of a reaction: colour change, gas evolution, precipitate formation, temperature change, state change. A chemical equation shows reactants -> products. Balancing (hit-and-trial) obeys the Law of Conservation of Mass: atoms of each element must be equal on both sides. Add state symbols (s), (l), (g), (aq) and conditions over the arrow. Example: Zn + H2SO4 -> ZnSO4 + H2. Balanced example: 3Fe + 4H2O -> Fe3O4 + 4H2."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Chemical Reactions and Equations",
+    "text": "Types of reactions: (1) Combination (two or more combine into one): CaO + H2O -> Ca(OH)2 (exothermic). (2) Decomposition (one splits into many): thermal 2Pb(NO3)2 -> 2PbO + 4NO2 + O2; electrolytic 2H2O -> 2H2 + O2; photolytic 2AgCl -> 2Ag + Cl2. (3) Displacement (more reactive metal displaces less reactive): Fe + CuSO4 -> FeSO4 + Cu. (4) Double displacement (exchange of ions, often precipitation): Na2SO4 + BaCl2 -> BaSO4 (white ppt) + 2NaCl. Oxidation = gain of oxygen/loss of hydrogen; Reduction = loss of oxygen/gain of hydrogen. Redox reaction: both occur together (e.g. CuO + H2 -> Cu + H2O). Exothermic releases heat, endothermic absorbs heat."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Chemical Reactions and Equations",
+    "text": "Corrosion: slow deterioration of metals by air/moisture. Rusting of iron: 4Fe + 3O2 + xH2O -> 2Fe2O3.xH2O (needs both oxygen and water). Prevention: painting, oiling, greasing, galvanisation (zinc coating), electroplating, alloying. Silver tarnishes black (Ag2S), copper turns green (basic copper carbonate). Rancidity: oxidation of oils/fats in food giving a bad smell and taste. Prevention of rancidity: adding antioxidants, refrigeration, storing in airtight containers, and flushing packets with nitrogen gas."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Acids, Bases and Salts",
+    "text": "Acids give H+ (H3O+) ions in water; taste sour; turn blue litmus red; pH < 7. Strong acids fully ionise (HCl, H2SO4, HNO3); weak acids partly ionise (CH3COOH). Bases give OH- ions; taste bitter; feel soapy; turn red litmus blue; pH > 7. Water-soluble bases are alkalis (NaOH, KOH). Reactions: Acid + Metal -> Salt + H2 gas (pop test). Acid + Metal carbonate/bicarbonate -> Salt + Water + CO2 (turns lime water milky). Acid + Base -> Salt + Water (neutralisation, exothermic). Metal oxides are basic; non-metal oxides are acidic."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Acids, Bases and Salts",
+    "text": "pH scale (0 to 14): 7 is neutral, below 7 acidic, above 7 basic. pH = -log[H+]. Importance of pH: our body works at pH 7.0-7.8; tooth decay begins below pH 5.5; acid rain (pH < 5.6) harms aquatic life; soil pH affects crops. Indicators: litmus, phenolphthalein (colourless in acid, pink in base), methyl orange (red in acid, yellow in base); olfactory indicators (onion, clove). Salts: NaCl (common salt). Products from NaCl: NaOH by chlor-alkali process (electrolysis of brine gives NaOH, Cl2 at anode, H2 at cathode); bleaching powder CaOCl2 (Ca(OH)2 + Cl2); baking soda NaHCO3 (antacid, in baking, fire extinguishers); washing soda Na2CO3.10H2O; Plaster of Paris CaSO4.1/2H2O (from gypsum heated to 373 K). Water of crystallisation: e.g. CuSO4.5H2O (blue)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Metals and Non-metals",
+    "text": "Physical properties: Metals are lustrous, malleable, ductile, sonorous, good conductors of heat and electricity, high melting points (exceptions: mercury is liquid, sodium/potassium are soft). Non-metals are dull, brittle, poor conductors (exception: graphite conducts), varied states. Chemical properties of metals: react with oxygen to form basic oxides (some amphoteric like Al2O3, ZnO react with both acids and bases); react with water (K, Na very reactive; Mg with steam; Cu, Ag no reaction); react with acids to give salt + H2; react with salt solutions by displacement. Reactivity series (decreasing): K > Na > Ca > Mg > Al > Zn > Fe > Pb > (H) > Cu > Hg > Ag > Au."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Metals and Non-metals",
+    "text": "Ionic (electrovalent) bonding: transfer of electrons from metal to non-metal, e.g. Na -> Na+ + e-, Cl + e- -> Cl-, forming NaCl. Properties of ionic compounds: solids, high melting/boiling points, soluble in water, conduct electricity when molten or dissolved. Metallurgy (extraction): Ore = mineral with enough metal to extract profitably; gangue = impurities. Steps: concentration of ore, then extraction based on reactivity — low reactivity metals (Au, Ag) found free; medium reactivity (Zn, Fe, Pb) from oxides by reduction with carbon (roasting of sulphides, calcination of carbonates first); high reactivity (Na, Mg, Ca, Al) by electrolytic reduction. Thermite reaction: Fe2O3 + 2Al -> 2Fe + Al2O3 + heat. Refining by electrolysis. Alloys: brass (Cu+Zn), bronze (Cu+Sn), steel, solder (Pb+Sn); amalgam contains mercury."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Carbon and its Compounds",
+    "text": "Carbon (atomic number 6) forms covalent bonds by sharing electrons; its tetravalency and catenation (self-linking) give a huge number of compounds. Allotropes: diamond (hardest), graphite (conductor, soft), fullerene (C60). Hydrocarbons: saturated (alkanes, single bonds, CnH2n+2) and unsaturated (alkenes CnH2n with double bond, alkynes CnH2n-2 with triple bond). Homologous series: members with the same general formula and functional group, differing by CH2 (14 u), with a gradation in properties. Functional groups: alcohol (-OH), aldehyde (-CHO), ketone (>C=O), carboxylic acid (-COOH), halogen (-X). Isomers: same molecular formula, different structure (from C4 onwards)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Carbon and its Compounds",
+    "text": "Chemical properties of carbon compounds: (1) Combustion — burn in air/oxygen to give CO2, water and heat/light; saturated burn with clean flame, unsaturated with sooty flame. (2) Oxidation — alcohols oxidised to carboxylic acids by oxidising agents (alkaline KMnO4, acidified K2Cr2O7). (3) Addition — unsaturated hydrocarbons add hydrogen with Ni/Pd catalyst (hydrogenation of vegetable oils to ghee). (4) Substitution — alkanes react with Cl2 in sunlight (CH4 + Cl2 -> CH3Cl + HCl). Ethanol (C2H5OH): reacts with Na (gives H2), dehydration with conc. H2SO4 gives ethene. Ethanoic acid (CH3COOH, in vinegar): reacts with base, carbonate; esterification with alcohol gives sweet-smelling ester (used in perfumes). Soaps (sodium salts of fatty acids) clean by forming micelles; hard water reduces lathering; detergents work even in hard water."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Life Processes",
+    "text": "Life processes maintain and sustain life: nutrition, respiration, transport, and excretion. Nutrition: autotrophic (photosynthesis in plants) and heterotrophic. Photosynthesis: 6CO2 + 6H2O -> (sunlight, chlorophyll) C6H12O6 + 6O2; occurs in chloroplasts; raw materials CO2 (via stomata) and water (via roots). Human digestion: mouth (salivary amylase digests starch) -> stomach (HCl, pepsin digests protein, mucus) -> small intestine (bile emulsifies fat, pancreatic juice and intestinal juice complete digestion; villi absorb nutrients) -> large intestine (water absorbed) -> egestion."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Life Processes",
+    "text": "Respiration: breakdown of glucose to release energy (ATP). Aerobic (in mitochondria, with O2): glucose -> CO2 + water + more energy. Anaerobic: in yeast glucose -> ethanol + CO2; in muscles glucose -> lactic acid (causes cramps). Transport in humans: heart (four chambers), double circulation; arteries carry blood away (high pressure), veins carry blood back (valves), capillaries for exchange; blood carries O2 (haemoglobin), CO2, nutrients, wastes. Transport in plants: xylem carries water and minerals upward (transpiration pull); phloem transports food (translocation, uses energy). Excretion in humans: kidneys form urine by filtration in nephrons (glomerulus), reabsorption; ureter, bladder, urethra. Plants excrete via stomata, and store wastes as gums, resins; shed leaves."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Control and Coordination",
+    "text": "In animals, control and coordination is by the nervous and endocrine systems. Neuron is the functional unit: dendrite receives, axon transmits; impulse crosses a synapse via chemicals (neurotransmitters). Reflex action: quick, automatic response via a reflex arc (receptor -> sensory neuron -> spinal cord -> motor neuron -> effector). Human brain: forebrain (thinking, senses), midbrain and hindbrain (cerebellum for balance/posture, medulla for involuntary actions like heartbeat, breathing). Hormones (endocrine glands): adrenaline (adrenal, fight-or-flight), insulin (pancreas, controls blood sugar; deficiency causes diabetes), thyroxine (thyroid, needs iodine; deficiency causes goitre), growth hormone (pituitary), testosterone/oestrogen (sex hormones). In plants: tropic movements (phototropism, geotropism) and plant hormones (auxin - growth/bending, gibberellin, cytokinin, abscisic acid - inhibits growth/wilting)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "How do Organisms Reproduce?",
+    "text": "Reproduction ensures continuity of species; DNA copying causes variation, the basis of evolution. Asexual reproduction (single parent, identical offspring): fission (binary in Amoeba, multiple in Plasmodium), budding (Hydra, yeast), fragmentation (Spirogyra), regeneration (Planaria), spore formation (Rhizopus), vegetative propagation (roots, stems, leaves; layering, grafting), tissue culture. Sexual reproduction: two parents, gametes fuse, gives variation. In flowering plants: flower has stamen (anther + filament, male) and pistil (stigma, style, ovary with ovules, female). Pollination (self or cross) -> fertilisation -> zygote -> embryo; ovule -> seed, ovary -> fruit. Germination forms a new plant."
+  },
+  {
+    "subject": "Science",
+    "chapter": "How do Organisms Reproduce?",
+    "text": "Human reproductive system: Male — testes (produce sperm and testosterone), scrotum (keeps testes cooler), vas deferens, seminal vesicle and prostate (form semen), penis. Female — ovaries (produce eggs and hormones), fallopian tube (site of fertilisation), uterus (embryo develops), vagina. Puberty changes are triggered by sex hormones. Menstruation: shedding of the uterine lining (about every 28 days) if no fertilisation. Fertilisation forms a zygote which implants in the uterus; placenta nourishes the embryo. Reproductive health: contraception methods — barrier (condom), hormonal (pills), IUCD (Copper-T), surgical (vasectomy, tubectomy). STDs like AIDS, syphilis spread through sexual contact; prevention is important."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Heredity",
+    "text": "Heredity is the passing of traits from parents to offspring through genes. Mendel's experiments on pea plants: (1) Law of Dominance — in a cross, one trait (dominant, e.g. Tall T) appears while the other (recessive, e.g. short t) is hidden in F1. (2) Law of Segregation — the two alleles separate during gamete formation. Monohybrid cross (Tt x Tt) gives F2 phenotypic ratio 3:1 (tall:short) and genotypic ratio 1:2:1 (TT:Tt:tt). Dihybrid cross gives 9:3:3:1, showing independent inheritance of traits. Genotype is the genetic make-up; phenotype is the visible trait."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Heredity",
+    "text": "Sex determination in humans: females are XX, males are XY. The mother always gives an X; the father gives X (girl) or Y (boy) — so the father's chromosome decides the child's sex. Traits are of two types: inherited (passed through genes) and acquired (gained during lifetime, not inherited, e.g. a cut). Only changes in germ cells (DNA) are inherited. Evolution: accumulation of variations over generations; evidence includes homologous organs (same structure, different function, common ancestry) and analogous organs (different structure, same function). Natural selection and genetic drift drive evolution; speciation forms new species. Fossils give evidence of evolution over time."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Light – Reflection and Refraction",
+    "text": "Reflection laws: angle of incidence = angle of reflection; incident ray, reflected ray, and normal lie in one plane. Spherical mirrors: concave (converging) and convex (diverging). Terms: pole (P), centre of curvature (C), radius of curvature (R), principal focus (F), focal length f = R/2. Mirror formula: 1/v + 1/u = 1/f. Magnification m = -v/u = h'/h. Sign convention (New Cartesian): distances measured from pole; against incident direction are negative. Concave mirror uses: shaving mirror, torches, headlights. Convex mirror uses: rear-view mirrors (wider field of view, always virtual, erect, diminished image)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Light – Reflection and Refraction",
+    "text": "Refraction: bending of light when it passes between media of different densities (due to change in speed). Laws: incident ray, refracted ray, normal in one plane; Snell's law n = sin i / sin r (constant). Light bends towards the normal entering a denser medium, away when entering a rarer medium. Refractive index n = c/v = speed of light in vacuum / speed in medium. Lenses: convex (converging) and concave (diverging). Lens formula: 1/v - 1/u = 1/f. Magnification m = v/u = h'/h. Power of a lens P = 1/f (in metres), unit dioptre (D); convex positive, concave negative. Power of lenses in contact adds up: P = P1 + P2."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Human Eye and the Colourful World",
+    "text": "Human eye: cornea (main refraction), iris (controls pupil size), pupil (light enters), lens (fine focus), retina (image forms, has rods and cones), optic nerve. Power of accommodation: the eye lens changes focal length to focus near and far objects; the nearest point is the near point (25 cm) and farthest is the far point (infinity). Defects of vision: (1) Myopia (short-sight) — far objects blurred, image forms before retina, corrected with concave lens. (2) Hypermetropia (long-sight) — near objects blurred, image forms behind retina, corrected with convex lens. (3) Presbyopia — old-age loss of accommodation, corrected with bifocal lenses. Cataract is clouding of the lens (corrected by surgery)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Human Eye and the Colourful World",
+    "text": "Refraction through a prism bends light towards the base and disperses white light into its colours (VIBGYOR) because different colours bend by different amounts (violet most, red least). A rainbow forms by refraction, internal reflection, and dispersion of sunlight in water droplets. Atmospheric refraction causes twinkling of stars (apparent, due to varying air density) and the advanced sunrise/delayed sunset (Sun visible about 2 minutes before actual sunrise). Scattering of light (Tyndall effect): scattering by particles. The sky is blue because shorter wavelengths (blue) scatter more. The Sun looks red at sunrise/sunset because light travels a longer path and blue is scattered away, leaving red."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Electricity",
+    "text": "Electric current I = Q/t, unit ampere (A); it is the rate of flow of charge. Conventional current flows opposite to electrons. Potential difference V = W/Q, unit volt (V). Ohm's law: V = IR at constant temperature; R is resistance (ohm). Resistance R = rho L / A, where rho is resistivity (depends on material and temperature); resistance increases with length and decreases with area of cross-section. Combination of resistors: series R = R1 + R2 + ... (same current, voltage adds); parallel 1/R = 1/R1 + 1/R2 + ... (same voltage, current adds, lower total resistance). Series is used where the same current is needed; parallel in household wiring (each device gets full voltage and works independently)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Electricity",
+    "text": "Heating effect of current (Joule's law of heating): H = I^2 R t; heat produced is proportional to square of current, resistance, and time. Applications: electric heater, iron, bulb filament (tungsten), fuse (thin wire of low melting point that melts and breaks the circuit on overload, protecting appliances). Electric power P = VI = I^2 R = V^2/R, unit watt (W). Commercial unit of energy: 1 kilowatt-hour (kWh) = 1 unit = 3.6 x 10^6 J. Energy consumed E = P x t. Higher-power appliances draw more current."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Magnetic Effects of Electric Current",
+    "text": "A current-carrying conductor produces a magnetic field (Oersted). Magnetic field lines: go from N to S outside a magnet, are closed loops, never intersect; density shows field strength. Right-hand thumb rule: thumb points along current, curled fingers show field direction. Field due to a straight wire is circular; a circular loop gives a field like a bar magnet; a solenoid produces a uniform field inside (like a bar magnet) and can make an electromagnet. Force on a current-carrying conductor in a magnetic field (Fleming's left-hand rule: thumb = force/motion, forefinger = field, middle finger = current); this is the principle of the electric motor (converts electrical energy to mechanical)."
+  },
+  {
+    "subject": "Science",
+    "chapter": "Magnetic Effects of Electric Current",
+    "text": "Electromagnetic induction (Faraday): a changing magnetic field around a coil induces a current in it. The direction of induced current is given by Fleming's right-hand rule (thumb = motion, forefinger = field, middle finger = induced current). This is the principle of the electric generator (converts mechanical energy to electrical). AC (alternating current) reverses direction periodically (50 Hz in India); DC (direct current) flows one way. Domestic circuit: live wire (red/brown), neutral (black/blue), earth wire (green, safety). Overloading and short-circuit cause excessive current; fuses and MCBs protect against this. Earthing prevents electric shocks."
+  }
+]
