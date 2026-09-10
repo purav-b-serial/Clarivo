@@ -14,6 +14,7 @@ class ClaraService {
     this.activeSubject,
     this.activeClass,
     this.exam,
+    this.socratic = false,
   })  : _db = db,
         _groq = groqClient,
         _search = searchService;
@@ -27,6 +28,10 @@ class ClaraService {
   /// When set, Clara is in competitive-exam mode (JEE/NEET) and searches
   /// across multiple classes and subjects at once.
   final ExamPrep? exam;
+
+  /// When true, Clara guides the student with hints and leading questions
+  /// (Socratic method) instead of giving the full answer outright.
+  final bool socratic;
 
   Future<String> ask(String question) async {
     final isExam = exam != null;
@@ -70,8 +75,25 @@ class ClaraService {
         : 'You are Clara, a precise and helpful CBSE $classLabel study assistant'
             '${activeSubject != null ? " specialising in $activeSubject" : ""}.';
 
+    // In Socratic mode, Clara coaches the student toward the answer with hints
+    // and leading questions instead of stating the full answer directly.
+    final socraticRule = socratic
+        ? '\n\nSOCRATIC TUTOR MODE — IMPORTANT: Do NOT give the full answer '
+            'outright. Instead, guide the student to discover it themselves:\n'
+            '- Start with one short encouraging line.\n'
+            '- Give 1-2 helpful HINTS or ask 1-2 leading questions that nudge '
+            'their thinking, grounded in the reference notes.\n'
+            '- Point out the key concept or formula to consider, but let them '
+            'take the final step.\n'
+            '- Keep it brief (under ~120 words). End by inviting them to try, '
+            'e.g. "What do you think the next step is?"\n'
+            '- Only if the student explicitly says they give up or asks '
+            'directly for the answer should you reveal it fully.'
+        : '';
+
     final systemPrompt =
-        '$intro\n\n'
+        '$intro'
+        '$socraticRule\n\n'
 
         'CRITICAL OUTPUT RULES — follow these exactly:\n'
         '1. OUTPUT ONLY THE FINAL ANSWER. Never show thinking, reasoning steps, '
@@ -124,6 +146,19 @@ class ClaraService {
   }
 }
 
+/// When true, Clara answers in Socratic (hint-based) mode. Toggled from the
+/// Clara chat screen.
+class SocraticModeNotifier extends Notifier<bool> {
+  @override
+  bool build() => false;
+
+  void toggle() => state = !state;
+  void set(bool value) => state = value;
+}
+
+final socraticModeProvider =
+    NotifierProvider<SocraticModeNotifier, bool>(SocraticModeNotifier.new);
+
 final claraServiceProvider = Provider<ClaraService>((ref) {
   final ctx = ref.watch(studyContextProvider);
   return ClaraService(
@@ -133,5 +168,6 @@ final claraServiceProvider = Provider<ClaraService>((ref) {
     activeSubject: ctx.selectedSubject,
     activeClass: ctx.selectedClass,
     exam: ctx.exam,
+    socratic: ref.watch(socraticModeProvider),
   );
 });

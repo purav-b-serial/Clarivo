@@ -7,6 +7,7 @@ import 'package:markdown/markdown.dart' as md;
 import '../../core/providers/subject_provider.dart';
 import '../../domain/ai/clara_service.dart';
 import '../../domain/ai/groq_client.dart';
+import 'quiz_sheet.dart';
 
 class _Message {
   const _Message({required this.text, required this.isUser});
@@ -453,6 +454,7 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
     final exam = studyCtx.exam;
     final activeSubject = ref.watch(activeSubjectProvider);
     final subjectInfo = ref.watch(activeSubjectInfoProvider);
+    final socratic = ref.watch(socraticModeProvider);
 
     // A context is "active" (Clara ready) when either a subject is chosen OR
     // an exam-prep mode is on. The label/colour adapt to whichever is active.
@@ -494,6 +496,38 @@ class _ClaraScreenState extends ConsumerState<ClaraScreen> {
 
         // ── AppBar actions ────────────────────────────────────────────────
         actions: [
+          // Socratic (hint-based) mode toggle
+          IconButton(
+            icon: Icon(
+              socratic ? Icons.lightbulb : Icons.lightbulb_outline,
+              size: 20,
+              color: socratic ? Colors.amber.shade700 : null,
+            ),
+            tooltip: socratic
+                ? 'Socratic mode ON — Clara gives hints'
+                : 'Socratic mode OFF — tap for hint-based tutoring',
+            onPressed: () {
+              ref.read(socraticModeProvider.notifier).toggle();
+              final nowOn = ref.read(socraticModeProvider);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(nowOn
+                      ? 'Socratic mode ON — Clara will guide you with hints instead of full answers.'
+                      : 'Socratic mode OFF — Clara will give full answers.'),
+                  duration: const Duration(seconds: 2),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+            },
+          ),
+
+          // Quiz me
+          IconButton(
+            icon: const Icon(Icons.quiz_outlined, size: 20),
+            tooltip: 'Quiz me on this subject',
+            onPressed: () => showQuizSheet(context, ref),
+          ),
+
           // ALWAYS-VISIBLE "Choose Subject / Change" button
           TextButton.icon(
             onPressed: () => _showSubjectPicker(context, ref),
