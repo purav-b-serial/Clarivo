@@ -46,17 +46,27 @@ class QuizService {
   final DemoDatabase _db;
   final GroqClient _groq;
 
-  /// Number of questions per quiz.
+  /// Default number of questions per quiz.
   static const int questionCount = 5;
+
+  /// Minimum and maximum questions a student can request in one go.
+  static const int minQuestions = 1;
+  static const int maxQuestions = 10;
 
   /// Builds a quiz for [subject]/[classNumber]. If [topic] (a chapter name) is
   /// given, questions are drawn from that chapter's notes; otherwise a spread
   /// of the subject's notes is used.
+  ///
+  /// [count] is the number of questions requested (clamped to 1-10). Questions
+  /// are de-duplicated so the same question never appears twice in one quiz.
   Future<List<QuizQuestion>> generateQuiz({
     required String subject,
     required int classNumber,
     String? topic,
+    int count = questionCount,
   }) async {
+    final n = count.clamp(minQuestions, maxQuestions);
+
     final notes = await _collectNotes(
       subject: subject,
       classNumber: classNumber,
@@ -70,15 +80,36 @@ class QuizService {
       classNumber: classNumber,
       topicLabel: topicLabel,
       notes: notes,
+      count: n,
     );
+
+    // Give the response enough room: ~170 tokens per question (question +
+    // 4 options + short explanation), plus headroom, capped at the proxy's
+    // hard limit (2000). A 10-question quiz needs well above the 950 default.
+    final budget = (n * 170 + 300).clamp(950, 2000);
 
     final raw = await _groq.complete(
       systemPrompt: systemPrompt,
       userMessage:
-          'Generate the $questionCount-question multiple-choice quiz now as a JSON array only.',
+          'Generate the $n-question multiple-choice quiz now as a JSON array only. '
+          'Every question must be distinct — no repeats.',
+      maxTokens: budget,
     );
 
-    return _parse(raw);
+    // Parse, then drop any duplicate questions so a quiz never repeats.
+    return _dedupe(_parse(raw));
+  }
+
+  /// Removes questions with identical (case-insensitive, trimmed) text so the
+  /// same question can't appear twice in one quiz.
+  List<QuizQuestion> _dedupe(List<QuizQuestion> questions) {
+    final seen = <String>{};
+    final out = <QuizQuestion>[];
+    for (final q in questions) {
+      final key = q.question.trim().toLowerCase();
+      if (seen.add(key)) out.add(q);
+    }
+    return out;
   }
 
   /// Gathers note text for the quiz. Prefers a specific chapter's chunks; if no
@@ -121,6 +152,7 @@ class QuizService {
     required int classNumber,
     required String topicLabel,
     required String notes,
+    required int count,
   }) {
     final hasNotes = notes.trim().isNotEmpty;
     final notesSection = hasNotes
@@ -130,11 +162,11 @@ class QuizService {
             '$classNumber $subject knowledge for "$topicLabel".]';
 
     return 'You are Clara, an expert CBSE Class $classNumber $subject examiner. '
-        'Create a $questionCount-question multiple-choice quiz on "$topicLabel".\n\n'
+        'Create a $count-question multiple-choice quiz on "$topicLabel".\n\n'
         'OUTPUT FORMAT — CRITICAL:\n'
         'Return ONLY a raw JSON array. No prose, no markdown, no code fences, '
         'no commentary before or after. The array MUST have exactly '
-        '$questionCount objects, each with this exact shape:\n'
+        '$count objects, each with this exact shape:\n'
         '{"question": string, "options": [string, string, string, string], '
         '"correctIndex": integer 0-3, "explanation": string}\n\n'
         'RULES:\n'
@@ -144,7 +176,9 @@ class QuizService {
         '4. Keep questions clear and exam-appropriate for Class $classNumber.\n'
         '5. Keep each "explanation" to one or two sentences.\n'
         '6. Do NOT use LaTeX or markdown inside the strings — plain text only.\n'
-        '7. Vary difficulty across the $questionCount questions.\n\n'
+        '7. Vary difficulty across the $count questions.\n'
+        '8. EVERY question must be unique — do NOT repeat or lightly reword the '
+        'same question. Cover $count different concepts/facts from the topic.\n\n'
         '$notesSection';
   }
 
