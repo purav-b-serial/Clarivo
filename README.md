@@ -4,7 +4,8 @@
 
 Clarivo is a free AI study assistant for CBSE students, built for the AI Hackathon (September 2026). It runs entirely in the browser and installs as a Progressive Web App (PWA) — no app store, no APK, no installer.
 
-**Live:** https://superb-licorice-8c14a1.netlify.app
+**Live:** https://clarivo-456.pages.dev (Cloudflare Pages)
+**Mirror:** https://superb-licorice-8c14a1.netlify.app (Netlify)
 
 ---
 
@@ -31,6 +32,21 @@ Clarivo is a free AI study assistant for CBSE students, built for the AI Hackath
   - **JEE** → Physics, Chemistry, Mathematics
   - **NEET** → Physics, Chemistry, Biology
 - Retrieval searches the whole exam syllabus; answers are framed for exam-style questions
+
+### Quiz Mode
+- Test yourself on any subject: tap the quiz icon, pick a topic from your notes (or "whole subject")
+- Choose how many questions — **3, 5, 7, or 10** — with no repeated questions in a set
+- Multiple-choice questions are generated from your study notes, with instant right/wrong feedback, a per-question explanation, and a running score
+
+### Socratic Tutor Mode
+- A one-tap toggle (lightbulb icon) that changes how Clara answers
+- Instead of giving the full answer, Clara guides you with hints and leading questions so you reach it yourself
+- Reveals the full answer only if you ask directly or give up
+
+### Flashcards
+- Generate flip-through flashcards from any topic's notes (style icon)
+- Tap a card to reveal the answer; move through the set with prev/next
+- Great for quick revision of key terms and concepts
 
 ### Content Covered (CBSE Classes 10, 11, 12)
 - **Class 10** — Science, Mathematics, Social Science, English, Hindi, Sanskrit
@@ -61,10 +77,10 @@ Clarivo is a free AI study assistant for CBSE students, built for the AI Hackath
 
 Clarivo never ships the Groq API key to the browser. Two modes, chosen automatically:
 
-- **Production (default):** the web app calls its own serverless proxy at `/api/clara` (a Netlify function). The function holds the real key in the `GROQ_API_KEY` Netlify environment variable and forwards the request to Groq. **The key never reaches the client bundle.**
+- **Production (default):** the web app calls its own serverless proxy at `/api/clara`. Both hosts run an equivalent proxy — a Netlify Function (`netlify/functions/clara.js`) and a Cloudflare Pages Function (`functions/api/clara.js`). The function holds the real key in that platform's `GROQ_API_KEY` environment variable and forwards the request to Groq. **The key never reaches the client bundle.**
 - **Local development:** if you build/run with `--dart-define=GROQ_API_KEY=...`, Clara calls Groq directly using that key (convenient for local work).
 
-Groq request parameters are identical in both modes, so answers are unchanged.
+The proxy also accepts an optional per-request output-token budget (used by quizzes and flashcards, capped server-side) so structured responses have room. Groq request parameters are otherwise identical across modes, so answers are unchanged.
 
 ---
 
@@ -77,11 +93,11 @@ Groq request parameters are identical in both modes, so answers are unchanged.
 | Navigation | GoRouter |
 | Local Database | Drift (SQLite; `sqlite3.wasm` + `drift_worker.js` on web) |
 | AI | Groq API — `qwen/qwen3.8-27b` |
-| AI transport | Netlify serverless function proxy (`/api/clara`) in production |
+| AI transport | Same-origin serverless proxy (`/api/clara`) — Netlify Function + Cloudflare Pages Function |
 | Content | 18 subject content packs across Classes 10–12 (JSON assets seeded on first load) |
 | Markdown | flutter_markdown |
 | Math Rendering | flutter_math_fork (LaTeX via `$$...$$`) |
-| Hosting | Netlify (Git-connected continuous deploy) |
+| Hosting | Cloudflare Pages (primary) + Netlify (mirror) |
 
 ---
 
@@ -112,9 +128,14 @@ flutter run -d chrome --dart-define=GROQ_API_KEY=your_key_here
 
 ---
 
-## Deployment (Netlify, Git-connected)
+## Deployment
 
-Deployment is automatic: every push to `main` triggers a Netlify build that installs Flutter, runs `build_runner`, builds the web release (with **no** key baked in), and deploys the `clara` function. See `DEPLOY.md` for the full guide, including the required Netlify environment variable and routing notes.
+Clarivo is deployed to two hosts for redundancy; both keep the Groq key server-side.
+
+- **Cloudflare Pages (primary):** serves a prebuilt `build/web` committed on the `cloudflare-deploy` branch, plus the `functions/api/clara.js` proxy. Building locally and committing the output avoids Flutter's heavy compile on the build runner. `GROQ_API_KEY` is set as a Cloudflare Pages environment variable.
+- **Netlify (mirror):** Git-connected build from `main` (installs Flutter, runs `build_runner`, builds the web release with no key baked in) and deploys `netlify/functions/clara.js`. `GROQ_API_KEY` is set as a Netlify environment variable.
+
+See `DEPLOY.md` for the full guide, including environment variables and routing notes.
 
 ---
 
@@ -152,14 +173,16 @@ Clarivo/
 ├── lib/
 │   ├── core/              # Router, providers (subject/exam, language)
 │   ├── data/              # Database (Drift), seed content (JSON), keyword search
-│   ├── domain/            # Services: Clara AI, Groq client, keyword search
-│   └── features/          # UI: tutor (Clara), content, progress, storage, settings, landing
+│   ├── domain/            # Services: Clara AI, Groq client, keyword search, quiz, flashcards
+│   └── features/          # UI: tutor (Clara + quiz/flashcard sheets), content, progress, storage, settings, landing
 ├── assets/
 │   ├── content/           # 18 subject JSON packs (Classes 10–12)
 │   └── i18n/              # Localisation ARB files
 ├── netlify/
-│   └── functions/         # clara.js — serverless Groq proxy (holds the key server-side)
-├── web/                   # Flutter web files + _redirects (routes /api/clara + SPA fallback)
+│   └── functions/         # clara.js — Netlify serverless Groq proxy (key server-side)
+├── functions/
+│   └── api/clara.js       # Cloudflare Pages Function — equivalent Groq proxy
+├── web/                   # Flutter web files + _redirects/_headers (routes /api/clara + SPA fallback)
 ├── netlify.toml           # Build command, functions dir, redirects, security headers
 ├── package.json           # Node engine for the Netlify function
 ├── .kiro/specs/AI/clarivo/ # Spec documents
